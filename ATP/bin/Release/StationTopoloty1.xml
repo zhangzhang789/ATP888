@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StationTopoloty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TopolotyNode DeviceName="1" DeviceID="12" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="407G" DeviceID="16" StationID="0" />
+      <Node DeviceName="2" DeviceID="13" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="317G" DeviceID="12" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="2" DeviceID="13" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="410G" DeviceID="18" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="406G" DeviceID="15" StationID="0" />
+      <Node DeviceName="1" DeviceID="12" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="301G" DeviceID="0" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="303G" DeviceID="1" StationID="0" />
+    </LeftNodes>
+    <RightNodes />
+  </TopolotyNode>
+  <TopolotyNode DeviceName="303G" DeviceID="1" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="305G" DeviceID="2" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="301G" DeviceID="0" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="305G" DeviceID="2" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="307G" DeviceID="4" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="303G" DeviceID="1" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="306G" DeviceID="3" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="308G" DeviceID="5" StationID="0" />
+    </LeftNodes>
+    <RightNodes />
+  </TopolotyNode>
+  <TopolotyNode DeviceName="307G" DeviceID="4" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="309G" DeviceID="6" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="305G" DeviceID="2" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="308G" DeviceID="5" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="310G" DeviceID="7" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="306G" DeviceID="3" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="309G" DeviceID="6" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="315G" DeviceID="10" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="307G" DeviceID="4" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="310G" DeviceID="7" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="312G" DeviceID="8" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="308G" DeviceID="5" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="312G" DeviceID="8" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="314G" DeviceID="9" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="310G" DeviceID="7" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="314G" DeviceID="9" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="316G" DeviceID="11" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="312G" DeviceID="8" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="315G" DeviceID="10" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="317G" DeviceID="12" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="309G" DeviceID="6" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="316G" DeviceID="11" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="318G" DeviceID="13" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="314G" DeviceID="9" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="317G" DeviceID="12" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="1" DeviceID="12" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="315G" DeviceID="10" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="318G" DeviceID="13" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="326G" DeviceID="14" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="316G" DeviceID="11" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="326G" DeviceID="14" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="406G" DeviceID="15" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="318G" DeviceID="13" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="406G" DeviceID="15" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="2" DeviceID="13" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="326G" DeviceID="14" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="407G" DeviceID="16" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="409G" DeviceID="17" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="1" DeviceID="12" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="409G" DeviceID="17" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="411G" DeviceID="19" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="407G" DeviceID="16" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="410G" DeviceID="18" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="412G" DeviceID="20" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="2" DeviceID="13" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="411G" DeviceID="19" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="413G" DeviceID="21" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="409G" DeviceID="17" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="412G" DeviceID="20" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="414G" DeviceID="22" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="410G" DeviceID="18" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="413G" DeviceID="21" StationID="0">
+    <LeftNodes />
+    <RightNodes>
+      <Node DeviceName="411G" DeviceID="19" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="414G" DeviceID="22" StationID="0">
+    <LeftNodes>
+      <Node DeviceName="416G" DeviceID="23" StationID="0" />
+    </LeftNodes>
+    <RightNodes>
+      <Node DeviceName="412G" DeviceID="20" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+  <TopolotyNode DeviceName="416G" DeviceID="23" StationID="0">
+    <LeftNodes />
+    <RightNodes>
+      <Node DeviceName="414G" DeviceID="22" StationID="0" />
+    </RightNodes>
+  </TopolotyNode>
+</StationTopoloty>

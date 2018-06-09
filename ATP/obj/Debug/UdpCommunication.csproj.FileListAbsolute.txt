@@ -1,0 +1,170 @@
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\bin\Debug\WindowsFormsApplication7.exe.config
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\bin\Debug\WindowsFormsApplication7.exe
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\bin\Debug\WindowsFormsApplication7.pdb
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\bin\Debug\mscorlib.dll
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\bin\Debug\zh-Hans\mscorlib.resources.dll
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\bin\Debug\normidna.nlp
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\bin\Debug\normnfc.nlp
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\bin\Debug\normnfd.nlp
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\bin\Debug\normnfkc.nlp
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\bin\Debug\normnfkd.nlp
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\obj\Debug\UdpCommunication.csprojResolveAssemblyReference.cache
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\obj\Debug\UdpCommunication.Form1.resources
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\obj\Debug\UdpCommunication.Properties.Resources.resources
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\obj\Debug\UdpCommunication.csproj.GenerateResource.Cache
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\obj\Debug\WindowsFormsApplication7.exe
+C:\Users\wang\Desktop\WindowsFormsApplication7\WindowsFormsApplication7\obj\Debug\WindowsFormsApplication7.pdb
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\bin\Debug\UdpCommunication.exe.config
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\bin\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\bin\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\bin\Debug\mscorlib.dll
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\bin\Debug\zh-Hans\mscorlib.resources.dll
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\bin\Debug\normidna.nlp
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfc.nlp
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfd.nlp
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfkc.nlp
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfkd.nlp
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.csprojResolveAssemblyReference.cache
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.Form1.resources
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.csproj.GenerateResource.Cache
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.Properties.Resources.resources
+C:\Users\wang\Desktop\新建文件夹\UDP Client 三机通信\UDP Communication\WindowsFormsApplication7\bin\Debug\UdpCommunication.exe.config
+C:\Users\wang\Desktop\新建文件夹\UDP Client 三机通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\新建文件夹\UDP Client 三机通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\新建文件夹\UDP Client\UDP Communication\WindowsFormsApplication7\bin\Debug\UdpCommunication.exe.config
+C:\Users\wang\Desktop\新建文件夹\UDP Client\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\新建文件夹\UDP Client\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\UdpCommunication.exe.config
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\mscorlib.dll
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\zh-Hans\mscorlib.resources.dll
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\normidna.nlp
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfc.nlp
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfd.nlp
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfkc.nlp
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfkd.nlp
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.csprojResolveAssemblyReference.cache
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.Form1.resources
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.Properties.Resources.resources
+C:\Users\wang\Desktop\新建文件夹\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.csproj.GenerateResource.Cache
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\UdpCommunication.exe.config
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.exe
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.pdb
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\UdpCommunication.exe
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\UdpCommunication.pdb
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\mscorlib.dll
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\zh-Hans\mscorlib.resources.dll
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\normidna.nlp
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfc.nlp
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfd.nlp
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfkc.nlp
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\bin\Debug\normnfkd.nlp
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.Form1.resources
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.Properties.Resources.resources
+J:\UDP Client单个通信\UDP Communication\WindowsFormsApplication7\obj\Debug\UdpCommunication.csproj.GenerateResource.Cache
+J:\UDP Client单个通信\UDP Communication\UDP 通信\bin\Debug\UdpCommunication.exe.config
+J:\UDP Client单个通信\UDP Communication\UDP 通信\obj\Debug\UdpCommunication.exe
+J:\UDP Client单个通信\UDP Communication\UDP 通信\obj\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\UDP 通信\bin\Debug\UdpCommunication.exe.config
+C:\Users\wang\Desktop\UDP 通信\obj\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\UDP 通信\obj\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\UDP 通信\bin\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\UDP 通信\bin\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\UDP 通信\bin\Debug\mscorlib.dll
+C:\Users\wang\Desktop\UDP 通信\bin\Debug\zh-Hans\mscorlib.resources.dll
+C:\Users\wang\Desktop\UDP 通信\bin\Debug\normidna.nlp
+C:\Users\wang\Desktop\UDP 通信\bin\Debug\normnfc.nlp
+C:\Users\wang\Desktop\UDP 通信\bin\Debug\normnfd.nlp
+C:\Users\wang\Desktop\UDP 通信\bin\Debug\normnfkc.nlp
+C:\Users\wang\Desktop\UDP 通信\bin\Debug\normnfkd.nlp
+C:\Users\wang\Desktop\UDP 通信\obj\Debug\UdpCommunication.csprojResolveAssemblyReference.cache
+C:\Users\wang\Desktop\UDP 通信\obj\Debug\UdpCommunication.Form1.resources
+C:\Users\wang\Desktop\UDP 通信\obj\Debug\UdpCommunication.Form2.resources
+C:\Users\wang\Desktop\UDP 通信\obj\Debug\UdpCommunication.Properties.Resources.resources
+C:\Users\wang\Desktop\UDP 通信\obj\Debug\UdpCommunication.csproj.GenerateResource.Cache
+C:\Users\wang\Desktop\UDP 通信最新版\bin\Debug\UdpCommunication.exe.config
+C:\Users\wang\Desktop\UDP 通信最新版\obj\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\UDP 通信最新版\obj\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\UDP ing\bin\Debug\UdpCommunication.exe.config
+C:\Users\wang\Desktop\UDP ing\obj\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\UDP ing\obj\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\UDP ing\bin\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\UDP ing\bin\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\UDP ing\bin\Debug\mscorlib.dll
+C:\Users\wang\Desktop\UDP ing\bin\Debug\zh-Hans\mscorlib.resources.dll
+C:\Users\wang\Desktop\UDP ing\bin\Debug\normidna.nlp
+C:\Users\wang\Desktop\UDP ing\bin\Debug\normnfc.nlp
+C:\Users\wang\Desktop\UDP ing\bin\Debug\normnfd.nlp
+C:\Users\wang\Desktop\UDP ing\bin\Debug\normnfkc.nlp
+C:\Users\wang\Desktop\UDP ing\bin\Debug\normnfkd.nlp
+C:\Users\wang\Desktop\UDP ing\obj\Debug\UdpCommunication.Form1.resources
+C:\Users\wang\Desktop\UDP ing\obj\Debug\UdpCommunication.Form2.resources
+C:\Users\wang\Desktop\UDP ing\obj\Debug\UdpCommunication.Properties.Resources.resources
+C:\Users\wang\Desktop\UDP ing\obj\Debug\UdpCommunication.csproj.GenerateResource.Cache
+F:\UDP ing\bin\Debug\UdpCommunication.exe.config
+F:\UDP ing\obj\Debug\UdpCommunication.exe
+F:\UDP ing\obj\Debug\UdpCommunication.pdb
+F:\UDP ing\obj\Debug\UdpCommunication.csprojResolveAssemblyReference.cache
+F:\UDP ing\obj\Debug\UdpCommunication.Form1.resources
+F:\UDP ing\obj\Debug\UdpCommunication.Form2.resources
+F:\UDP ing\obj\Debug\UdpCommunication.Properties.Resources.resources
+F:\UDP ing\obj\Debug\UdpCommunication.csproj.GenerateResource.Cache
+F:\UDP ing\bin\Debug\UdpCommunication.exe
+F:\UDP ing\bin\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\UDP ing\obj\Debug\UdpCommunication.csprojResolveAssemblyReference.cache
+C:\Users\wang\Desktop\前车和ZC交互\bin\Debug\UdpCommunication.exe.config
+C:\Users\wang\Desktop\前车和ZC交互\obj\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\前车和ZC交互\obj\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\前车和ZC交互\bin\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\前车和ZC交互\bin\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\前车和ZC交互\bin\Debug\mscorlib.dll
+C:\Users\wang\Desktop\前车和ZC交互\bin\Debug\zh-Hans\mscorlib.resources.dll
+C:\Users\wang\Desktop\前车和ZC交互\bin\Debug\normidna.nlp
+C:\Users\wang\Desktop\前车和ZC交互\bin\Debug\normnfc.nlp
+C:\Users\wang\Desktop\前车和ZC交互\bin\Debug\normnfd.nlp
+C:\Users\wang\Desktop\前车和ZC交互\bin\Debug\normnfkc.nlp
+C:\Users\wang\Desktop\前车和ZC交互\bin\Debug\normnfkd.nlp
+C:\Users\wang\Desktop\前车和ZC交互\obj\Debug\UdpCommunication.Form1.resources
+C:\Users\wang\Desktop\前车和ZC交互\obj\Debug\UdpCommunication.Form2.resources
+C:\Users\wang\Desktop\前车和ZC交互\obj\Debug\UdpCommunication.Properties.Resources.resources
+C:\Users\wang\Desktop\前车和ZC交互\obj\Debug\UdpCommunication.csproj.GenerateResource.Cache
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\bin\Debug\UdpCommunication.exe.config
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\obj\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\obj\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\bin\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\bin\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\bin\Debug\mscorlib.dll
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\bin\Debug\zh-Hans\mscorlib.resources.dll
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\bin\Debug\normidna.nlp
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\bin\Debug\normnfc.nlp
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\bin\Debug\normnfd.nlp
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\bin\Debug\normnfkc.nlp
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\bin\Debug\normnfkd.nlp
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\obj\Debug\UdpCommunication.csprojResolveAssemblyReference.cache
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\obj\Debug\UdpCommunication.Form1.resources
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\obj\Debug\UdpCommunication.Form2.resources
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\obj\Debug\UdpCommunication.Properties.Resources.resources
+C:\Users\wang\Desktop\前车和ZC交互 - 副本\obj\Debug\UdpCommunication.csproj.GenerateResource.Cache
+C:\Users\wang\Desktop\前车和ZC交互\obj\Debug\UdpCommunication.csprojResolveAssemblyReference.cache
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\bin\Debug\UdpCommunication.exe.config
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\obj\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\obj\Debug\UdpCommunication.csprojResolveAssemblyReference.cache
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\obj\Debug\UdpCommunication.Form1.resources
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\obj\Debug\UdpCommunication.Form2.resources
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\obj\Debug\UdpCommunication.Properties.Resources.resources
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\obj\Debug\UdpCommunication.csproj.GenerateResource.Cache
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\bin\Debug\UdpCommunication.exe
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\bin\Debug\UdpCommunication.pdb
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\bin\Debug\mscorlib.dll
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\bin\Debug\zh-Hans\mscorlib.resources.dll
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\bin\Debug\normidna.nlp
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\bin\Debug\normnfc.nlp
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\bin\Debug\normnfd.nlp
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\bin\Debug\normnfkc.nlp
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\bin\Debug\normnfkd.nlp
+C:\Users\wang\Desktop\前车和ZC交互 - 修改双机通信版本\obj\Debug\UdpCommunication.pdb

@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StationElements xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" StationID="0" ID="0" NameX="-12.9316666666667" NameY="21" Name="3-SC1" Left="1084" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="5" X1="0" Y1="19" />
+      <Graphic Type="Circle" CenterX="8" CenterY="12" Radius="7" />
+      <Graphic Type="Circle" CenterX="22" CenterY="12" Radius="7" />
+    </Graphics>
+  </Signal>
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" StationID="0" ID="1" NameX="-12.9316666666667" NameY="21" Name="3-SC2" Left="1084" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="5" X1="0" Y1="19" />
+      <Graphic Type="Circle" CenterX="8" CenterY="12" Radius="7" />
+      <Graphic Type="Circle" CenterX="22" CenterY="12" Radius="7" />
+    </Graphics>
+  </Signal>
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" StationID="0" ID="2" NameX="-12.9316666666667" NameY="-34.1966666666667" Name="3-XC" Left="984" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="-5" X1="0" Y1="-19" />
+      <Graphic Type="Circle" CenterX="-8" CenterY="-12" Radius="7" />
+      <Graphic Type="Circle" CenterX="-22" CenterY="-12" Radius="7" />
+    </Graphics>
+  </Signal>
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L2_红绿" DefaultColor="Red" StationID="0" ID="3" NameX="-11.1266666666667" NameY="21" Name="3-Z4" Left="734" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="5" X1="0" Y1="19" />
+      <Graphic Type="Circle" CenterX="8" CenterY="12" Radius="7" />
+      <Graphic Type="Circle" CenterX="22" CenterY="12" Radius="7" />
+    </Graphics>
+  </Signal>
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" StationID="0" ID="4" NameX="-12.9316666666667" NameY="-34.1966666666667" Name="3-Z4" Left="984" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="-5" X1="0" Y1="-19" />
+      <Graphic Type="Circle" CenterX="-8" CenterY="-12" Radius="7" />
+      <Graphic Type="Circle" CenterX="-22" CenterY="-12" Radius="7" />
+    </Graphics>
+  </Signal>
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" StationID="0" ID="5" NameX="-12.9316666666667" NameY="-34.1966666666667" Name="4-F1" Left="634" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="-5" X1="0" Y1="-19" />
+      <Graphic Type="Circle" CenterX="-8" CenterY="-12" Radius="7" />
+      <Graphic Type="Circle" CenterX="-22" CenterY="-12" Radius="7" />
+    </Graphics>
+  </Signal>
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" StationID="0" ID="6" NameX="-12.9316666666667" NameY="-34.1966666666667" Name="4-F2" Left="334" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="-5" X1="0" Y1="-19" />
+      <Graphic Type="Circle" CenterX="-8" CenterY="-12" Radius="7" />
+      <Graphic Type="Circle" CenterX="-22" CenterY="-12" Radius="7" />
+    </Graphics>
+  </Signal>
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" StationID="0" ID="7" NameX="-12.9316666666667" NameY="21" Name="4-F3" Left="434" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="5" X1="0" Y1="19" />
+      <Graphic Type="Circle" CenterX="8" CenterY="12" Radius="7" />
+      <Graphic Type="Circle" CenterX="22" CenterY="12" Radius="7" />
+    </Graphics>
+  </Signal>
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" StationID="0" ID="8" NameX="-12.9316666666667" NameY="21" Name="4-SC" Left="434" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="5" X1="0" Y1="19" />
+      <Graphic Type="Circle" CenterX="8" CenterY="12" Radius="7" />
+      <Graphic Type="Circle" CenterX="22" CenterY="12" Radius="7" />
+    </Graphics>
+  </Signal>
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" StationID="0" ID="9" NameX="-12.9316666666667" NameY="-34.1966666666667" Name="4-XC" Left="334" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="-5" X1="0" Y1="-19" />
+      <Graphic Type="Circle" CenterX="-8" CenterY="-12" Radius="7" />
+      <Graphic Type="Circle" CenterX="-22" CenterY="-12" Radius="7" />
+    </Graphics>
+  </Signal>
+  <RailSwitch SectionName="405DG" DoubleName="2" DoubleID="1" IsUp="False" IsLeft="True" NormalDistance="25" ReverseDistance="25" Sections="0," Normals="1," Reverses="2," StationID="0" ID="12" NameX="-45" NameY="5" Name="1" Left="634" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="-50" Y1="0" />
+      <Graphic Type="Line" X0="-59" Y0="0" X1="-200" Y1="0" />
+      <Graphic Type="Line" X0="-54.5" Y0="7.79422863405995" X1="-100" Y1="86.6025403784438" />
+    </Graphics>
+  </RailSwitch>
+  <RailSwitch SectionName="408DG" DoubleName="1" DoubleID="0" IsUp="True" IsLeft="False" NormalDistance="25" ReverseDistance="25" Sections="0," Normals="1," Reverses="2," StationID="0" ID="13" NameX="39" NameY="-18" Name="2" Left="434" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="50" Y1="0" />
+      <Graphic Type="Line" X0="59" Y0="0" X1="200" Y1="0" />
+      <Graphic Type="Line" X0="54.5" Y0="-7.79422863405995" X1="100" Y1="-86.6025403784438" />
+    </Graphics>
+  </RailSwitch>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="0" NameX="87" NameY="5" Name="301G" Left="1234" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="200" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="1" NameX="62" NameY="5" Name="303G" Left="1084" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="150" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="1" Distance="120" StationID="0" ID="2" NameX="37" NameY="5" Name="305G" Left="984" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="3" NameX="87" NameY="5" Name="306G" Left="1484" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="200" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="4" NameX="37" NameY="5" Name="307G" Left="884" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="5" NameX="87" NameY="5" Name="308G" Left="1284" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="200" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="6" NameX="25" NameY="5" Name="309G" Left="809" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="75" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="7" NameX="37" NameY="5" Name="310G" Left="1184" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="8" NameX="37" NameY="5" Name="312G" Left="1084" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="1" Distance="120" StationID="0" ID="9" NameX="41" NameY="5" Name="314G" Left="984" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="10" NameX="12" NameY="5" Name="315G" Left="759" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="-25" Y0="0" X1="50" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="11" NameX="37" NameY="5" Name="316G" Left="884" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="12" NameX="37" NameY="5" Name="317G" Left="634" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="13" NameX="12" NameY="5" Name="318G" Left="834" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="50" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="14" NameX="37" NameY="5" Name="326G" Left="734" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="15" NameX="37" NameY="5" Name="406G" Left="634" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="1" Distance="120" StationID="0" ID="16" NameX="37" NameY="5" Name="407G" Left="334" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="17" NameX="37" NameY="5" Name="409G" Left="234" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="1" Distance="120" StationID="0" ID="18" NameX="37" NameY="5" Name="410G" Left="334" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="19" NameX="12" NameY="5" Name="411G" Left="184" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="50" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="20" NameX="37" NameY="5" Name="412G" Left="234" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="21" NameX="62" NameY="5" Name="413G" Left="34" Top="193" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="150" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="22" NameX="12" NameY="5" Name="414G" Left="184" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="50" Y1="0" />
+    </Graphics>
+  </Section>
+  <Section LogicCount="2" Distance="120" StationID="0" ID="23" NameX="37" NameY="5" Name="416G" Left="84" Top="366.205080756888" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Line" X0="0" Y0="0" X1="100" Y1="0" />
+    </Graphics>
+  </Section>
+  <GraphicElement Name="NULL" Left="512" Top="174" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Label" Text="405DG" FontName="微软雅黑" Size="10" ForeColor="Silver" TextLeft="0" TextTop="0" />
+    </Graphics>
+  </GraphicElement>
+  <GraphicElement Name="NULL" Left="506" Top="375" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Label" Text="408DG" FontName="微软雅黑" Size="10" ForeColor="Silver" TextLeft="0" TextTop="0" />
+    </Graphics>
+  </GraphicElement>
+  <Station Width="100" Height="50" Name="NULL" Left="337" Top="412" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Rectangle" Left="0" Top="0" Width="100" Height="50" />
+    </Graphics>
+  </Station>
+  <SmallButton IsUp="False" StationID="0" ID="0" NameX="-5.885" NameY="21" Name="EB" Left="352" Top="415" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Rectangle" Left="-7" Top="5" Width="14" Height="14" />
+    </Graphics>
+  </SmallButton>
+  <Station Width="100" Height="50" Name="NULL" Left="332" Top="104" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Rectangle" Left="0" Top="0" Width="100" Height="50" />
+    </Graphics>
+  </Station>
+  <SmallButton IsUp="False" StationID="0" ID="0" NameX="-5.885" NameY="21" Name="EB" Left="417" Top="119" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Rectangle" Left="-7" Top="5" Width="14" Height="14" />
+    </Graphics>
+  </SmallButton>
+  <Station Width="100" Height="45" Name="NULL" Left="988.684210526316" Top="227" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Rectangle" Left="0" Top="0" Width="100" Height="45" />
+    </Graphics>
+  </Station>
+  <SmallButton IsUp="False" StationID="0" ID="0" NameX="-5.885" NameY="21" Name="EB" Left="1003.68421052632" Top="230" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Rectangle" Left="-7" Top="5" Width="14" Height="14" />
+    </Graphics>
+  </SmallButton>
+  <Station Width="100" Height="45" Name="NULL" Left="989.684210526316" Top="285" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Rectangle" Left="0" Top="0" Width="100" Height="45" />
+    </Graphics>
+  </Station>
+  <SmallButton IsUp="False" StationID="0" ID="0" NameX="-5.885" NameY="21" Name="EB" Left="1074.68421052632" Top="295" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Rectangle" Left="-7" Top="5" Width="14" Height="14" />
+    </Graphics>
+  </SmallButton>
+  <GraphicElement Name="NULL" Left="332" Top="488" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Label" Text="西二旗站  4号站" FontName="微软雅黑" Size="20" ForeColor="Silver" TextLeft="0" TextTop="0" />
+    </Graphics>
+  </GraphicElement>
+  <GraphicElement Name="NULL" Left="354" Top="517" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Label" Text="（高架车站）" FontName="微软雅黑" Size="20" ForeColor="Silver" TextLeft="0" TextTop="0" />
+    </Graphics>
+  </GraphicElement>
+  <GraphicElement Name="NULL" Left="990" Top="420" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Label" Text="朱辛庄站  3号站" FontName="微软雅黑" Size="20" ForeColor="Silver" TextLeft="0" TextTop="0" />
+    </Graphics>
+  </GraphicElement>
+  <GraphicElement Name="NULL" Left="1002" Top="464" RotateX="0" RotateY="0" Angle="0">
+    <Graphics>
+      <Graphic Type="Label" Text="（地面车站）" FontName="微软雅黑" Size="20" ForeColor="Silver" TextLeft="0" TextTop="0" />
+    </Graphics>
+  </GraphicElement>
+</StationElements>

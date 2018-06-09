@@ -1,0 +1,1 @@
+2018/04/15 23:15:51 IsEB: False DCSpeed: -55 DCModel: 0 DCHandle: 2 HeadBalise: T0115_1_1 tailID: 9 ProtectSpeed: 66 Num: 0 ID: 0  State: 2  ATPPermitDirection: 2FaultHead: 0FaultZhangJie: 0FaultXiaoJie: 0FaultReason: 

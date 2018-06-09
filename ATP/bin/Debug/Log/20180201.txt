@@ -1,0 +1,165 @@
+2018/02/01 15:20:18 IsEB:False DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 15:20:25 IsEB:False DCSpeed:1 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 15:20:25 IsEB:False DCSpeed:2 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 15:20:25 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 15:20:25 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 15:20:25 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 15:20:39 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 15:20:40 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:100 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:20:41 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:68 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:20:43 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0114_1_2 MAEndLink:0 ProtectSpeed:68 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:20:43 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0114_1_2 MAEndLink:0 ProtectSpeed:64 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:20:45 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0114_2_1 MAEndLink:0 ProtectSpeed:64 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:20:47 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0114_2_1 MAEndLink:0 ProtectSpeed:53 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:20:49 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0114_2_2 MAEndLink:0 ProtectSpeed:53 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:20:49 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0114_2_2 MAEndLink:0 ProtectSpeed:47 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:20:55 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:47 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:20:56 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:40 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:20:58 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:W0104_0 MAEndLink:0 ProtectSpeed:40 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:21:03 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:40 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 15:21:04 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:40 Num:2 ID:3 7  State:1 1  ATPPermitDirection:1
+2018/02/01 15:21:04 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:80 Num:2 ID:3 7  State:1 1  ATPPermitDirection:1
+2018/02/01 15:21:06 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:W0106_1 MAEndLink:0 ProtectSpeed:80 Num:2 ID:3 7  State:1 1  ATPPermitDirection:1
+2018/02/01 15:21:07 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:W0106_1 MAEndLink:0 ProtectSpeed:80 Num:2 ID:5 7  State:1 1  ATPPermitDirection:1
+2018/02/01 15:21:08 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:W0106_1 MAEndLink:0 ProtectSpeed:48 Num:2 ID:5 7  State:1 1  ATPPermitDirection:1
+2018/02/01 15:21:13 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:48 Num:2 ID:5 7  State:1 1  ATPPermitDirection:1
+2018/02/01 15:21:13 IsEB:True DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:48 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 15:21:13 IsEB:True DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:48 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 15:26:42 IsEB:True DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:48 Num:0 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:35:15 IsEB:False DCSpeed:0 DCModel:0 DCHandle:0 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:35:15 IsEB:False DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:36:12 IsEB:False DCSpeed:1 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:36:13 IsEB:False DCSpeed:2 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:36:13 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:36:13 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:36:27 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 16:36:27 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:100 Num:1 ID:1  State:2  ATPPermitDirection:1
+2018/02/01 16:36:28 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:62 Num:1 ID:1  State:2  ATPPermitDirection:1
+2018/02/01 16:36:30 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_2 MAEndLink:0 ProtectSpeed:62 Num:1 ID:1  State:2  ATPPermitDirection:1
+2018/02/01 16:36:31 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_2 MAEndLink:0 ProtectSpeed:57 Num:1 ID:1  State:2  ATPPermitDirection:1
+2018/02/01 16:36:33 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_2_1 MAEndLink:0 ProtectSpeed:57 Num:1 ID:1  State:2  ATPPermitDirection:1
+2018/02/01 16:36:34 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_2_1 MAEndLink:0 ProtectSpeed:45 Num:1 ID:1  State:2  ATPPermitDirection:1
+2018/02/01 16:36:36 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_2_2 MAEndLink:0 ProtectSpeed:45 Num:1 ID:1  State:2  ATPPermitDirection:1
+2018/02/01 16:36:37 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_2_2 MAEndLink:0 ProtectSpeed:37 Num:1 ID:1  State:2  ATPPermitDirection:1
+2018/02/01 16:36:42 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:37 Num:1 ID:1  State:2  ATPPermitDirection:1
+2018/02/01 16:36:42 IsEB:True DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:37 Num:1 ID:1  State:2  ATPPermitDirection:1
+2018/02/01 16:36:42 IsEB:True DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:37 Num:1 ID:1  State:2  ATPPermitDirection:1
+2018/02/01 16:36:43 IsEB:True DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:37 Num:2 ID:1 3  State:2 1  ATPPermitDirection:1
+2018/02/01 16:37:22 IsEB:False DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:37 Num:2 ID:1 3  State:2 1  ATPPermitDirection:1
+2018/02/01 16:37:23 IsEB:False DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:40 Num:2 ID:1 3  State:2 1  ATPPermitDirection:1
+2018/02/01 16:37:28 IsEB:False DCSpeed:1 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:40 Num:2 ID:1 3  State:2 1  ATPPermitDirection:1
+2018/02/01 16:37:28 IsEB:False DCSpeed:2 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:40 Num:2 ID:1 3  State:2 1  ATPPermitDirection:1
+2018/02/01 16:37:28 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:40 Num:2 ID:1 3  State:2 1  ATPPermitDirection:1
+2018/02/01 16:37:28 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:40 Num:2 ID:1 3  State:2 1  ATPPermitDirection:1
+2018/02/01 16:37:28 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:40 Num:2 ID:1 3  State:2 1  ATPPermitDirection:1
+2018/02/01 16:37:28 IsEB:False DCSpeed:6 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:40 Num:2 ID:1 3  State:2 1  ATPPermitDirection:1
+2018/02/01 16:37:30 IsEB:False DCSpeed:6 DCModel:1 DCHandle:1 HeadBalise:W0104_0 MAEndLink:0 ProtectSpeed:40 Num:2 ID:1 3  State:2 1  ATPPermitDirection:1
+2018/02/01 16:37:36 IsEB:False DCSpeed:6 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:40 Num:2 ID:1 3  State:2 1  ATPPermitDirection:1
+2018/02/01 16:37:36 IsEB:False DCSpeed:6 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:40 Num:1 ID:3  State:1  ATPPermitDirection:1
+2018/02/01 16:37:37 IsEB:False DCSpeed:6 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:40 Num:2 ID:3 7  State:1 1  ATPPermitDirection:1
+2018/02/01 16:37:37 IsEB:False DCSpeed:6 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:80 Num:2 ID:3 7  State:1 1  ATPPermitDirection:1
+2018/02/01 16:37:39 IsEB:False DCSpeed:6 DCModel:1 DCHandle:1 HeadBalise:W0106_1 MAEndLink:0 ProtectSpeed:80 Num:2 ID:3 7  State:1 1  ATPPermitDirection:1
+2018/02/01 16:37:39 IsEB:False DCSpeed:6 DCModel:1 DCHandle:1 HeadBalise:W0106_1 MAEndLink:0 ProtectSpeed:80 Num:2 ID:5 7  State:1 1  ATPPermitDirection:1
+2018/02/01 16:37:40 IsEB:False DCSpeed:6 DCModel:1 DCHandle:1 HeadBalise:W0106_1 MAEndLink:0 ProtectSpeed:48 Num:2 ID:5 7  State:1 1  ATPPermitDirection:1
+2018/02/01 16:37:45 IsEB:False DCSpeed:6 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:48 Num:2 ID:5 7  State:1 1  ATPPermitDirection:1
+2018/02/01 16:37:45 IsEB:True DCSpeed:6 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:48 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:37:45 IsEB:True DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:48 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:05 IsEB:False DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:48 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:05 IsEB:False DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:11 IsEB:False DCSpeed:1 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:11 IsEB:False DCSpeed:2 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:11 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:12 IsEB:True DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:12 IsEB:True DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:12 IsEB:True DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:12 IsEB:True DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:12 IsEB:True DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:12 IsEB:True DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:12 IsEB:True DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:38:18 IsEB:False DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:59:05 IsEB:False DCSpeed:5 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:59:11 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:59:11 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:59:11 IsEB:False DCSpeed:2 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:59:12 IsEB:False DCSpeed:1 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:59:14 IsEB:False DCSpeed:2 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:59:14 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:59:14 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 16:59:22 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 16:59:22 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:100 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 16:59:23 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:68 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 16:59:25 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_2 MAEndLink:0 ProtectSpeed:68 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 16:59:26 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_2 MAEndLink:0 ProtectSpeed:64 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 16:59:28 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_2_1 MAEndLink:0 ProtectSpeed:64 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 16:59:29 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_2_1 MAEndLink:0 ProtectSpeed:53 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 16:59:31 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_2_2 MAEndLink:0 ProtectSpeed:53 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 16:59:32 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_2_2 MAEndLink:0 ProtectSpeed:47 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 16:59:37 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:47 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 16:59:40 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0104_0 MAEndLink:0 ProtectSpeed:47 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 16:59:46 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:47 Num:3 ID:1 3 7  State:2 1 1  ATPPermitDirection:1
+2018/02/01 16:59:46 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:47 Num:2 ID:3 7  State:1 1  ATPPermitDirection:1
+2018/02/01 16:59:47 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:80 Num:2 ID:3 7  State:1 1  ATPPermitDirection:1
+2018/02/01 16:59:49 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0106_1 MAEndLink:0 ProtectSpeed:80 Num:2 ID:3 7  State:1 1  ATPPermitDirection:1
+2018/02/01 16:59:49 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0106_1 MAEndLink:0 ProtectSpeed:80 Num:2 ID:5 7  State:1 1  ATPPermitDirection:1
+2018/02/01 16:59:55 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:2 ID:5 7  State:1 1  ATPPermitDirection:1
+2018/02/01 16:59:55 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 16:59:58 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0108_1_2 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:04 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0110_0 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:07 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0110_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:13 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0112_1_1 MAEndLink:0 ProtectSpeed:80 Num:1 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:13 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0112_1_1 MAEndLink:0 ProtectSpeed:80 Num:0 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:16 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0112_1_2 MAEndLink:0 ProtectSpeed:80 Num:0 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:17 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0112_1_2 MAEndLink:0 ProtectSpeed:79 Num:0 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:22 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0202_1_1 MAEndLink:0 ProtectSpeed:79 Num:0 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:23 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0202_1_1 MAEndLink:0 ProtectSpeed:55 Num:0 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:25 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0202_1_2 MAEndLink:0 ProtectSpeed:55 Num:0 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:26 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0202_1_2 MAEndLink:0 ProtectSpeed:50 Num:0 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:31 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0204_1_1 MAEndLink:0 ProtectSpeed:50 Num:0 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:31 IsEB:True DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0204_1_1 MAEndLink:0 ProtectSpeed:50 Num:0 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:00:31 IsEB:True DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:T0204_1_1 MAEndLink:0 ProtectSpeed:50 Num:0 ID:7  State:1  ATPPermitDirection:1
+2018/02/01 17:09:28 IsEB:False DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 17:09:35 IsEB:False DCSpeed:1 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 17:09:35 IsEB:False DCSpeed:2 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 17:09:35 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 17:09:47 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:09:50 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0114_1_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:09:53 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0114_2_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:09:56 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0114_2_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:02 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:05 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:W0104_0 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:11 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:14 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:W0106_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:20 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:23 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0108_1_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:29 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:W0110_0 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:32 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:W0110_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:38 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0112_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:41 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0112_1_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:47 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0202_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:50 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0202_1_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:56 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0204_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:10:59 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0204_1_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:11:02 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0204_2_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:11:05 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0204_2_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:11:11 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:W0206_0 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:11:14 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:W0206_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:11:20 IsEB:False DCSpeed:3 DCModel:1 DCHandle:1 HeadBalise:T0208_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:12:54 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 17:12:57 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:00 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:03 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_2_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:06 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_2_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:12 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0104_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:15 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0104_0 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:21 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:24 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0106_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:30 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0108_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:33 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0108_1_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:39 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0110_0 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:42 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:W0110_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:48 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0112_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:51 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0112_1_2 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:13:57 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0202_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:14:26 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise: MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:0
+2018/02/01 17:14:43 IsEB:False DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
+2018/02/01 17:14:43 IsEB:True DCSpeed:4 DCModel:1 DCHandle:1 HeadBalise:T0114_1_1 MAEndLink:0 ProtectSpeed:100 Num:0 ID: State: ATPPermitDirection:1
