@@ -156,6 +156,7 @@ namespace CBTC
                             return false;
                         }) as RailSwitch;
                         obstacleID[k] = railswitch.SectionName; //把障碍物由ID变成全称
+                        
                     }
 
                 }
