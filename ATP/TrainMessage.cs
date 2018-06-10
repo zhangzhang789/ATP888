@@ -10,7 +10,7 @@ namespace CBTC
     class TrainMessage
     {
         public string MAEndLink; 
-        public void IDTypeConvertName(byte type, byte ID,ref Section nowSection,ref string MAEndLink, ref RailSwitch nowrailswitch) //用type和id得到名字。是在element，element有section和railswitch。topology图是用于左寻还是右寻的。
+        public void IDTypeConvertName(byte type, byte ID,ref Section nowSection,ref string MAEndLink, ref RailSwitch nowrailswitch) //用type和id得到名字。是在element，element有section和railswitch。topology图是用于左寻还是右寻的。socket传来的是type和id，为了和应答器的做比较，需要由type和ID得到应答器名字。
         {
             if (type == 1) //区段
             {
@@ -26,7 +26,7 @@ namespace CBTC
                     return false;
                 }) as Section;
                 nowSection = section;
-                MAEndLink = section.Name;  // T0301
+                MAEndLink = section.Name;  // T0301 。区段的名字是Name
             }
 
             else if (type == 2)  //道岔
@@ -43,11 +43,33 @@ namespace CBTC
                     return false;
                 }) as RailSwitch;
                 nowrailswitch = railswitch;
-                MAEndLink = railswitch.SectionName;//W0414
+                MAEndLink = railswitch.SectionName;//W0414。道岔的名字是SectionName
             
             }
         }
 
+        public void SectionDeviceNameGetTop(string deviceName,ref TopolotyNode nowTopolotyNode) //当是区段时由deviceName得到拓扑节点，可以左寻和右寻。区段的deviceName是T0307,由应答器前五位得到
+        {
+            foreach (var item in ATP.stationTopoloty_.Nodes)
+            {
+                if (item.NodeDevice.Name == deviceName)
+                {
+                    nowTopolotyNode = item;
+                }
+            }
+        } 
+
+        public void RailSwitchDeviceNameIDGetTop(string deviceName, int deviceID,ref TopolotyNode nowTopolotyNode)//当是道岔时需要由name和id。道岔的name和id是2,14.原来是由hash表得来，由着两个可以唯一确定道岔节点。注意有的右节点name是null
+        {
+            foreach (var item in ATP.stationTopoloty_.Nodes)
+            {
+                if (item.NodeDevice.Name == deviceName && item.NodeDevice.ID == deviceID) //取实际的线路中看看是什么东西
+                {
+                    nowTopolotyNode = item;
+                }
+            }
+        } 
+            
         public bool IsRailswitchVoid(byte type) //输入type判断是否是道岔
         {
             if (type == 1)

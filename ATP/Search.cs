@@ -1391,7 +1391,7 @@ namespace CBTC
         {
             foreach (var item in ATP.stationTopoloty_.Nodes)
             {
-                if (item.NodeDevice.Name == nodeDeviceName && item.NodeDevice.ID == nodeDeviceID)
+                if (item.NodeDevice.Name == nodeDeviceName && item.NodeDevice.ID == nodeDeviceID) //取实际的线路中看看是什么东西
                 {
                     return item;
                 }
