@@ -393,15 +393,12 @@ namespace CBTC
                 UInt16 ZCNID_LoginZCNext = ZCStruct.UnpackUint16(recv);
                 byte ZCN_Length = ZCStruct.UnpackByte(recv);
                 MAEndType = ZCStruct.UnpackByte(recv);
-                //ZCD_MAHeadLink = ZCStruct.UnpackUint16(recv); 
                 headSectionOrSwitch = ZCStruct.UnpackByte(recv);
                 headID = ZCStruct.UnpackByte(recv);
                 UInt32 ZCD_D_MAHeadOff = ZCStruct.UnpackUint32(recv);
-                byte ZCQ_MAHeadDir = ZCStruct.UnpackByte(recv);
-                //MAEndLink = ZCStruct.UnpackUint16(recv);//
+                byte ZCQ_MAHeadDir = ZCStruct.UnpackByte(recv);              
                 tailSectionOrSwitch = ZCStruct.UnpackByte(recv);  //1是直轨，2是道岔
                 tailID = ZCStruct.UnpackByte(recv);              //MA终点的ID
-                //ATP.Write("\r\n" + "MA终点" + "socket类 359行" + "ma终点tailID:" + " " + Convert.ToString(tailID));
                 MAEndOff = ZCStruct.UnpackUint32(recv);
                 MAEndDir = ZCStruct.UnpackByte(recv);
                 obstacleNum = ZCStruct.UnpackByte(recv);
@@ -409,7 +406,7 @@ namespace CBTC
                 if(tailSectionOrSwitch==3 && tailID==0 && MAEndOff==0 && MAEndDir == 0)
                 {
                     Socket.isEB = true;
-                    ATP.Write("\r\n" + "EB" + "socket类 367行 ZC发送3，0，0，0" + " " +Convert.ToString(tailID) + DateTime.Now.ToString());
+                   ATP.Write("\r\n" + "EB" + "socket类 367行 ZC发送3，0，0，0" + " " +Convert.ToString(tailID) + DateTime.Now.ToString());
                 }
                 if (obstacleNum != 0)
                 {
@@ -429,7 +426,6 @@ namespace CBTC
                         ID = ID + obstacleID[i] + " ";
                     }
                 }
-
                 byte ZCN_TSR = ZCStruct.UnpackByte(recv);
                 UInt32 ZCQ_ZC = ZCStruct.UnpackUint32(recv);
                 byte ZCEB_Type = ZCStruct.UnpackByte(recv);
@@ -531,7 +527,7 @@ namespace CBTC
                 if (DCCtrlMode == 0)
                 {
                     curModel = 1; //AM
-
+                    
                 }
                 else if (DCCtrlMode == 1)
                 {
@@ -627,7 +623,7 @@ namespace CBTC
                     else if (DCTrainSpeed < 0 && DCHandlePos == 1)
                     {
                         isEB = true;
-                        ATP.Write("\r\n" + "EB" + "Socket类 573行 行驶方向判断错误" + "DCTrainSpeed:" + Convert.ToString(DCTrainSpeed) + " " + DateTime.Now.ToString());
+                       ATP.Write("\r\n" + "EB" + "Socket类 573行 行驶方向判断错误" + "DCTrainSpeed:" + Convert.ToString(DCTrainSpeed) + " " + DateTime.Now.ToString());
                     }
                     else if (DCTrainSpeed > 0 && DCHandlePos == 1)
                     {

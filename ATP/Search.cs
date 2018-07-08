@@ -86,6 +86,7 @@ namespace CBTC
                     return false;
                 }) as RailSwitch;
                 MAEndLink = railswitch.SectionName;//存的是W开头的
+               
             }
 
             //Debug.WriteLine("MAEndLink:" + MAEndLink);
@@ -156,7 +157,6 @@ namespace CBTC
                             return false;
                         }) as RailSwitch;
                         obstacleID[k] = railswitch.SectionName; //把障碍物由ID变成全称
-                        
                     }
 
                 }
@@ -1391,7 +1391,7 @@ namespace CBTC
         {
             foreach (var item in ATP.stationTopoloty_.Nodes)
             {
-                if (item.NodeDevice.Name == nodeDeviceName && item.NodeDevice.ID == nodeDeviceID) //取实际的线路中看看是什么东西
+                if (item.NodeDevice.Name == nodeDeviceName && item.NodeDevice.ID == nodeDeviceID)
                 {
                     return item;
                 }

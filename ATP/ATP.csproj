@@ -88,7 +88,6 @@
     <Compile Include="Search.cs" />
     <Compile Include="Section.cs" />
     <Compile Include="Signal.cs" />
-    <Compile Include="SocketMessage.cs" />
     <Compile Include="StationElements.cs" />
     <Compile Include="StationTopoloty.cs" />
     <Compile Include="ConfigData.cs" />
