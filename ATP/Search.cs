@@ -55,7 +55,6 @@ namespace CBTC
         //curBalise是司控器传进来未经处理的应答器，W开头的
         public int[] SearchDistance(bool isLeftSearch, byte type, byte ID, int MAEndOff, int obstacleNum, string curBalise, string[] obstacleID, byte[] obstacleState)
         {   //计算MA距离
-
             if (type == 1)//把ID变成障碍物的全称
             {
                 Section section = ATP.stationElements_.Elements.Find((GraphicElement element) =>
@@ -473,6 +472,7 @@ namespace CBTC
                     }
                 }
             }
+
             if (isLeftSearch == false)   //右寻的时候判断EB
             {
                 if (curNodeName.Substring(0, 1) == "T")  //当是区段时由curnodename判断是不是过了区段了

@@ -431,10 +431,10 @@ namespace CBTC
                 byte ZCEB_Type = ZCStruct.UnpackByte(recv);
                 byte ZCEB_DEV_Typ = ZCStruct.UnpackByte(recv);
                 UInt16 ZCEB_DEV_Name = ZCStruct.UnpackUint16(recv);
+
                 if (curModel != 4)
                 {
                     isRecvZC = true;
-                    recTime = DateTime.Now;
                 }
             }
             else if (recv[2] == 4)//DMI传来的数据
@@ -505,17 +505,7 @@ namespace CBTC
             
 
             //判断ZC是否在规定时间内发来移动授权
-            if (isRecvZC == true)
-            {
-                if (recTime.AddSeconds(1) < DateTime.Now)
-                {
-                    isAuthority = false;
-                }
-                else
-                {
-                    isAuthority = true;
-                }
-            }
+
 
             //选择控车模式
             if (Regex.Matches(baliseHead, "Z").Count > 0 )
@@ -554,37 +544,37 @@ namespace CBTC
                 ReceiceDataHandling();    //刷到应答器才开始画图寻路
             }
 
-            if (isPrintConsole == true)
-            {
-                //控制台输出
-                if (_IsEB != isEB || _DCSpeed != DCTrainSpeed || _DCModel != DCCtrlMode || _DCHandle != DCHandlePos || _Balise != curBalise || _tailID != tailID || _ProtectSpeed != ATP.curProtectionSpeed || _Num != obstacleNum || _ID != ID || _State != State || _ATPDirection != ATPPermitDirection ||_headFault!=headFault || _xiaoJieFault!=xiaoJieFault||_zhangJieFault!=zhangJieFault||_faultReason!=faultReason)
-                {
-                    AllocConsole();
-                    Console.ForegroundColor = GetConsoleColor(time, isEB, DCTrainSpeed, DCCtrlMode, DCHandlePos, curBalise, MAEndLink, _ProtectSpeed, obstacleNum, ID, State, ATPPermitDirection);
-                    Console.WriteLine("[{0}] IsEB:{1}  DCSpeed:{2}  DCModel:{3}  DCHandle:{4}  HeadBalise:{5}  tailID:{6}  ProtectSpeed:{7}  Num:{8}  ID:{9}  State:{10}  ATPDirection:{11}  FaultHead:{12} FaultZhangJie:{13} FaultXiaoJie:{14} FaultReason:{15}", DateTime.Now, isEB, DCTrainSpeed, DCCtrlMode, DCHandlePos, curBalise, tailID, ATP.curProtectionSpeed, obstacleNum, ID, State, ATPPermitDirection, headFault, zhangJieFault, xiaoJieFault, faultReason);
-                    _IsEB = isEB;
-                    _DCSpeed = DCTrainSpeed;
-                    _DCModel = DCCtrlMode;
-                    _DCHandle = DCHandlePos;
-                    _Balise = curBalise;
-                    _tailID = tailID;
-                    _ProtectSpeed = ATP.curProtectionSpeed;
-                    _Num = obstacleNum;
-                    _ID = ID;
-                    _State = State;
-                    _ATPDirection = ATPPermitDirection;
-                    _zhangJieFault = zhangJieFault;
-                    _xiaoJieFault = xiaoJieFault;
-                    _headFault = headFault;
-                    if (isSaveLog)
-                    {
-                        using (StreamWriter sw = File.AppendText(logPath))
-                        {
-                            sw.WriteLine(DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + " IsEB: " + isEB + " DCSpeed: " + DCTrainSpeed + " DCModel: " + DCCtrlMode + " DCHandle: " + DCHandlePos + " HeadBalise: " + curBalise + " tailID: " + tailID + " ProtectSpeed: " + ATP.curProtectionSpeed + " Num: " + obstacleNum + " ID: " + ID + " State: " + State + " ATPPermitDirection: " + ATPPermitDirection+ "FaultHead: "+ headFault + "FaultZhangJie: " + zhangJieFault + "FaultXiaoJie: "+ xiaoJieFault + "FaultReason: "+ faultReason);
-                        };
-                    }
-                }
-            }
+            //if (isPrintConsole == true)
+            //{
+            //    //控制台输出
+            //    if (_IsEB != isEB || _DCSpeed != DCTrainSpeed || _DCModel != DCCtrlMode || _DCHandle != DCHandlePos || _Balise != curBalise || _tailID != tailID || _ProtectSpeed != ATP.curProtectionSpeed || _Num != obstacleNum || _ID != ID || _State != State || _ATPDirection != ATPPermitDirection ||_headFault!=headFault || _xiaoJieFault!=xiaoJieFault||_zhangJieFault!=zhangJieFault||_faultReason!=faultReason)
+            //    {
+            //        AllocConsole();
+            //        Console.ForegroundColor = GetConsoleColor(time, isEB, DCTrainSpeed, DCCtrlMode, DCHandlePos, curBalise, MAEndLink, _ProtectSpeed, obstacleNum, ID, State, ATPPermitDirection);
+            //        Console.WriteLine("[{0}] IsEB:{1}  DCSpeed:{2}  DCModel:{3}  DCHandle:{4}  HeadBalise:{5}  tailID:{6}  ProtectSpeed:{7}  Num:{8}  ID:{9}  State:{10}  ATPDirection:{11}  FaultHead:{12} FaultZhangJie:{13} FaultXiaoJie:{14} FaultReason:{15}", DateTime.Now, isEB, DCTrainSpeed, DCCtrlMode, DCHandlePos, curBalise, tailID, ATP.curProtectionSpeed, obstacleNum, ID, State, ATPPermitDirection, headFault, zhangJieFault, xiaoJieFault, faultReason);
+            //        _IsEB = isEB;
+            //        _DCSpeed = DCTrainSpeed;
+            //        _DCModel = DCCtrlMode;
+            //        _DCHandle = DCHandlePos;
+            //        _Balise = curBalise;
+            //        _tailID = tailID;
+            //        _ProtectSpeed = ATP.curProtectionSpeed;
+            //        _Num = obstacleNum;
+            //        _ID = ID;
+            //        _State = State;
+            //        _ATPDirection = ATPPermitDirection;
+            //        _zhangJieFault = zhangJieFault;
+            //        _xiaoJieFault = xiaoJieFault;
+            //        _headFault = headFault;
+            //        if (isSaveLog)
+            //        {
+            //            using (StreamWriter sw = File.AppendText(logPath))
+            //            {
+            //                sw.WriteLine(DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + " IsEB: " + isEB + " DCSpeed: " + DCTrainSpeed + " DCModel: " + DCCtrlMode + " DCHandle: " + DCHandlePos + " HeadBalise: " + curBalise + " tailID: " + tailID + " ProtectSpeed: " + ATP.curProtectionSpeed + " Num: " + obstacleNum + " ID: " + ID + " State: " + State + " ATPPermitDirection: " + ATPPermitDirection+ "FaultHead: "+ headFault + "FaultZhangJie: " + zhangJieFault + "FaultXiaoJie: "+ xiaoJieFault + "FaultReason: "+ faultReason);
+            //            };
+            //        }
+            //    }
+            //}
 
         }
 
@@ -617,7 +607,7 @@ namespace CBTC
                     {
                         ATPPermitDirection = 2;
                         actualDirection = 0xAA;
-                        //ATP.Write("\r\n" + "方向变左"+Convert.ToString(574));
+
                         isLeftSearch = true;
                     }
                     else if (DCTrainSpeed < 0 && DCHandlePos == 1)
@@ -634,9 +624,10 @@ namespace CBTC
                     else
                     {
                         isEB = true;
-                       ATP.Write("\r\n" + "EB" + "Socket类 584行 行驶方向判断错误" + " " + DateTime.Now.ToString());
+                        ATP.Write("\r\n" + "EB" + "Socket类 584行 行驶方向判断错误" + " " + DateTime.Now.ToString());
                     }
                 }
+
                 if (ATPPermitDirection == 0)
                 {
                     if (DCTrainSpeed >= 0 && DCHandlePos == 1)  //只大于0会到else下面，DCHandlePos表示方向，1向右，2向左
@@ -664,36 +655,38 @@ namespace CBTC
                     }
                 }
             }
+
             else
             {
                 ATPPermitDirection = 0;
                 actualDirection = 0;
             }
+
             CaculateHeadorTailOffandSection();
 
-            if (isRecvStopTime == true)
-            {
-                if (curIsRecvStopTime.Substring(0,5) != curBalise.Substring(0,5))
-                {
-                    isRecvStopTime = false;
-                 //   ATP.Write("\r\n" + "恢复标志位一次");
-                }
+            //if (isRecvStopTime == true)
+            //{
+            //    if (curIsRecvStopTime.Substring(0,5) != curBalise.Substring(0,5))
+            //    {
+            //        isRecvStopTime = false;
+            //     //   ATP.Write("\r\n" + "恢复标志位一次");
+            //    }
 
 
-            }
+            //}
             
-            if (isRecvStopTime==false && hashTable.ht_4.ContainsKey(curBalise.Substring(0, 5)))
-            {
-                SendATSFirstCurbalise(curBalise, isLeftSearch);
-               // ATP.Write("\r\n"+"请求到站1一次");
-            }
+            //if (isRecvStopTime==false && hashTable.ht_4.ContainsKey(curBalise.Substring(0, 5)))
+            //{
+            //    SendATSFirstCurbalise(curBalise, isLeftSearch);
+            //   // ATP.Write("\r\n"+"请求到站1一次");
+            //}
 
             byte currentHeadID = 0;
             //ZC通信后且VOBC在申请MA时，开始处理ATP曲线需要的数据
             if (isRecvZC && runInfoType == 0x01 && isEB == false && curModel != 4)
             {
                 isReleaseEB = false;
-               
+
                 if (curBalise.Substring(0, 1) == "T")  //如果是T的话在拓扑里面直接是的，可以找到ID
                 {
                     foreach (var item in ATP.stationTopoloty_.Nodes)
@@ -723,7 +716,7 @@ namespace CBTC
 
                 if (currentHeadID==headID)  //目前应答器给我的ID和ZC发的ID一致
                 {
-                    int[] value = Search.SearchDistance(isLeftSearch, tailSectionOrSwitch, tailID, Convert.ToInt32(MAEndOff), obstacleNum, curBalise, obstacleID, obstacleState);
+                    int[] value = Search.SearchDistance(isLeftSearch,tailSectionOrSwitch, tailID, Convert.ToInt32(MAEndOff), obstacleNum, curBalise, obstacleID, obstacleState);
                     MAEndDistance = value[0];
                     limSpeedNum = value[1];
                     limSpeedDistance_1 = value[2];
@@ -853,7 +846,7 @@ namespace CBTC
         //计算车头车尾区段号，偏移量
         public void CaculateHeadorTailOffandSection()
         {
-            if (trainHead.Length != 0 && Regex.Matches(trainHead, "Z").Count == 0)
+            if (trainHead.Length != 0 && Regex.Matches(trainHead, "Z").Count == 0) //头部和尾部的应答器都是一样的，都是当前应答器发送的，count等于0即进入正线
             {
                 UInt32[] value = SectionAndOff(trainHead);     //利用这个来发送偏移量
                 HeadSectionOrSwitch = (byte)value[0];
@@ -907,19 +900,19 @@ namespace CBTC
         }
 
         //用来寻找ID
-        public TopolotyNode findID(string balise)
+        public TopolotyNode findID(string balise) //根据当前的应答器找到节点
         {
             if (balise.Substring(0, 1) == "T")
             {
-                foreach (var item in ATP.stationTopoloty_.Nodes)//nodes是拓扑图里面的所有节点，由应答器传来的数据来返回相应的节点
+                foreach (var item in ATP.stationTopoloty_.Nodes)
                 {
-                    if (item.NodeDevice.Name == balise.Substring(0, 5))
+                    if (item.NodeDevice.Name == balise.Substring(0, 5)) //区段时只需要根据Name判断就可以,nameT0103
                     {
                         return item;
                     }
                 }
             }
-            else
+            else        //区段时name和ID都是数字，如3和0.SectionNmae是W0103
             {
                 string name = "";
                 foreach (string key in hashTable.ht.Keys)
@@ -1008,7 +1001,7 @@ namespace CBTC
                             }
                         }
 
-                        else        // 直股上四个道岔
+                        else        // 有4个应答器
                         {
                             if (isLeftSearch)
                             {
@@ -1157,9 +1150,9 @@ namespace CBTC
 
             }
             UInt32[] returnValue = new UInt32[3];
-            returnValue[0] = SectionOrSwitch;
-            returnValue[1] = ID_1;
-            returnValue[2] = Off;
+            returnValue[0] = SectionOrSwitch; //当前应答器不是道岔是1，是应答器是2
+            returnValue[1] = ID_1; //根据应答器名字，寻找到ID名字
+            returnValue[2] = Off;  //目前所在位置的偏移量
             return returnValue;
         }
 
