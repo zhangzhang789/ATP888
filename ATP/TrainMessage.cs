@@ -82,6 +82,42 @@ namespace CBTC
 
         }
 
+        public string RightCurBaliseNext(string curBalise) //由当前的应答器得到右寻的下一个部分的名字，区段是Name，道岔是SectionName
+        {
+            List<线路绘图工具.TopolotyNode> nodes = BaliseToIteam(curBalise).RightNodes;
+            string NextName = "";
+            foreach (var node in nodes)
+            {
+                if (node.NodeDevice is Section)
+                {
+                    NextName = (node.NodeDevice as Section).Name;
+                }
+                else if (node.NodeDevice is RailSwitch)
+                {
+                    NextName = (node.NodeDevice as RailSwitch).SectionName;
+                }
+            }
+            return NextName;
+        }
+
+        public string LeftCurBaliseNext(string curBalise) //由当前的应答器得到右寻的下一个部分的名字，区段是Name，道岔是SectionName
+        {
+            List<线路绘图工具.TopolotyNode> nodes = BaliseToIteam(curBalise).LeftNodes;
+            string NextName = "";
+            foreach (var node in nodes)
+            {
+                if (node.NodeDevice is Section)
+                {
+                    NextName = (node.NodeDevice as Section).Name;
+                }
+                else if (node.NodeDevice is RailSwitch)
+                {
+                    NextName = (node.NodeDevice as RailSwitch).SectionName;
+                }
+            }
+            return NextName;
+        }
+
         public bool IsRailswitchVoid(byte type) //输入type判断是否是道岔
         {
             if (type == 1)

@@ -25,9 +25,9 @@ namespace CBTC
             MAEndLink = trainMessage.IDTypeConvertName(type, ID); //由type和ID得到区段或道岔名字。如W0103
             string[] obstacleIDName = new string[obstacleNum];  //存放转换成全名的障碍物的名字
             obstacleIDName = ConvertObstacaleIDTOName(obstacleNum, obstacleID);
-
-
-            int[] returnValue = new int[3];
+            RightGetMAAndObstacleDistance(curBalise, MAEndLink, MAEndOff, obstacleID, obstacleState, obstacleNum, isLeftSearch);
+ 
+            int[] returnValue = new int[9];
             return returnValue;
         }
 
@@ -44,11 +44,43 @@ namespace CBTC
             return obstacleIDName;          
         }
 
-        private int[] GetMAAndObstacleDistance(string curBalise, string MAEndLink, int MAEndOff, string[] obstacleID, byte[] obstacleState, int obstacleNum, bool isLeftSearch) //寻找障碍物的长度，距离
+        private int[] RightGetMAAndObstacleDistance(string curBalise, string MAEndLink, int MAEndOff, string[] obstacleID, byte[] obstacleState, int obstacleNum, bool isLeftSearch) //寻找障碍物的长度，距离
         {
             int[] returnValue = new int[11];
+            string NowSearchBalise= curBalise.Substring(0,5);
+            string NextSearchBalise = "";
+
+            if (isLeftSearch == false) //右寻
+            {
+                while (true)
+                {
+                    List<线路绘图工具.TopolotyNode> nodes = trainMessage.BaliseToIteam(NowSearchBalise).RightNodes;
+                    foreach (var node in nodes)
+                    {
+                        if(node.NodeDevice is Section)
+                        {
+                            string x = (node.NodeDevice as Section).Name;
+                        }
+                        else if (node.NodeDevice is RailSwitch)
+                        {
+                            string y = (node.NodeDevice as RailSwitch).SectionName;
+                        }
+                    }
+                }
+            }
+            else   //左寻
+            {
+                while (true)
+                {
+
+                }
+            }
+         
             return returnValue;
         }
+
+
+
 
     }
 }
