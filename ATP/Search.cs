@@ -823,7 +823,7 @@ namespace CBTC
             returnValue[5] = limSpeedLength_2;
             returnValue[6] = limSpeedDistance_3;
             returnValue[7] = limSpeedLength_3;
-            returnValue[8] = nextLimitSpeed;
+            //returnValue[8] = nextLimitSpeed;
             returnValue[9] = limSpeedDistance_4;
             returnValue[10] = limSpeedLength_4;
             return returnValue;

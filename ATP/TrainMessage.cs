@@ -82,53 +82,34 @@ namespace CBTC
 
         }
 
-        public string RightCurBaliseNext(string curBalise) //由当前的应答器得到右寻的下一个部分的名字，区段是Name，道岔是SectionName
+        public List<线路绘图工具.TopolotyNode> RightNextCurBaliseList(string curBalise) //由当前的应答器右寻得到一个列表。当前是直轨下一个只有一个元素，当前是道岔则有两个元素
         {
-            List<线路绘图工具.TopolotyNode> nodes = BaliseToIteam(curBalise).RightNodes;
-            string NextName = "";
-            foreach (var node in nodes)
-            {
-                if (node.NodeDevice is Section)
-                {
-                    NextName = (node.NodeDevice as Section).Name;
-                }
-                else if (node.NodeDevice is RailSwitch)
-                {
-                    NextName = (node.NodeDevice as RailSwitch).SectionName;
-                }
-            }
-            return NextName;
+            List<线路绘图工具.TopolotyNode> nodes_list = BaliseToIteam(curBalise).RightNodes;
+            return nodes_list;
         }
 
-        public string LeftCurBaliseNext(string curBalise) //由当前的应答器得到右寻的下一个部分的名字，区段是Name，道岔是SectionName
+        public List<线路绘图工具.TopolotyNode> LeftNextCurBaliseList(string curBalise) //由当前的应答器右寻得到一个列表。当前是直轨下一个只有一个元素，当前是道岔则有两个元素
         {
-            List<线路绘图工具.TopolotyNode> nodes = BaliseToIteam(curBalise).LeftNodes;
-            string NextName = "";
-            foreach (var node in nodes)
-            {
-                if (node.NodeDevice is Section)
-                {
-                    NextName = (node.NodeDevice as Section).Name;
-                }
-                else if (node.NodeDevice is RailSwitch)
-                {
-                    NextName = (node.NodeDevice as RailSwitch).SectionName;
-                }
-            }
-            return NextName;
+            List<线路绘图工具.TopolotyNode> nodes_list = BaliseToIteam(curBalise).LeftNodes;
+            return nodes_list;
         }
 
-        public bool IsRailswitchVoid(byte type) //输入type判断是否是道岔
+        public string NextCurBaliseList(线路绘图工具.TopolotyNode Node) //根据节点得到Name,有可能是道岔是sectionName，有可能是直轨是Name
         {
-            if (type == 1)
+            string NextName = "";
+            if (Node.NodeDevice is Section)
             {
-                return false;
+                NextName = (Node.NodeDevice as Section).Name;
             }
-            else
+            else if (Node.NodeDevice is RailSwitch)
             {
-                return true;
+                NextName = (Node.NodeDevice as RailSwitch).SectionName;
             }
+            return NextName;
+
         }
+
+
 
         public bool IsRailswitchVoid(string curbalise) //根据传进来的curbalise(T0104,W0233)判断是不是道岔
         {

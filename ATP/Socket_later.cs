@@ -9,7 +9,22 @@ using System.Text.RegularExpressions;
 
 namespace CBTC
 {
-   
+    enum PackageType
+    {
+        PackZC = 9,
+        PackDMI = 4,
+        PackDC = 6,
+        PackBalise=5
+    }
+
+    enum ModelType
+    {
+        AM = 1,
+        CM = 2,
+        RM = 3,
+        EUM =4
+    }
+
     class Socket_later
     {
         public Socket ZCsocket;
@@ -68,21 +83,22 @@ namespace CBTC
 
         public void RecvData(byte[] data)  //每隔200ms调用一次这个方法
         {
-            if (data[2] == 9)
+            switch ((PackageType)data[2])
             {
-                Receive_ZC_Data(data);
-            }
-            else if (data[2] == 4)
-            {
-                Receive_DMI_Data(data);
-            }
-            else if (data[2] == 6)
-            {
-                Receive_DC_Data(data);
-            }
-            else if (data[2] == 5)
-            {
-                Receive_Balise_Data(data);
+                case PackageType.PackZC:
+                    Receive_ZC_Data(data);
+                    break;
+                case PackageType.PackDMI:
+                    Receive_DMI_Data(data);
+                    break;
+                case PackageType.PackDC:
+                    Receive_DC_Data(data);
+                    break;
+                case PackageType.PackBalise:
+                    Receive_Balise_Data(data);
+                    break;
+                default:
+                    break;
             }
             GetCurModel();     //得到目前的控车模式
             StartCalMA();     //开始计算MA
@@ -222,86 +238,87 @@ namespace CBTC
         {
             if (Regex.Matches(baliseHead, "Z").Count > 0)
             {
-                curModel = 3;//正线之前RM
+                curModel = (byte)ModelType.RM;//正线之前RM
             }
             else
             {
-                if (DCCtrlMode == 0)
+                switch (DCCtrlMode)
                 {
-                    curModel = 1; //AM
-
-                }
-                else if (DCCtrlMode == 1)
-                {
-                    curModel = 2; //CM  
-
-                }
-                else if (DCCtrlMode == 2)
-                {
-                    curModel = 3; //RM                         
-                }
-                else
-                {
-                    curModel = 4; //EUM
-
-                }
+                    case (UInt16)ModelType.AM:
+                        curModel = (byte)ModelType.AM;
+                        break;
+                    case (UInt16)ModelType.CM:
+                        curModel = (byte)ModelType.CM;
+                        break;
+                    case (UInt16)ModelType.RM:
+                        curModel = (byte)ModelType.RM;
+                        break;
+                    case (UInt16)ModelType.EUM:
+                        curModel = (byte)ModelType.EUM;
+                        break;
+                    default:
+                        break;
+                }              
             }
         }
         public void Receive_ZC_Data(byte[] ZCData)
         {
-            Stream receStreamZC = new MemoryStream(ZCData);
-            BinaryReader reader = new BinaryReader(receStreamZC);
-
-            UInt16 ZCCycle = reader.ReadUInt16();
-            byte ZCSendID = reader.ReadByte();
-            byte ZCReceiveID = reader.ReadByte();
-            UInt16 ZCDataLength = reader.ReadUInt16();
-            UInt16 ZCNID_ZC = reader.ReadUInt16();
-            UInt16 ZCNID_Train = reader.ReadUInt16();
-            byte ZCInfoType = reader.ReadByte();
-            byte ZCStopEnsure = reader.ReadByte();
-            UInt64 ZCNID_DataBase = reader.ReadUInt64();
-            UInt16 ZCNID_ARButton = reader.ReadUInt16();
-            byte ZCQ_ARButtonStatus = reader.ReadByte();
-            UInt16 ZCNID_LoginZCNext = reader.ReadUInt16();
-            byte ZCN_Length = reader.ReadByte();
-            byte MAEndType = reader.ReadByte();
-            byte headSectionOrSwitch = reader.ReadByte();
-            headID = reader.ReadByte();
-            UInt32 ZCD_D_MAHeadOff = reader.ReadUInt32();
-            byte ZCQ_MAHeadDir = reader.ReadByte();
-            tailSectionOrSwitch = reader.ReadByte();  //1是直轨，2是道岔
-            tailID = reader.ReadByte();              //MA终点的ID
-            MAEndOff = reader.ReadUInt32();
-            byte MAEndDir = reader.ReadByte();
-            obstacleNum = reader.ReadByte();
-
-            if (obstacleNum != 0) //障碍物等于0和不等于0会发送不同的包
+            using (MemoryStream receStreamZC = new MemoryStream(ZCData))
             {
-                string State = "";
-                string ID = "";
-                byte[] obstacleType = new byte[obstacleNum];
-                obstacleID = new string[obstacleNum]; //障碍物ID会用到
-                obstacleState = new byte[obstacleNum]; //障碍物状态会用到
-                byte[] obstacleLogicState = new byte[obstacleNum];
-                for (int i = 0; i < obstacleNum; i++)
+                BinaryReader reader = new BinaryReader(receStreamZC);
+                UInt16 ZCCycle = reader.ReadUInt16();
+                byte ZCSendID = reader.ReadByte();
+                byte ZCReceiveID = reader.ReadByte();
+                UInt16 ZCDataLength = reader.ReadUInt16();
+                UInt16 ZCNID_ZC = reader.ReadUInt16();
+                UInt16 ZCNID_Train = reader.ReadUInt16();
+                byte ZCInfoType = reader.ReadByte();
+                byte ZCStopEnsure = reader.ReadByte();
+                UInt64 ZCNID_DataBase = reader.ReadUInt64();
+                UInt16 ZCNID_ARButton = reader.ReadUInt16();
+                byte ZCQ_ARButtonStatus = reader.ReadByte();
+                UInt16 ZCNID_LoginZCNext = reader.ReadUInt16();
+                byte ZCN_Length = reader.ReadByte();
+                byte MAEndType = reader.ReadByte();
+                byte headSectionOrSwitch = reader.ReadByte();
+                headID = reader.ReadByte();
+                UInt32 ZCD_D_MAHeadOff = reader.ReadUInt32();
+                byte ZCQ_MAHeadDir = reader.ReadByte();
+                tailSectionOrSwitch = reader.ReadByte();  //1是直轨，2是道岔
+                tailID = reader.ReadByte();              //MA终点的ID
+                MAEndOff = reader.ReadUInt32();
+                byte MAEndDir = reader.ReadByte();
+                obstacleNum = reader.ReadByte();
+
+                if (obstacleNum != 0) //障碍物等于0和不等于0会发送不同的包
                 {
-                    obstacleType[i] = reader.ReadByte();
-                    obstacleID[i] = (reader.ReadUInt16()).ToString();
-                    obstacleState[i] = reader.ReadByte();
-                    obstacleLogicState[i] = reader.ReadByte();
-                    State = State + obstacleState[i] + " ";
-                    ID = ID + obstacleID[i] + " ";
+                    string State = "";
+                    string ID = "";
+                    byte[] obstacleType = new byte[obstacleNum];
+                    obstacleID = new string[obstacleNum]; //障碍物ID会用到
+                    obstacleState = new byte[obstacleNum]; //障碍物状态会用到
+                    byte[] obstacleLogicState = new byte[obstacleNum];
+                    for (int i = 0; i < obstacleNum; i++)
+                    {
+                        obstacleType[i] = reader.ReadByte();
+                        obstacleID[i] = (reader.ReadUInt16()).ToString();
+                        obstacleState[i] = reader.ReadByte();
+                        obstacleLogicState[i] = reader.ReadByte();
+                        State = State + obstacleState[i] + " ";
+                        ID = ID + obstacleID[i] + " ";
+                    }
                 }
+
+                byte ZCN_TSR = reader.ReadByte();
+                UInt32 ZCQ_ZC = reader.ReadUInt32();
+                byte ZCEB_Type = reader.ReadByte();
+                byte ZCEB_DEV_Typ = reader.ReadByte();
+                UInt16 ZCEB_DEV_Name = reader.ReadUInt16();
+
+                ZCSendEB(tailSectionOrSwitch, tailID, MAEndOff, MAEndDir); //ZC发送EB消息
+
             }
-
-            byte ZCN_TSR = reader.ReadByte();
-            UInt32 ZCQ_ZC = reader.ReadUInt32();
-            byte ZCEB_Type = reader.ReadByte();
-            byte ZCEB_DEV_Typ = reader.ReadByte();
-            UInt16 ZCEB_DEV_Name = reader.ReadUInt16();
-
-            ZCSendEB(tailSectionOrSwitch, tailID, MAEndOff, MAEndDir); //ZC发送EB消息
+           
         }
         
 
@@ -327,43 +344,48 @@ namespace CBTC
 
         public void Receive_DMI_Data(byte[] DMIData) //DMI传来消息
         {
-            Stream receStreamDMI = new MemoryStream(DMIData);
-            BinaryReader reader = new BinaryReader(receStreamDMI);
-
-            UInt16 DMICycle = reader.ReadUInt16();
-            UInt16 DMIPackageType = reader.ReadUInt16();
-            UInt16 DMILength = reader.ReadUInt16();
-            string DMITrainOrder = reader.ReadString();
-            UInt32 DMITrainNumber = reader.ReadUInt32();
-            UInt16 DMIDriverNumber = reader.ReadUInt16();
-            byte DMITestOrder = reader.ReadByte();
-            byte DMIRelieveOrder = reader.ReadByte();
+            using (MemoryStream receStreamDMI = new MemoryStream(DMIData))
+            {
+                BinaryReader reader = new BinaryReader(receStreamDMI);
+                UInt16 DMICycle = reader.ReadUInt16();
+                UInt16 DMIPackageType = reader.ReadUInt16();
+                UInt16 DMILength = reader.ReadUInt16();
+                string DMITrainOrder = reader.ReadString();
+                UInt32 DMITrainNumber = reader.ReadUInt32();
+                UInt16 DMIDriverNumber = reader.ReadUInt16();
+                byte DMITestOrder = reader.ReadByte();
+                byte DMIRelieveOrder = reader.ReadByte();
+            }
         }
 
         public void Receive_DC_Data(byte[] DCData) //司控器传来消息
         {
-            Stream receStreamDC = new MemoryStream(DCData);
-            BinaryReader reader = new BinaryReader(receStreamDC);
+            using (MemoryStream receStreamDC = new MemoryStream(DCData))
+            {
+                BinaryReader reader = new BinaryReader(receStreamDC);
+                UInt16 DCCycle = reader.ReadUInt16();
+                UInt16 DCPackageType = reader.ReadUInt16();
+                UInt16 DCLength = reader.ReadUInt16();
+                UInt16 DCTrainSpeed = reader.ReadUInt16();  //解析出列车的实时速度
+                DCCtrlMode = reader.ReadUInt16();
+                UInt16 DCHandlePos = reader.ReadUInt16();
+                UInt16 DCisKeyIn = reader.ReadUInt16();
+            }
 
-            UInt16 DCCycle = reader.ReadUInt16();
-            UInt16 DCPackageType = reader.ReadUInt16();
-            UInt16 DCLength = reader.ReadUInt16();
-            UInt16 DCTrainSpeed = reader.ReadUInt16();  //解析出列车的实时速度
-            DCCtrlMode = reader.ReadUInt16();
-            UInt16 DCHandlePos = reader.ReadUInt16();
-            UInt16 DCisKeyIn = reader.ReadUInt16();
         }
 
         public void Receive_Balise_Data(byte[] BaliseData) //应答器传来消息
         {
-            Stream receStreamBalise = new MemoryStream(BaliseData);
-            BinaryReader reader = new BinaryReader(receStreamBalise);
+            using (MemoryStream receStreamBalise = new MemoryStream(BaliseData))
+            {
+                BinaryReader reader = new BinaryReader(receStreamBalise);
+                UInt16 baliseCycle = reader.ReadUInt16();
+                UInt16 balisePackageType = reader.ReadUInt16();
+                baliseHead = reader.ReadString();
+                string baliseTail = baliseHead;       //头部应答器和尾部应答器默认是一个
+                GetBaliseLater(baliseHead, isLeftSearch);
+            }
 
-            UInt16 baliseCycle = reader.ReadUInt16();
-            UInt16 balisePackageType = reader.ReadUInt16();
-            baliseHead = reader.ReadString();
-            string baliseTail = baliseHead;       //头部应答器和尾部应答器默认是一个
-            GetBaliseLater(baliseHead, isLeftSearch);
         }
 
         private void GetBaliseLater(string baliseHead,bool isLeftSearch)    //是否到达最开始的应答器

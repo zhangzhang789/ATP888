@@ -571,3 +571,8 @@ C:\Users\zhang\Desktop\ATPGit\ATP\obj\Debug\ATP.pdb
 C:\Users\zhang\Desktop\ATP\bin\Debug\ATP.exe.config
 C:\Users\zhang\Desktop\ATP\obj\Debug\ATP.exe
 C:\Users\zhang\Desktop\ATP\obj\Debug\ATP.pdb
+C:\Users\zhang\Desktop\ATP\obj\Debug\ATP.csprojResolveAssemblyReference.cache
+C:\Users\zhang\Desktop\ATP\obj\Debug\CBTC.AssessForm.resources
+C:\Users\zhang\Desktop\ATP\obj\Debug\CBTC.ATP.resources
+C:\Users\zhang\Desktop\ATP\obj\Debug\CBTC.Properties.Resources.resources
+C:\Users\zhang\Desktop\ATP\obj\Debug\ATP.csproj.GenerateResource.Cache
