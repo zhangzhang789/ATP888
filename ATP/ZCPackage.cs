@@ -160,7 +160,7 @@ namespace CBTC
             ZCPackageStream.Write(controlZC_);
             ZCPackageStream.Write(sendTime_);
             ZCPackageStream.Write(reserved_);
-
+          
             return ZCPackageStream;
         }
     }

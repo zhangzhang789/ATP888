@@ -82,15 +82,12 @@
     <Compile Include="Comfort.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="DMIPackage.cs" />
-    <Compile Include="EB.cs" />
     <Compile Include="HashTable.cs" />
     <Compile Include="ICheckDistance.cs" />
     <Compile Include="RailSwitch.cs" />
     <Compile Include="Search.cs" />
-    <Compile Include="SearchLater.cs" />
     <Compile Include="Section.cs" />
     <Compile Include="Signal.cs" />
-    <Compile Include="Socket_later.cs" />
     <Compile Include="StationElements.cs" />
     <Compile Include="StationTopoloty.cs" />
     <Compile Include="ConfigData.cs" />

@@ -9,9 +9,8 @@ namespace CBTC
 {
     class TrainMessage
     {
-        public string MAEndLink;
-        HashTable hashTable = new HashTable();
-        public string IDTypeConvertName(byte type, byte ID) //用type和id得到名字。当ZC发送MA的type和ID时可以用到
+        public string MAEndLink; 
+        public string IDTypeConvertName(byte type, byte ID) //用type和id得到名字
         {
             if (type == 1) //区段
             {
@@ -49,39 +48,6 @@ namespace CBTC
             return null;
         }
 
-        public TopolotyNode BaliseToIteam(string balise) //根据当前的应答器找到节点,道岔根据sectionName即可
-        {
-            if (balise.Substring(0, 1) == "T")
-            {
-                foreach (var item in ATP.stationTopoloty_.Nodes)
-                {
-                    if (item.NodeDevice.Name == balise.Substring(0, 5)) //区段时只需要根据Name判断就可以,nameT0103
-                    {
-                        return item;
-                    }
-                }
-            }
-
-            else
-            {
-                TopolotyNode node = ATP.stationTopoloty_.Nodes.Find((TopolotyNode toponode) =>   //node是寻找到的节点，返回符合条件的
-                {
-                    if (toponode.NodeDevice is RailSwitch)
-                    {
-                        RailSwitch railSwitch = toponode.NodeDevice as RailSwitch;
-                        return railSwitch.SectionName == balise.Substring(0, 5);
-                    }
-                    return false;
-                });
-                if (node != null)
-                {
-                    return node;
-                }
-            }
-            return null;
-
-        }
-
         public bool IsRailswitchVoid(byte type) //输入type判断是否是道岔
         {
             if (type == 1)
@@ -106,154 +72,38 @@ namespace CBTC
             }
         }
 
-        public void SectionGetOffDis(bool isLeftSearch,string curBalise,ref UInt32 offset,ref UInt32 distance_1)
+        public void SectionGetOffDis(bool isLeftSearch,string curBalise,ref int offset,ref int distance_1)
         {
-            int LogicCount = (BaliseToIteam(curBalise).NodeDevice as Section).LogicCount; //当是2时不是站台，有4个应答器
-            hashTable.sectionHashTable();
-            string Key = curBalise.Substring(curBalise.IndexOf("_") + 1); //当前应答器是1_1
-            if (LogicCount == 1)
-            {
-                if (curBalise.Substring(curBalise.Length - 3, 3) == "1_1")
-                {
-                    if (isLeftSearch)
-                    {
-                        offset = 100;
-                        distance_1 = 120-offset;
-                    }
-                    else
-                    {
-                        offset = 20;
-                        distance_1 = 120-offset;
-                    }
-                }
-
-                if (curBalise.Substring(curBalise.Length - 3, 3) == "1_2")
-                {
-                    if (isLeftSearch)
-                    {
-                        offset = 20;
-                        distance_1 = 120-offset;
-                    }
-                    else
-                    {
-                        offset = 100;
-                        distance_1 = 120-offset;
-                    }
-                }
-            }
-            else
+            if (curBalise.Substring(curBalise.Length - 3, 3) == "1_1")
             {
                 if (isLeftSearch)
                 {
-                    offset = Convert.ToUInt16(hashTable.ht_1[Key]);
-                    distance_1 = 120 - offset;
+                    offset = 100;
+                    distance_1 = 20;
                 }
                 else
                 {
-                    offset = Convert.ToUInt16(120 - (int)hashTable.ht_1[Key]);
-                    distance_1 = 120 - offset;
+                    offset = 20;
+                    distance_1 = 100;
                 }
             }
-            
+
+            if (curBalise.Substring(curBalise.Length - 3, 3) == "1_2")
+            {
+                if (isLeftSearch)
+                {
+                    offset = 20;
+                    distance_1 = 100;
+                }
+                else
+                {
+                    offset = 100;
+                    distance_1 = 20;
+                }
+            }
         }
 
-        public void SwitchGetOffDis(bool isLeftSearch, string curBalise, ref UInt32 offset, ref UInt32 distance_1)
-        {
-            bool isUp = (BaliseToIteam(curBalise).NodeDevice as RailSwitch).IsUp;
-            bool isLeft = (BaliseToIteam(curBalise).NodeDevice as RailSwitch).IsLeft;
-            string Key = curBalise.Substring(curBalise.IndexOf("_") + 1); //取最后一个数字
-            if (isLeft)
-            {
-                if (isLeftSearch == false)
-                {
-                    if (Key == "1")
-                    {
-                        offset = 20;
-                        distance_1 = 25 - offset;
-                    }
-                    else if (Key == "2")
-                    {
-                        offset = 20;
-                        distance_1 = 25 - offset;
-                    }
-                    else if (Key == "0")
-                    {
-                        offset = 5;
-                        distance_1 = 25 - offset;
-                    }
-                }
-                else //右寻
-                {
-                    if (Key == "1")
-                    {
-                        offset = 5;
-                        distance_1 = 25 - offset;
-                    }
-                    else if (Key == "2")
-                    {
-                        offset = 5;
-                        distance_1 = 25 - offset;
-                    }
-                    else if (Key == "0")
-                    {
-                        offset = 20;
-                        distance_1 = 25 - offset;
-                    }
-                }
-            }
-            else  //方向偏右，有可能是4开道岔
-            {
-                if (isLeftSearch == false)
-                {
-                    if (Key == "1")
-                    {
-                        offset = 5;
-                        distance_1 = 25 - offset;
-                    }
-                    else if (Key == "2")
-                    {
-                        offset = 5;
-                        distance_1 = 25 - offset;
-                    }
-                    else if (Key == "0")
-                    {
-                        offset = 20;
-                        distance_1 = 25 - offset;
-                    }
-                    else if (Key == "3")
-                    {
-                        offset = 20;
-                        distance_1 = 25 - offset;
-                    }
-                }
-                else //右寻
-                {
-                    if (Key == "1")
-                    {
-                        offset = 20;
-                        distance_1 = 25 - offset;
-                    }
-                    else if (Key == "2")
-                    {
-                        offset = 20;
-                        distance_1 = 25 - offset;
-                    }
-                    else if (Key == "0")
-                    {
-                        offset = 5;
-                        distance_1 = 25 - offset;
-                    }
-                    else if (Key == "3")
-                    {
-                        offset = 5;
-                        distance_1 = 25 - offset;
-                    }
-                }
-            }
-
-        }
-
-
+        
 
     }
 }
