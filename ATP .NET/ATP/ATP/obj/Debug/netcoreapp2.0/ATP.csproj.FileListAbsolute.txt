@@ -1,0 +1,4 @@
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\obj\Debug\netcoreapp2.0\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\obj\Debug\netcoreapp2.0\ATP.csproj.CoreCompileInputs.cache
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\obj\Debug\netcoreapp2.0\ATP.AssemblyInfoInputs.cache
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\obj\Debug\netcoreapp2.0\ATP.AssemblyInfo.cs

@@ -1,1 +1,0 @@
-2018/04/13 19:30:02 IsEB:False DCSpeed:0 DCModel:1 DCHandle:1 HeadBalise:W0106_0 MAEndLink:0 ProtectSpeed:80 Num:3 ID:3 7 6  State:1 2 2  ATPPermitDirection:1FaultHead:0FaultZhangJie:0FaultXiaoJie:0FaultReason:
