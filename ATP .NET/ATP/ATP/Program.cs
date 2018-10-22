@@ -21,7 +21,7 @@ namespace ATP
             data.ClearEmptyNode();
         
             IPConfigure LoadIPConfig = new IPConfigure();
-            socket_later.SocketStart();
+     
             Console.ReadKey();
 
         }
