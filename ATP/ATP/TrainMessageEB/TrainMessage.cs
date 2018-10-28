@@ -10,7 +10,7 @@ namespace TrainMessageEB
     class TrainMessage
     {
         public string MAEndLink;
-        HashTable hashTable = new HashTable();
+        public HashTable hashTable = new HashTable();
         public void GetHash()
         {
             hashTable.sectionHashTable();

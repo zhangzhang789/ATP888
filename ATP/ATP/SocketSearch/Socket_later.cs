@@ -128,9 +128,10 @@ namespace SocketSearch
             ATPToZCClient.Connect(ZCIP, ZCPort);
             ATPToDCClient = new UdpClient(new IPEndPoint(ATPDCIP, ATPDCPort));
             ATPToDCClient.Connect(DCIP, DCPort);
+            searchLater.GetHash();
+            trainMessage.GetHash(); //trainMessage和searchLater.trainMessage是两个实例化的类
             StartReceData();  //一直接受数据
             SetupTimer();  //隔200ms计算一次MA终点
-            searchLater.GetHash();           
         }
 
         public void StartReceData()
@@ -187,12 +188,12 @@ namespace SocketSearch
                 {
                     //try
                     //{
-                        byte[] buf = ATPToDCClient.Receive(ref sender2);
+                        byte[] buf = ATPToDCClient.Receive(ref sender2); //测完
                         if (buf[2] == 6)
                         {
                             Receive_DC_Data(buf);
                         }
-                        else if (buf[2] == 5)
+                        else if (buf[2] == 5) //在有速度时才会发送
                         {
                             Receive_Balise_Data(buf); //应答器也是由司控器的端口传来的
                         }
@@ -296,7 +297,7 @@ namespace SocketSearch
             ATPToDMIClient.Send(DMISendData, 1024);
         }
 
-        public void SendZC()
+        public void SendZC() //测完
         {
             zcPackage.SendID = (byte)sendID;
             zcPackage.TrainID = (UInt16)trainID;
@@ -325,6 +326,7 @@ namespace SocketSearch
         public void StartCalMA() //刷到正线上的应答器开始计算MA
         {
             curBalise = baliseHead;
+            //curBalise = "T0114_1_1"; //测试模拟接受应答器
             trainHead = baliseHead;
             trainTail = baliseTail;  //目前都等于当前应答器传来的消息
             GetMA();    //得到MA信息
@@ -334,18 +336,21 @@ namespace SocketSearch
         {
             GetFirstDir();  //初始化列车速度方向信息
             GetDir();       //实时判断列车方向，方向不对时则EB
-            CalSectionOrSwitchIDOFF(curBalise);
-            GetDistanceAndPrint(curBalise);
+            if (curBalise != "") //当目前的应答器不等于空的时候
+            {
+                CalSectionOrSwitchIDOFF(curBalise);
+                GetDistanceAndPrint(curBalise);
+            }        
         }
 
         public void GetDistanceAndPrint(string curBalise)
         {
-            //if (isRecvZC && runInfoType == 0x01 && isEB == false && curModel != 4) //当这四个条件满足时开始处理ATP曲线。当应答器的id和zc发来的id一致时，开始计算信息距离
-            //{
-            //    isReleaseEB = false;
-            //    byte currentHeadID = (byte)trainMessage.BaliseToIteam(curBalise).device.Id;
-            //    if (currentHeadID == headID) //目前应答器给我的ID和ZC发的ID一致
-            //    {
+            if (isRecvZC && runInfoType == 0x01 && isEB == false && curModel != 4) //当这四个条件满足时开始处理ATP曲线。当应答器的id和zc发来的id一致时，开始计算信息距离
+            {
+                isReleaseEB = false;
+                byte currentHeadID = (byte)searchLater.BaliseToID(curBalise);
+                if (currentHeadID == headID) //目前应答器给我的ID和ZC发的ID一致
+                {
                     int[] value = searchLater.SearchDistance(isLeftSearch, tailSectionOrSwitch, tailID, Convert.ToInt32(MAEndOff), obstacleNum, curBalise, obstacleID, obstacleState);
                     MAEndDistance = value[0];
                     limSpeedNum = value[1];
@@ -362,15 +367,15 @@ namespace SocketSearch
                                    " limSpeedDistance_3 "+Convert.ToString(limSpeedDistance_3)+" limSpeedLength_3 "+ Convert.ToString(limSpeedLength_3)+" limSpeedDistance_4 "+ Convert.ToString(limSpeedDistance_4)+ " limSpeedLength_4 "+
                                     Convert.ToString(limSpeedLength_4));
 
-            //    }
-            //}
-
         }
+    }
+
+}
 
         public void CalSectionOrSwitchIDOFF(string curBalise) //根据目前应答器判断是区段和道岔，还有ID，和偏移量。车的头部和尾部都是当前应答器
         {
-            int ID = 0;
-            if (trainHead.Length != 0 && Regex.Matches(trainHead, "Z").Count == 0) //头部和尾部的应答器都是一样的，都是当前应答器发送的，count等于0即进入正线
+            int ID = searchLater.BaliseToID(curBalise);
+            if (trainHead.Length != 0 && Regex.Matches(trainHead, "Z").Count == 0) //车头部和车尾部的应答器都是一样的，都是当前应答器发送的，count等于0即进入正线
             {
                 UInt32[] value = SectionOrSwitchIDOFF(trainHead,ID);     //利用这个来发送偏移量
                 HeadSectionOrSwitch = (byte)value[0];  //区段是1，道岔是2
@@ -379,10 +384,10 @@ namespace SocketSearch
             }
             if (trainTail.Length != 0 && Regex.Matches(trainTail, "Z").Count == 0)
             {
-                UInt32[] value = SectionOrSwitchIDOFF(trainTail,ID);
-                TailSectionOrSwitch = (byte)value[0];
-                TailID = (byte)value[1];
-                TailOff = value[2];             
+                UInt32[] value1 = SectionOrSwitchIDOFF(trainTail, ID); //trainHead trainTail均指当前的应答器。车不分车头和车尾部
+                TailSectionOrSwitch = (byte)value1[0]; // 1是区段，2是道岔
+                TailID = (byte)value1[1];
+                TailOff = value1[2];
             }
         }
 
@@ -547,7 +552,7 @@ namespace SocketSearch
 
         private void ZCSendEB(byte tailSectionOrSwitch, byte tailID, UInt32 MAEndOff, byte MAEndDir) //由于ZC发送EB消息
         {
-            if(tailSectionOrSwitch == 3 && tailID == 0 && MAEndOff == 0 && MAEndDir == 0)
+            if(tailSectionOrSwitch == 3 && tailID == 0 && MAEndOff == 0 && MAEndDir == 0) //EB消息测完
             {
                 Socket_EB.Set_EB(isEB, "ZC发送EB信息");
             }

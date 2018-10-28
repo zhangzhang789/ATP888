@@ -11,8 +11,8 @@ namespace SocketSearch
 {
     class SearchLater
     {
-        TrainMessage trainMessage = new TrainMessage();
-        HashTable hashTable = new HashTable();
+        public TrainMessage trainMessage = new TrainMessage();
+        HashTable hashTable_search = new HashTable();
         int limSpeedNum = 0;
         int limSpeedDistance_1 = 0;
         int limSpeedLength_1 = 0;
@@ -36,11 +36,11 @@ namespace SocketSearch
         public void GetHash()
         {
             trainMessage.GetHash();
-            hashTable.sikai();
+            hashTable_search.sikai();
         }
         public int[] SearchDistance(bool isLeftSearch, byte type, byte ID, int MAEndOff, int obstacleNum, string curBalise, string[] obstacleID, byte[] obstacleState) //type,id即MA终点的类型和ID
         {
-            curBalise = "T0114_1_1"; //"T0114_1_1"
+            
             int curbalise_id = 0;
             int[] returnValue = new int[9];
             MAEndLink = trainMessage.IDTypeConvertName(type, ID); //由type和ID得到区段或道岔名字。如W0103
@@ -51,7 +51,7 @@ namespace SocketSearch
             return returnValue;
         }
 
-        private int BaliseToID(string curNowBalise)
+        public int BaliseToID(string curNowBalise)
         {
             int ID = 0;
             if (!trainMessage.IsRailswitchVoid(curNowBalise)) //如果是直轨
@@ -60,15 +60,15 @@ namespace SocketSearch
             }
             else
             {
-                if(hashTable.ht_2.Contains(curNowBalise.Substring(0, 5)))
+                if(hashTable_search.ht_2.Contains(curNowBalise.Substring(0, 5)))
                 {
                     if(curNowBalise.Substring(curNowBalise.IndexOf("_")+1,1)=="0" || curNowBalise.Substring(curNowBalise.IndexOf("_")+1, 1) == "2")
                     {
-                        ID =Convert.ToInt32(hashTable.ht_2[curNowBalise.Substring(0, 5)].ToString().Substring(0,2));
+                        ID =Convert.ToInt32(hashTable_search.ht_2[curNowBalise.Substring(0, 5)].ToString().Substring(0,2));
                     }
                     else
                     {
-                        ID = Convert.ToInt32(hashTable.ht_2[curNowBalise.Substring(0, 5)].ToString().Substring(3, 2));
+                        ID = Convert.ToInt32(hashTable_search.ht_2[curNowBalise.Substring(0, 5)].ToString().Substring(3, 2));
                     }
                 }
                 else
