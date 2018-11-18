@@ -27,6 +27,9 @@ namespace TrainMessageEB
             ht_2.Add("W0105", "02_04");
             ht_2.Add("W0411", "15_17");
             ht_2.Add("W0414", "16_18");
+            ht_2.Add("ZHG1", "9");
+            ht_2.Add("ZHG2", "10");
+
         }
         #endregion
 

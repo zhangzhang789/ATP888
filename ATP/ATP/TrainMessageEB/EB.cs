@@ -9,8 +9,9 @@ namespace TrainMessageEB
 {
     class EB
     {
+        public bool isEB=false;
 
-        public void Set_EB(bool isEB, string reason)
+        public void Set_EB(string reason)
         {
             isEB = true;
             WriteLog(reason);

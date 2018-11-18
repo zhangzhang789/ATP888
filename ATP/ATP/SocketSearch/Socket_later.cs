@@ -13,6 +13,7 @@ using ConfigData;
 using System.Timers;
 using Package;
 using System.Diagnostics;
+using CbtcData;
 
 namespace SocketSearch
 {
@@ -36,7 +37,6 @@ namespace SocketSearch
     {
         
         public Socket ZCsocket;
-        public bool isEB;
         public bool isRecvZC;
         public bool isBaliseFirst=false;//是否最开始不起模的应答器
         public bool isLeftSearch = false;
@@ -51,7 +51,6 @@ namespace SocketSearch
         public bool isFirstEnter = true; //是不是第一次初始化判断方向信息
         public Int16 DCTrainSpeed = 0;  //实时列车速度，司控器发送，区分大于0和小于0
         public UInt16 ATPPermitDirection = 0; //列车运行方向，初始化是0，速度大于0是1，速度小于0是2
-        public bool isSendToZC = false; //开始不向ZC发送消息，进入正线，初始化方向后开始向ZC发送消息
         public UInt16 DCHandlePos = 0; //司控器实时传送的把柄方向，默认是0,速度大于0是1，速度小于0是2
         public byte actualDirection = 0; //发送给ZC实时的方向
         public Byte HeadSectionOrSwitch; //根据目前应答器判断是区段还是道岔
@@ -67,6 +66,8 @@ namespace SocketSearch
         public byte runInfoType = 0x01;
         public bool isReleaseEB = false; //是否缓解了EB，用于DMI
         public Byte headID;            //是ZC发送的当前位置的id
+        public byte ZCInfoType;
+        public byte MAEndType;
         public Byte tailSectionOrSwitch; //1是区段，2是道岔
         public Byte tailID; //从ZC接受到的MA的id
         public UInt32 MAEndOff = 0;
@@ -107,15 +108,16 @@ namespace SocketSearch
         public IPAddress ATPATPCurveIP;
         public int ATPATPCurvePort;
         ATPCurvePackage atpCurvePackage=new ATPCurvePackage();
-        ZCPackage zcPackage=new ZCPackage();
-        DMIPackage dmiPackage=new DMIPackage();
-        DCPackage dcPackage=new DCPackage();
+        ZCPackage zcPackage=new ZCPackage() { PackageType = 8, ReceiveID = 3, ZCID = 3 };
+        DMIPackage dmiPackage=new DMIPackage() { PackageType = 3, ActulSpeed = 25, TrainNum = "" };
+        DCPackage dcPackage=new DCPackage() { PackageType = 5 };
         public int trainID ;
         public int sendID;
 
         EB Socket_EB = new EB();
         TrainMessage trainMessage = new TrainMessage();
         SearchLater searchLater = new SearchLater();
+        private Timer timer;
 
         public void SocketStart()
         {
@@ -148,16 +150,16 @@ namespace SocketSearch
                 IPEndPoint sender = new IPEndPoint(0, 0);
                 while (true)
                 {
-                    //try
-                    //{
+                    try
+                    {
                         byte[] buf = ATPToDMIClient.Receive(ref sender);
                         Receive_DMI_Data(buf);
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    Debug.WriteLine(e.Message);
-                    //}
                 }
+                    catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            }
             });
            
             Task.Run(() =>
@@ -167,16 +169,16 @@ namespace SocketSearch
                 IPEndPoint sender1 = new IPEndPoint(0, 0);
                 while (true)
                 {
-                    //try
-                    //{
+                    try
+                    {
                         byte[] buf = ATPToZCClient.Receive(ref sender1);
                         Receive_ZC_Data(buf);
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    Debug.WriteLine(e.Message);
-                    //}
                 }
+                    catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            }
             });
            
             Task.Run(() =>
@@ -186,8 +188,8 @@ namespace SocketSearch
                 IPEndPoint sender2 = new IPEndPoint(0, 0);
                 while (true)
                 {
-                    //try
-                    //{
+                    try
+                    {
                         byte[] buf = ATPToDCClient.Receive(ref sender2); //测完
                         if (buf[2] == 6)
                         {
@@ -197,13 +199,13 @@ namespace SocketSearch
                         {
                             Receive_Balise_Data(buf); //应答器也是由司控器的端口传来的
                         }
-                    //}
-
-                    //catch (Exception e)
-                    //{
-                    //    Debug.WriteLine(e.Message);
-                    //}
                 }
+
+                    catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            }
             });
         }
       
@@ -252,16 +254,27 @@ namespace SocketSearch
         }
         private void SetupTimer()  //发包的方法
         {
-            System.Timers.Timer timer = new System.Timers.Timer(200);
+            timer = new Timer(200);
             timer.Elapsed += TimerElapsed;
+            timer.AutoReset = false;
             timer.Start();
         }
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
-            ProcessData();
-            SendATPCurve();                         //隔200ms发送数据
-            SendDMI();
-            SendZC();
+            try
+            {
+                ProcessData();
+                SendATPCurve();                         //隔200ms发送数据
+                SendDMI();
+                SendZC();
+                SendDC();
+                timer.Start();
+            }
+            catch
+            {
+
+            }
+      
         }
 
         public void SendATPCurve()
@@ -292,29 +305,58 @@ namespace SocketSearch
             dmiPackage.PermitSpeed = 95;
             dmiPackage.FrontPermSpeed = 95;
             dmiPackage.TargetLoca = (UInt16)MAEndDistance;
+            if (Socket_EB.isEB == true)
+            {
+                dmiPackage.BreakOut = 6;
+                dmiPackage.Alarm = 1;
+            }
+
+
+
 
             byte[] DMISendData = dmiPackage.DMIPackStream();
             ATPToDMIClient.Send(DMISendData, 1024);
         }
 
+        public void SendDC()
+        {
+            if (Socket_EB.isEB == true)
+            {
+                dcPackage.IsEB = 6; //收到缓解后已经赋值7
+            }
+            
+            byte[] DCSendData = dcPackage.DCPackStream();
+            ATPToDCClient.Send(DCSendData, 1024);
+        }
+
         public void SendZC() //测完
         {
+            if (Regex.Matches(baliseHead,"Z").Count <= 0 && baliseHead!="")
+            {
             zcPackage.SendID = (byte)sendID;
             zcPackage.TrainID = (UInt16)trainID;
-            zcPackage.RunInformation = 0x01;
-            zcPackage.DoorState_ = 1;
+            zcPackage.RunInformation = 0x01;  
+            //if (MAEndType == 0x02 && ZCInfoType != 0x04)
+            //{
+            //        zcPackage.RunInformation = 0x04;
+            // }
+            //    //注销模式0x03,默认是0x01,折返端换端是0x55
+            //    //zcPackage.DoorState_ = 1;
+
             zcPackage.HeadSectionOrSwitch = HeadSectionOrSwitch;
             zcPackage.HeadID = HeadID;
             zcPackage.HeadOff = HeadOff;  //发送给ZC偏移量
-            zcPackage.TailSectionOrSwitch = TailSectionOrSwitch;
-            zcPackage.TailID = TailID;
-            zcPackage.TailOff = TailOff; //大写的是自己找的                                            
+            zcPackage.TailSectionOrSwitch = HeadSectionOrSwitch;
+            zcPackage.TailID = HeadID;
+            zcPackage.TailOff = HeadOff; //大写的是自己找的                                            
             zcPackage.ACtSpeed = (UInt16)Math.Abs(DCTrainSpeed);
             zcPackage.HeadActDirection = actualDirection;
             zcPackage.Mode = curModel;
 
             byte[] ZCSendData = zcPackage.ZCPackStream();
             ATPToZCClient.Send(ZCSendData, 1024);
+            }
+
         }
 
         public void ProcessData()  //每隔200ms调用一次这个方法，接受数据的一直等待接受，这里隔200ms计算一次MA
@@ -343,9 +385,42 @@ namespace SocketSearch
             }        
         }
 
+        public void curBaliseEB(string curBalise,byte tailID,byte tailSectionOrSwitch)
+        {
+            int curID = searchLater.BaliseToID(curBalise);
+            TopolotyNode curTopolotyNode = trainMessage.BaliseToIteam(curBalise, curID);
+            int curleftType;
+            int curleftID;
+            
+            foreach (var p in curTopolotyNode.Left)
+            {
+                if (p.device.Name.Substring(0, 1) == "T" || p.device.Name.Substring(0, 1) == "Z")
+                {
+                    curleftType =1;
+                    curleftID = searchLater.BaliseToID(p.device.Name);
+                }
+                else
+                {
+                    curleftType = 2;
+                    curleftID = searchLater.BaliseToID((p.device as RailSwitch).section.Name);
+                }
+              
+                if (curleftID == tailID && curleftType == tailSectionOrSwitch)
+                {
+                    Socket_EB.Set_EB("超过MA终点");
+                    break;
+                }
+               
+            }
+        }
         public void GetDistanceAndPrint(string curBalise)
         {
-            if (isRecvZC && runInfoType == 0x01 && isEB == false && curModel != 4) //当这四个条件满足时开始处理ATP曲线。当应答器的id和zc发来的id一致时，开始计算信息距离
+        
+            if (Regex.Matches(curBalise, "Z").Count <= 0 && curBalise != "")
+            {
+                curBaliseEB(curBalise, tailID, tailSectionOrSwitch); //如果在MA终点上就不需要寻路了
+            }
+            if (isRecvZC && runInfoType == 0x01 && Socket_EB.isEB == false && curModel != 4) //当这四个条件满足时开始处理ATP曲线。当应答器的id和zc发来的id一致时，开始计算信息距离
             {
                 isReleaseEB = false;
                 byte currentHeadID = (byte)searchLater.BaliseToID(curBalise);
@@ -432,7 +507,7 @@ namespace SocketSearch
                     }
                     else if(DCTrainSpeed>0) //在列车运行的时候判断
                     {
-                        Socket_EB.Set_EB(isEB,"行驶过程中方向判断错误");
+                        Socket_EB.Set_EB("行驶过程中方向判断错误");
                     }              
             }
             else //在EUM模式下
@@ -458,7 +533,7 @@ namespace SocketSearch
                 }
 
                 isFirstEnter = false;
-                isSendToZC = true;     //开始向ZC发送消息
+
             }
         }
 
@@ -472,22 +547,23 @@ namespace SocketSearch
             {
                 switch (DCCtrlMode)
                 {
-                    case (UInt16)ModelType.AM:
+                    case (UInt16)ModelType.AM-1:
                         curModel = (byte)ModelType.AM;
                         break;
-                    case (UInt16)ModelType.CM:
+                    case (UInt16)ModelType.CM-1:
                         curModel = (byte)ModelType.CM;
                         break;
-                    case (UInt16)ModelType.RM:
+                    case (UInt16)ModelType.RM-1:
                         curModel = (byte)ModelType.RM;
                         break;
-                    case (UInt16)ModelType.EUM:
+                    case (UInt16)ModelType.EUM-1:
                         curModel = (byte)ModelType.EUM;
                         break;
                     default:
                         break;
                 }              
             }
+            ModelIsRecvZC(curModel); //判断是否接收消息
         }
         public void Receive_ZC_Data(byte[] ZCData)
         {
@@ -501,14 +577,14 @@ namespace SocketSearch
                 UInt16 ZCDataLength = reader.ReadUInt16();
                 UInt16 ZCNID_ZC = reader.ReadUInt16();
                 UInt16 ZCNID_Train = reader.ReadUInt16();
-                byte ZCInfoType = reader.ReadByte();
+                ZCInfoType = reader.ReadByte();
                 byte ZCStopEnsure = reader.ReadByte();
                 UInt64 ZCNID_DataBase = reader.ReadUInt64();
                 UInt16 ZCNID_ARButton = reader.ReadUInt16();
                 byte ZCQ_ARButtonStatus = reader.ReadByte();
                 UInt16 ZCNID_LoginZCNext = reader.ReadUInt16();
                 byte ZCN_Length = reader.ReadByte();
-                byte MAEndType = reader.ReadByte();
+                MAEndType = reader.ReadByte();
                 byte headSectionOrSwitch = reader.ReadByte();
                 headID = reader.ReadByte();
                 UInt32 ZCD_D_MAHeadOff = reader.ReadUInt32();
@@ -554,7 +630,7 @@ namespace SocketSearch
         {
             if(tailSectionOrSwitch == 3 && tailID == 0 && MAEndOff == 0 && MAEndDir == 0) //EB消息测完
             {
-                Socket_EB.Set_EB(isEB, "ZC发送EB信息");
+                Socket_EB.Set_EB("ZC发送EB信息");
             }
         }
         
@@ -583,6 +659,12 @@ namespace SocketSearch
                 UInt16 DMIDriverNumber = reader.ReadUInt16();
                 byte DMITestOrder = reader.ReadByte();
                 byte DMIRelieveOrder = reader.ReadByte();
+                if (DMIRelieveOrder == 2)
+                {
+                    dcPackage.IsEB = 7; //收到缓解消息发送给DC
+                    dmiPackage.BreakOut = 7; //收到缓解消息发送给dmi
+                    Socket_EB.isEB = false;
+                }
             }
         }
 
@@ -594,11 +676,12 @@ namespace SocketSearch
                 UInt16 DCCycle = reader.ReadUInt16();
                 UInt16 DCPackageType = reader.ReadUInt16();
                 UInt16 DCLength = reader.ReadUInt16();
-                UInt16 DCTrainSpeed = reader.ReadUInt16();  //解析出列车的实时速度
+                DCTrainSpeed = reader.ReadInt16();  //解析出列车的实时速度
                 DCCtrlMode = reader.ReadUInt16();
-                UInt16 DCHandlePos = reader.ReadUInt16();
+                DCHandlePos = reader.ReadUInt16();
                 UInt16 DCisKeyIn = reader.ReadUInt16();
             }
+            
 
         }
 

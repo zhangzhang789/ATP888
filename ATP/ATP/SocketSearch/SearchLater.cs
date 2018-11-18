@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TrainMessageEB;
 using CbtcData;
 using ATP;
+using System.Text.RegularExpressions;
 
 namespace SocketSearch
 {
@@ -25,7 +26,7 @@ namespace SocketSearch
         int MAEndDistance = 0;
         UInt32 startOff = 0;
         UInt32 startDistance = 0;
-        string MAEndLink = null;
+        public string MAEndLink = null;
         int[] result_obstacle_length = new int[4];
         int[] result_obstacle_distance = new int[4];
         int result_index = 0;  //记录指针
@@ -51,10 +52,16 @@ namespace SocketSearch
             return returnValue;
         }
 
-        public int BaliseToID(string curNowBalise)
+
+
+        public int BaliseToID(string curNowBalise) //由balise可以得到ID
         {
             int ID = 0;
-            if (!trainMessage.IsRailswitchVoid(curNowBalise)) //如果是直轨
+            if(Regex.Matches(curNowBalise, "Z").Count > 0 && curNowBalise != "")
+            {
+                ID= Convert.ToInt32(hashTable_search.ht_2[curNowBalise.Substring(0, 4)]);
+            }
+            else if (!trainMessage.IsRailswitchVoid(curNowBalise)) //如果是直轨
             {
                 ID = (trainMessage.CurBaliseToIteam(curNowBalise).device as Section).Id;
             }
@@ -95,7 +102,7 @@ namespace SocketSearch
 
         private int[] GetMAAndObstacleDistance(string curBalise,int curBalise_id, string MAEndLink, int MAEndOff, string[] obstacleID, byte[] obstacleState, int obstacleNum, bool isLeftSearch) //寻找障碍物的长度，距离
         {
-
+         
             string NowSearchBalise = curBalise.Substring(0, 5);
             int[] obstacle_distance = new int[obstacleNum]; //存放每一个障碍物的位置
             string[] obstacle_name = new string[obstacleNum]; //存放每一个障碍物的名字，用于判断每一个障碍物
@@ -104,6 +111,7 @@ namespace SocketSearch
             int obstacle_count = 0;
             bool isFirstNoSame = false;
             int last_obstacle_ma_count = 0;
+            index_obstacle=0;
             GetCurbaliseOff(curBalise, isLeftSearch, curBalise_id); //计算开始的偏移量
 
             if (isLeftSearch == false) //右寻
@@ -112,34 +120,33 @@ namespace SocketSearch
 
                 while (true)
                 {
-                    
-                    if (NowSearchBalise.Substring(0,1) == "T")
+                    if (NowSearchBalise.Substring(0,1) == "T") //当目前位置是区段时
                     {
-                        NextNodesList = trainMessage.RightNextCurBaliseList(NowSearchBalise);
-                        NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[0]);
+                        NextNodesList = trainMessage.RightNextCurBaliseList(NowSearchBalise);  //在区段时肯定只能有一个右节点，道岔可能有两个节点
+                        NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[0]); //取出唯一的一个右节点
                         if (index_obstacle < obstacleState.Count())
                         {
                             GetObstacleLengthDis(NextNodesList, obstacleState, obstacle_distance, obstacle_name, NowSearchBalise);
                         }
                         else
                         {
-                            last_obstacle_ma_count += 1;
+                            last_obstacle_ma_count += 1; //如果道岔都寻完了，剩下的只剩下区段，算最后的区段数量
                         }
                     }
                     else
-                    {
-                        NextNodesList = trainMessage.RightNextCurBaliseList(NowSearchBalise, Convert.ToInt32(obstacleID[index_obstacle]));                        
+                    {                     
+                        NextNodesList = trainMessage.RightNextCurBaliseList(NowSearchBalise, Convert.ToInt32(obstacleID[index_obstacle]));  //在道岔上就需要ID了                     
                         if (NextNodesList.Count == 2)
                         {
-                            if (obstacleState[index_obstacle] == 1)
+                            if (obstacleState[index_obstacle] == 1) //处于定位
                             {
-                                NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[0]);
-                                if (NextSearchBalise == NowSearchBalise)
+                                NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[0]); //第一个位置
+                                if (NextSearchBalise == NowSearchBalise) //针对于W0106这种,下一个应答器还是自己
                                 {
                                     GetObstacleLengthDis(NextNodesList, obstacleState, obstacle_distance, obstacle_name, NowSearchBalise);
                                     obstacleID[index_obstacle] = Convert.ToString(NextNodesList[0].device.Id);
                                 }
-                                else
+                                else //正常的道岔，下一个不是自己
                                 {
                                     
                                     GetObstacleLengthDis(NextNodesList, obstacleState, obstacle_distance, obstacle_name, NowSearchBalise);
@@ -151,7 +158,7 @@ namespace SocketSearch
                             }
                             else if (obstacleState[index_obstacle] == 2)
                             {
-                                NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[1]);
+                                NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[1]); //除了下一个应答器==1，做同样的处理
                                 if (NextSearchBalise == NowSearchBalise)
                                 {
                                     GetObstacleLengthDis(NextNodesList, obstacleState, obstacle_distance, obstacle_name, NowSearchBalise);
@@ -168,9 +175,9 @@ namespace SocketSearch
 
                             }                            
                         }
-                        else
+                        else //也有可能在道岔上由寻右节点是1
                         {
-                            NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[0]);
+                            NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[0]);   
                             GetObstacleLengthDis(NextNodesList, obstacleState, obstacle_distance, obstacle_name, NowSearchBalise);
                             if( index_obstacle<obstacleState.Count())
                             {
@@ -179,12 +186,17 @@ namespace SocketSearch
                           
                         }
                     }
-                    if (NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0,1)!="W")
+
+                    if (NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0,1)!="W") //防止W0106
                     {
                         result_obstacle_distance[obstacle_index_private] = MAEndDistance; //到终点的距离
-                        obstacle_count += 1;
+                        obstacle_count += 1; //只有这样障碍物的数量才加1
                     }
-                    if(NowSearchBalise.Substring(0,1)=="W")
+                    if(NowSearchBalise!= MAEndLink)
+                    {
+                        NowSearchBalise = NextSearchBalise;
+                    }                   
+                    if (NowSearchBalise.Substring(0,1)=="W")
                     {
                         obstacle_length_private += 25;
                         isFirstNoSame = true;
@@ -196,8 +208,8 @@ namespace SocketSearch
                         obstacle_index_private += 1;
                         isFirstNoSame = false;
                     }
-                    NowSearchBalise = NextSearchBalise;
-                    if (NextSearchBalise == MAEndLink)
+                    
+                    if (NowSearchBalise == MAEndLink) //如果下一个是MA终点就终止查询
                     {
                         index_obstacle = 0;
                         isFirstSearch = true;
@@ -326,32 +338,34 @@ namespace SocketSearch
             limSpeedDistance_4 = 0;
             limSpeedLength_4 = 0;
             MAEndDistance = 0;
+            result_obstacle_distance = new int[4];
+            result_obstacle_length = new int[4];
         }
 
         public void GetObstacleLengthDis(List<TopolotyNode> NextNodesList, byte[] obstacleState, int[] obstacle_distance, string[] obstacle_name,string NowSearchBalise) //while循环用于寻路
         {
-            if (!isFirstSearch)
+            if (!isFirstSearch) //第一次是所在区段，用偏移量算
             {
                 if (NextNodesList.Count == 1) //下一个节点是1
                 {
                     NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[0]); //根据topo节点得到当前名字
-                    bool NowisSwitch = trainMessage.IsRailswitchVoid(NowSearchBalise);
-                    bool NextisSwitch = trainMessage.IsRailswitchVoid(NextSearchBalise);
+                    bool NowisSwitch = trainMessage.IsRailswitchVoid(NowSearchBalise); //目前的位置是不是道岔
+                    //bool NextisSwitch = trainMessage.IsRailswitchVoid(NextSearchBalise); //下一个位置是不是道岔
                     if (NowisSwitch) //当数量是1时，即可能是道岔也可能是区段
                     {
-                        MAEndDistance += 25;
+                        MAEndDistance += 25; //不算第一个了
                         obstacle_distance[index_obstacle] = MAEndDistance;
                         obstacle_name[index_obstacle] = NowSearchBalise; //长度有可能是多个道岔连在一起，因此障碍物的长度会变，个数也会减少                                   
                     }
 
                     else
                     {
-                        MAEndDistance += 120;
+                        MAEndDistance += 120; //如果当前位置不是道岔，那么加120
                         obstacle_distance[index_obstacle] = MAEndDistance;
                     }
                 }
 
-                else  //下一个节点是2
+                else  //下一个节点是2，只有当前位于道岔上，下一节点才可能是2
                 {
 
                     if (obstacleState[index_obstacle] == 1)//1是定位，2是反位。定位在第一个，反位在第二个
@@ -394,19 +408,54 @@ namespace SocketSearch
         {
             for(int i = 0; i < 4; i++)
             {
-                obstacle_distance[i] = obstacle_distance[i] - obstacle_length[i];
+                obstacle_distance[i] = obstacle_distance[i] - obstacle_length[i];//障碍物的距离到的是距离起点的距离，以前的距离包含了障碍物的长度，因此要减去
             }
             int[] returnValue = new int[10];
-            returnValue[0] = MAEndDistance+ MAEndOff+ (int)startDistance;
-            returnValue[1] = limSpeedNum;
-            returnValue[2] = obstacle_distance[0] + (int)startDistance;
-            returnValue[3] = obstacle_length[0] ;
-            returnValue[4] = obstacle_distance[1] + (int)startDistance;
-            returnValue[5] = obstacle_length[1];
-            returnValue[6] = obstacle_distance[2] + (int)startDistance;
-            returnValue[7] = obstacle_length[2] ;
-            returnValue[8] = obstacle_distance[3] + (int)startDistance;
-            returnValue[9] = obstacle_length[3];
+            switch (limSpeedNum)
+            {
+                case 0:
+                    returnValue[0] = (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
+                    returnValue[1] = limSpeedNum;
+                    break;
+                case 1:
+                    returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
+                    returnValue[1] = limSpeedNum;                                 //障碍物的数量也是传入得到
+                    returnValue[2] = obstacle_distance[0] + (int)startDistance;
+                    returnValue[3] = obstacle_length[0];
+                    break;
+                case 2:
+                    returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
+                    returnValue[1] = limSpeedNum;                                 //障碍物的数量也是传入得到
+                    returnValue[2] = obstacle_distance[0] + (int)startDistance;
+                    returnValue[3] = obstacle_length[0];
+                    returnValue[4] = obstacle_distance[1] + (int)startDistance;
+                    returnValue[5] = obstacle_length[1];
+                    break;
+                case 3:
+                    returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
+                    returnValue[1] = limSpeedNum;                                 //障碍物的数量也是传入得到
+                    returnValue[2] = obstacle_distance[0] + (int)startDistance;
+                    returnValue[3] = obstacle_length[0];
+                    returnValue[4] = obstacle_distance[1] + (int)startDistance;
+                    returnValue[5] = obstacle_length[1];
+                    returnValue[6] = obstacle_distance[2] + (int)startDistance;
+                    returnValue[7] = obstacle_length[2];
+                    break;
+                case 4:
+                    returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
+                    returnValue[1] = limSpeedNum;                                  //障碍物的数量也是传入得到
+                    returnValue[2] = obstacle_distance[0] + (int)startDistance;   //障碍物的距离要加上最开始的distance，是从不算本区段的位置开始的，到障碍物结束的距离
+                    returnValue[3] = obstacle_length[0];
+                    returnValue[4] = obstacle_distance[1] + (int)startDistance;
+                    returnValue[5] = obstacle_length[1];
+                    returnValue[6] = obstacle_distance[2] + (int)startDistance;
+                    returnValue[7] = obstacle_length[2];
+                    returnValue[8] = obstacle_distance[3] + (int)startDistance;
+                    returnValue[9] = obstacle_length[3];
+                    break;
+                default:
+                    break;
+            } 
             return returnValue;
         }
 

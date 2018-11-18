@@ -5,23 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 using CbtcData;
 using ATP;
+using ATP.TrainMessageEB;
 namespace TrainMessageEB
 {
     class TrainMessage
     {
         public string MAEndLink;
         public HashTable hashTable = new HashTable();
+        public Getxml getxml=new Getxml();
         public void GetHash()
         {
             hashTable.sectionHashTable();
             hashTable.sikai();
+            getxml.XMLInitialize();
         }
      
         public string IDTypeConvertName(byte type, byte ID) //用type和id得到名字。当ZC发送MA的type和ID时可以用到。OK
         {
             if (type == 1) //区段
             {
-                Section section = ATP.Program.data.Topo.Find((TopolotyNode toponode) =>
+                Section section = getxml.data.Topo.Find((TopolotyNode toponode) =>
                 {
                     if (toponode.device is Section)
                     {
@@ -38,7 +41,7 @@ namespace TrainMessageEB
 
             else if (type == 2)  //道岔
             {
-                RailSwitch railswitch = ATP.Program.data.Topo.Find((TopolotyNode toponode) =>
+                RailSwitch railswitch = getxml.data.Topo.Find((TopolotyNode toponode) =>
                 {
                     if (toponode.device is RailSwitch)
                     {
@@ -59,7 +62,7 @@ namespace TrainMessageEB
         {
             if (type == 1) //区段
             {
-                TopolotyNode topo = ATP.Program.data.Topo.Find((TopolotyNode toponode) =>
+                TopolotyNode topo = getxml.data.Topo.Find((TopolotyNode toponode) =>
                 {
                     if (toponode.device is Section)
                     {
@@ -77,7 +80,7 @@ namespace TrainMessageEB
 
             else if (type == 2)  //道岔
             {
-                TopolotyNode topo = ATP.Program.data.Topo.Find((TopolotyNode toponode) =>
+                TopolotyNode topo = getxml.data.Topo.Find((TopolotyNode toponode) =>
                 {
                     if (toponode.device is RailSwitch)
                     {
@@ -98,7 +101,7 @@ namespace TrainMessageEB
         {
             if (balise.Substring(0, 1) == "T")
             {
-                foreach (var item in ATP.Program.data.Topo)
+                foreach (var item in getxml.data.Topo)
                 {
                     if (item.device.Name == balise.Substring(0, 5)) //区段时只需要根据Name判断就可以,nameT0103
                     {
@@ -107,9 +110,20 @@ namespace TrainMessageEB
                 }
             }
 
+            else if (balise.Substring(0, 1) == "Z")
+            {
+                foreach (var item in getxml.data.Topo)
+                {
+                    if (item.device.Name == balise.Substring(0, 4)) //区段时只需要根据Name判断就可以,nameT0103
+                    {
+                        return item;
+                    }
+                }
+            }
+
             else
             {
-                TopolotyNode node = ATP.Program.data.Topo.Find((TopolotyNode toponode) =>   //node是寻找到的节点，返回符合条件的
+                TopolotyNode node = getxml.data.Topo.Find((TopolotyNode toponode) =>   //node是寻找到的节点，返回符合条件的
                 {
                     if (toponode.device is RailSwitch)
                     {
@@ -130,7 +144,7 @@ namespace TrainMessageEB
         {
             if (balise.Substring(0, 1) == "T")
             {
-                foreach (var item in ATP.Program.data.Topo)
+                foreach (var item in getxml.data.Topo)
                 {
                     if (item.device.Name == balise.Substring(0, 5)) //区段时只需要根据Name判断就可以,nameT0103
                     {
@@ -141,7 +155,7 @@ namespace TrainMessageEB
 
             else
             {
-                TopolotyNode node = ATP.Program.data.Topo.Find((TopolotyNode toponode) =>   //node是寻找到的节点，返回符合条件的
+                TopolotyNode node = getxml.data.Topo.Find((TopolotyNode toponode) =>   //node是寻找到的节点，返回符合条件的
                 {
                     if (toponode.device is RailSwitch)
                     {
@@ -162,7 +176,7 @@ namespace TrainMessageEB
         {
             if (balise.Substring(0, 1) == "T")
             {
-                foreach (var item in ATP.Program.data.Topo)
+                foreach (var item in getxml.data.Topo)
                 {
                     if (item.device.Name == balise.Substring(0, 5)) //区段时只需要根据Name判断就可以,nameT0103
                     {
