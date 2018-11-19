@@ -25,6 +25,11 @@ namespace SocketSearch
         PackBalise=5
     }
 
+    enum Speed
+    {
+        baliseSpeed=40,
+        quduanSpeed=70
+    }
     enum ModelType
     {
         AM = 1,
@@ -703,7 +708,7 @@ namespace SocketSearch
                 DCTrainSpeed = reader.ReadInt16(); //解析出列车的实时速度
                 if (Math.Abs(DCTrainSpeed) >= ProtectSpeed()) //超速就EB
                 {
-                    Socket_EB.isEB = true;
+                    Socket_EB.Set_EB("超过防护速度");
                 }
                 DCCtrlMode = reader.ReadUInt16();
                 DCHandlePos = reader.ReadUInt16();
@@ -715,20 +720,21 @@ namespace SocketSearch
 
         public int ProtectSpeed() //先这样粗略计算
         {
+
             if (curBalise != "")
             {
                 if (curBalise.Substring(0, 1) == "W")
                 {
-                    return 40;
+                    return (UInt16)Speed.baliseSpeed;
                 }
                 else
                 {
-                    return 70;
+                    return (UInt16)Speed.quduanSpeed;
                 }
             }
             else
             {
-                return 70;
+                return (UInt16)Speed.quduanSpeed;
             }
           
 
