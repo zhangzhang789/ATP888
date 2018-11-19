@@ -688,11 +688,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zhang\\Desktop\\ATPGit\\ATP\\ATP\\ATP.csproj",
+      "projectUniqueName": "C:\\Users\\zhang\\Desktop\\20181118zc.ci\\ATP部分最新\\ATP\\ATP\\ATP.csproj",
       "projectName": "ATP",
-      "projectPath": "C:\\Users\\zhang\\Desktop\\ATPGit\\ATP\\ATP\\ATP.csproj",
+      "projectPath": "C:\\Users\\zhang\\Desktop\\20181118zc.ci\\ATP部分最新\\ATP\\ATP\\ATP.csproj",
       "packagesPath": "C:\\Users\\zhang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zhang\\Desktop\\ATPGit\\ATP\\ATP\\obj\\",
+      "outputPath": "C:\\Users\\zhang\\Desktop\\20181118zc.ci\\ATP部分最新\\ATP\\ATP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -150,16 +150,16 @@ namespace SocketSearch
                 IPEndPoint sender = new IPEndPoint(0, 0);
                 while (true)
                 {
-                    try
-                    {
+                    //try
+                    //{
                         byte[] buf = ATPToDMIClient.Receive(ref sender);
                         Receive_DMI_Data(buf);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Debug.WriteLine(e.Message);
+                    //}
                 }
-                    catch (Exception e)
-                {
-                    Debug.WriteLine(e.Message);
-                }
-            }
             });
            
             Task.Run(() =>
@@ -169,16 +169,16 @@ namespace SocketSearch
                 IPEndPoint sender1 = new IPEndPoint(0, 0);
                 while (true)
                 {
-                    try
-                    {
+                    //try
+                    //{
                         byte[] buf = ATPToZCClient.Receive(ref sender1);
                         Receive_ZC_Data(buf);
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    Debug.WriteLine(e.Message);
+                    //}
                 }
-                    catch (Exception e)
-                {
-                    Debug.WriteLine(e.Message);
-                }
-            }
             });
            
             Task.Run(() =>
@@ -188,8 +188,8 @@ namespace SocketSearch
                 IPEndPoint sender2 = new IPEndPoint(0, 0);
                 while (true)
                 {
-                    try
-                    {
+                    //try
+                    //{
                         byte[] buf = ATPToDCClient.Receive(ref sender2); //测完
                         if (buf[2] == 6)
                         {
@@ -199,13 +199,13 @@ namespace SocketSearch
                         {
                             Receive_Balise_Data(buf); //应答器也是由司控器的端口传来的
                         }
-                }
+                    //}
 
-                    catch (Exception e)
-                {
-                    Debug.WriteLine(e.Message);
+                    //catch (Exception e)
+                    //{
+                    //    Debug.WriteLine(e.Message);
+                    //}
                 }
-            }
             });
         }
       
@@ -261,20 +261,13 @@ namespace SocketSearch
         }
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
-            try
-            {
-                ProcessData();
-                SendATPCurve();                         //隔200ms发送数据
-                SendDMI();
-                SendZC();
-                SendDC();
-                timer.Start();
-            }
-            catch
-            {
 
-            }
-      
+            ProcessData();
+            SendATPCurve();                         //隔200ms发送数据
+            SendDMI();
+            SendZC();
+            SendDC();
+            timer.Start();
         }
 
         public void SendATPCurve()
@@ -391,27 +384,53 @@ namespace SocketSearch
             TopolotyNode curTopolotyNode = trainMessage.BaliseToIteam(curBalise, curID);
             int curleftType;
             int curleftID;
-            
-            foreach (var p in curTopolotyNode.Left)
+            if (!isLeftSearch)
             {
-                if (p.device.Name.Substring(0, 1) == "T" || p.device.Name.Substring(0, 1) == "Z")
+                foreach (var p in curTopolotyNode.Left)
                 {
-                    curleftType =1;
-                    curleftID = searchLater.BaliseToID(p.device.Name);
+                    if (p.device.Name.Substring(0, 1) == "T" || p.device.Name.Substring(0, 1) == "Z")
+                    {
+                        curleftType = 1;
+                        curleftID = searchLater.BaliseToID(p.device.Name);
+                    }
+                    else
+                    {
+                        curleftType = 2;
+                        curleftID = searchLater.BaliseToID((p.device as RailSwitch).section.Name);
+                    }
+
+                    if (curleftID == tailID && curleftType == tailSectionOrSwitch)
+                    {
+                        Socket_EB.Set_EB("超过MA终点");
+                        break;
+                    }
+
                 }
-                else
-                {
-                    curleftType = 2;
-                    curleftID = searchLater.BaliseToID((p.device as RailSwitch).section.Name);
-                }
-              
-                if (curleftID == tailID && curleftType == tailSectionOrSwitch)
-                {
-                    Socket_EB.Set_EB("超过MA终点");
-                    break;
-                }
-               
             }
+            else
+            {
+                foreach (var p in curTopolotyNode.Right)
+                {
+                    if (p.device.Name.Substring(0, 1) == "T" || p.device.Name.Substring(0, 1) == "Z")
+                    {
+                        curleftType = 1;
+                        curleftID = searchLater.BaliseToID(p.device.Name);
+                    }
+                    else
+                    {
+                        curleftType = 2;
+                        curleftID = searchLater.BaliseToID((p.device as RailSwitch).section.Name);
+                    }
+
+                    if (curleftID == tailID && curleftType == tailSectionOrSwitch)
+                    {
+                        Socket_EB.Set_EB("超过MA终点");
+                        break;
+                    }
+
+                }
+            }
+            
         }
         public void GetDistanceAndPrint(string curBalise)
         {
@@ -426,21 +445,23 @@ namespace SocketSearch
                 byte currentHeadID = (byte)searchLater.BaliseToID(curBalise);
                 if (currentHeadID == headID) //目前应答器给我的ID和ZC发的ID一致
                 {
-                    int[] value = searchLater.SearchDistance(isLeftSearch, tailSectionOrSwitch, tailID, Convert.ToInt32(MAEndOff), obstacleNum, curBalise, obstacleID, obstacleState);
-                    MAEndDistance = value[0];
-                    limSpeedNum = value[1];
-                    limSpeedDistance_1 = value[2];
-                    limSpeedLength_1 = value[3];
-                    limSpeedDistance_2 = value[4];
-                    limSpeedLength_2 = value[5];
-                    limSpeedDistance_3 = value[6];
-                    limSpeedLength_3 = value[7];
-                    limSpeedDistance_4 = value[8];
-                    limSpeedLength_4 = value[9];
-                    Console.WriteLine("MAEndDistance "+Convert.ToString(MAEndDistance)+" limSpeedNum "+Convert.ToString(limSpeedNum)+" limSpeedDistance_1 "+Convert.ToString(limSpeedDistance_1)+ 
-                                   " limSpeedLength_1 "+ Convert.ToString(limSpeedLength_1)+" limSpeedDistance_2 "+Convert.ToString(limSpeedDistance_2)+" limSpeedLength_2 "+ Convert.ToString(limSpeedLength_2)+
-                                   " limSpeedDistance_3 "+Convert.ToString(limSpeedDistance_3)+" limSpeedLength_3 "+ Convert.ToString(limSpeedLength_3)+" limSpeedDistance_4 "+ Convert.ToString(limSpeedDistance_4)+ " limSpeedLength_4 "+
-                                    Convert.ToString(limSpeedLength_4));
+                  
+                        int[] value = searchLater.SearchDistance(isLeftSearch, tailSectionOrSwitch, tailID, Convert.ToInt32(MAEndOff), obstacleNum, curBalise, obstacleID, obstacleState);
+                        MAEndDistance = value[0];
+                        limSpeedNum = value[1];
+                        limSpeedDistance_1 = value[2];
+                        limSpeedLength_1 = value[3];
+                        limSpeedDistance_2 = value[4];
+                        limSpeedLength_2 = value[5];
+                        limSpeedDistance_3 = value[6];
+                        limSpeedLength_3 = value[7];
+                        limSpeedDistance_4 = value[8];
+                        limSpeedLength_4 = value[9];
+                        Console.WriteLine("MAEndDistance " + Convert.ToString(MAEndDistance) + " limSpeedNum " + Convert.ToString(limSpeedNum) + " limSpeedDistance_1 " + Convert.ToString(limSpeedDistance_1) +
+                                       " limSpeedLength_1 " + Convert.ToString(limSpeedLength_1) + " limSpeedDistance_2 " + Convert.ToString(limSpeedDistance_2) + " limSpeedLength_2 " + Convert.ToString(limSpeedLength_2) +
+                                       " limSpeedDistance_3 " + Convert.ToString(limSpeedDistance_3) + " limSpeedLength_3 " + Convert.ToString(limSpeedLength_3) + " limSpeedDistance_4 " + Convert.ToString(limSpeedDistance_4) + " limSpeedLength_4 " +
+                                        Convert.ToString(limSpeedLength_4));
+
 
         }
     }
@@ -595,6 +616,9 @@ namespace SocketSearch
                 byte MAEndDir = reader.ReadByte();
                 obstacleNum = reader.ReadByte();
 
+                obstacleID = new string[obstacleNum];
+                obstacleState = new byte[obstacleNum];
+
                 if (obstacleNum != 0) //障碍物等于0和不等于0会发送不同的包
                 {
                     string State = "";
@@ -676,12 +700,37 @@ namespace SocketSearch
                 UInt16 DCCycle = reader.ReadUInt16();
                 UInt16 DCPackageType = reader.ReadUInt16();
                 UInt16 DCLength = reader.ReadUInt16();
-                DCTrainSpeed = reader.ReadInt16();  //解析出列车的实时速度
+                DCTrainSpeed = reader.ReadInt16(); //解析出列车的实时速度
+                if (Math.Abs(DCTrainSpeed) >= ProtectSpeed()) //超速就EB
+                {
+                    Socket_EB.isEB = true;
+                }
                 DCCtrlMode = reader.ReadUInt16();
                 DCHandlePos = reader.ReadUInt16();
                 UInt16 DCisKeyIn = reader.ReadUInt16();
             }
             
+
+        }
+
+        public int ProtectSpeed() //先这样粗略计算
+        {
+            if (curBalise != "")
+            {
+                if (curBalise.Substring(0, 1) == "W")
+                {
+                    return 40;
+                }
+                else
+                {
+                    return 70;
+                }
+            }
+            else
+            {
+                return 70;
+            }
+          
 
         }
 
