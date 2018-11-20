@@ -470,22 +470,46 @@ namespace SocketSearch
                 case 1:
                     returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
                     returnValue[1] = limSpeedNum;                                 //障碍物的数量也是传入得到
-                    returnValue[2] = obstacle_distance[0] + (int)startDistance;
-                    returnValue[3] = obstacle_length[0];
+                    if(curbalise.Substring(0,1)=="W" && curbalise != "")
+                    {
+                        returnValue[2] = 0;
+                        returnValue[3] = obstacle_length[0]+ (int)startDistance;
+                    }
+                    else
+                    {
+                        returnValue[2] = obstacle_distance[0] + (int)startDistance;
+                        returnValue[3] = obstacle_length[0];
+                    }               
                     break;
                 case 2:
                     returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
                     returnValue[1] = limSpeedNum;                                 //障碍物的数量也是传入得到
-                    returnValue[2] = obstacle_distance[0] + (int)startDistance;
-                    returnValue[3] = obstacle_length[0];
+                    if (curbalise.Substring(0, 1) == "W" && curbalise != "")
+                    {
+                        returnValue[2] = 0;
+                        returnValue[3] = obstacle_length[0] + (int)startDistance;
+                    }
+                    else
+                    {
+                        returnValue[2] = obstacle_distance[0] + (int)startDistance;
+                        returnValue[3] = obstacle_length[0];
+                    }
                     returnValue[4] = obstacle_distance[1] + (int)startDistance;
                     returnValue[5] = obstacle_length[1];
                     break;
                 case 3:
                     returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
                     returnValue[1] = limSpeedNum;                                 //障碍物的数量也是传入得到
-                    returnValue[2] = obstacle_distance[0] + (int)startDistance;
-                    returnValue[3] = obstacle_length[0];
+                    if (curbalise.Substring(0, 1) == "W" && curbalise != "")
+                    {
+                        returnValue[2] = 0;
+                        returnValue[3] = obstacle_length[0] + (int)startDistance;
+                    }
+                    else
+                    {
+                        returnValue[2] = obstacle_distance[0] + (int)startDistance;
+                        returnValue[3] = obstacle_length[0];
+                    }
                     returnValue[4] = obstacle_distance[1] + (int)startDistance;
                     returnValue[5] = obstacle_length[1];
                     returnValue[6] = obstacle_distance[2] + (int)startDistance;
@@ -494,8 +518,16 @@ namespace SocketSearch
                 case 4:
                     returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
                     returnValue[1] = limSpeedNum;                                  //障碍物的数量也是传入得到
-                    returnValue[2] = obstacle_distance[0] + (int)startDistance;   //障碍物的距离要加上最开始的distance，是从不算本区段的位置开始的，到障碍物结束的距离
-                    returnValue[3] = obstacle_length[0];
+                    if (curbalise.Substring(0, 1) == "W" && curbalise != "")
+                    {
+                        returnValue[2] = 0;
+                        returnValue[3] = obstacle_length[0] + (int)startDistance;
+                    }
+                    else
+                    {
+                        returnValue[2] = obstacle_distance[0] + (int)startDistance;
+                        returnValue[3] = obstacle_length[0];
+                    }
                     returnValue[4] = obstacle_distance[1] + (int)startDistance;
                     returnValue[5] = obstacle_length[1];
                     returnValue[6] = obstacle_distance[2] + (int)startDistance;

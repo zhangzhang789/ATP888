@@ -295,7 +295,7 @@ namespace TrainMessageEB
             string Key = curBalise.Substring(curBalise.IndexOf("_") + 1); //取最后一个数字
             if (isLeft)
             {
-                if (isLeftSearch == false)
+                if (isLeftSearch == false) //右寻
                 {
                     if (Key == "1")
                     {
@@ -326,7 +326,7 @@ namespace TrainMessageEB
                         distance_1 = 25 - offset;
                     }
                 }
-                else //右寻
+                else //左寻
                 {
                     if (Key == "1")
                     {
@@ -353,14 +353,14 @@ namespace TrainMessageEB
                     }
                     else if (Key == "3")
                     {
-                        offset = 5;
+                        offset = 20;
                         distance_1 = 25 - offset;
                     }
                 }
             }
             else  //方向偏右，有可能是4开道岔
             {
-                if (isLeftSearch == false)
+                if (isLeftSearch == false) //右寻
                 {
                     if (Key == "1")
                     {
@@ -379,21 +379,22 @@ namespace TrainMessageEB
                     }
   
                 }
-                else //右寻
+                else 
+                //左寻
                 {
                     if (Key == "1")
                     {
-                        offset = 20;
+                        offset = 5;
                         distance_1 = 25 - offset;
                     }
                     else if (Key == "2")
                     {
-                        offset = 20;
+                        offset = 5;
                         distance_1 = 25 - offset;
                     }
                     else if (Key == "0")
-                    {
-                        offset = 5;
+                     {
+                        offset = 20;
                         distance_1 = 25 - offset;
                     }
                 }

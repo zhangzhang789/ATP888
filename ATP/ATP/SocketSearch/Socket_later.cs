@@ -266,8 +266,14 @@ namespace SocketSearch
         }
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
+            try
+            {
+                ProcessData();
+            }
+            catch
+            {
 
-            ProcessData();
+            }
             SendATPCurve();                         //隔200ms发送数据
             SendDMI();
             SendZC();
