@@ -14,6 +14,7 @@ using System.Timers;
 using Package;
 using System.Diagnostics;
 using CbtcData;
+using ATP.SocketSearch;
 
 namespace SocketSearch
 {
@@ -95,6 +96,7 @@ namespace SocketSearch
         public UdpClient ATPToDMIClient;
         public UdpClient ATPToZCClient;
         public UdpClient ATPToDCClient;
+        public UdpClient ATPToFaultClient;
         public IPAddress ATPIP;
         public int ATPPort;
         public IPAddress ZCIP;
@@ -113,18 +115,28 @@ namespace SocketSearch
         public int ATPCurvePort;
         public IPAddress ATPATPCurveIP;
         public int ATPATPCurvePort;
+        public IPAddress FaultIP;
+        public int FaultPort;
+        public IPAddress ATPFaultIP;
+        public int ATPFaultPort;
         ATPCurvePackage atpCurvePackage=new ATPCurvePackage();
         ZCPackage zcPackage=new ZCPackage() { PackageType = 8, ReceiveID = 3, ZCID = 3 };
         DMIPackage dmiPackage=new DMIPackage() { PackageType = 3, ActulSpeed = 25, TrainNum = "" };
         DCPackage dcPackage=new DCPackage() { PackageType = 5 };
         public int trainID ;
         public int sendID;
+        public Int16 headFault;
+        public Byte zhangJieFault;
+        public Byte xiaoJieFault;
+        public string faultReason;
+        public int ZC_Count=0;
+        Comfort comfort = new Comfort();
 
         EB Socket_EB = new EB();
         TrainMessage trainMessage = new TrainMessage();
         SearchLater searchLater = new SearchLater();
         private Timer timer;
-
+        private Timer timer_receZC;
         public void SocketStart()
         {
             GetATPIPAndPort(); //得到绑定ATP的IP和Port
@@ -136,10 +148,13 @@ namespace SocketSearch
             ATPToZCClient.Connect(ZCIP, ZCPort);
             ATPToDCClient = new UdpClient(new IPEndPoint(ATPDCIP, ATPDCPort));
             ATPToDCClient.Connect(DCIP, DCPort);
+            ATPToFaultClient = new UdpClient(new IPEndPoint(ATPFaultIP, ATPFaultPort));
+            ATPToFaultClient.Connect(FaultIP, FaultPort);
             searchLater.GetHash();
             trainMessage.GetHash(); //trainMessage和searchLater.trainMessage是两个实例化的类
             StartReceData();  //一直接受数据
             SetupTimer();  //隔200ms计算一次MA终点
+            SetupTimer_ReceiveZC();
         }
 
         public void StartReceData()
@@ -150,6 +165,7 @@ namespace SocketSearch
             ATPToDMIClient.Client.IOControl((int)SIO_UDP_CONNRESET, new byte[] { Convert.ToByte(false) }, null);
             ATPToZCClient.Client.IOControl((int)SIO_UDP_CONNRESET, new byte[] { Convert.ToByte(false) }, null);
             ATPToDCClient.Client.IOControl((int)SIO_UDP_CONNRESET, new byte[] { Convert.ToByte(false) }, null);
+            ATPToFaultClient.Client.IOControl((int)SIO_UDP_CONNRESET, new byte[] { Convert.ToByte(false) }, null);
             Task.Run(() =>
             {
  
@@ -186,6 +202,8 @@ namespace SocketSearch
                     //}
                 }
             });
+
+
            
             Task.Run(() =>
             {
@@ -207,6 +225,25 @@ namespace SocketSearch
                         }
                     //}
 
+                    //catch (Exception e)
+                    //{
+                    //    Debug.WriteLine(e.Message);
+                    //}
+                }
+            });
+
+            Task.Run(() =>
+            {
+
+
+                IPEndPoint sender3 = new IPEndPoint(0, 0);
+                while (true)
+                {
+                    //try
+                    //{
+                    byte[] buf = ATPToFaultClient.Receive(ref sender3);
+                    Receive_Fault_Data(buf);
+                    //}
                     //catch (Exception e)
                     //{
                     //    Debug.WriteLine(e.Message);
@@ -256,6 +293,16 @@ namespace SocketSearch
                     trainID = item.trainID;
                     sendID = item.sendID;
                 }
+                else if (item.DeviceName == "Fault")
+                {
+                    FaultIP = item.IP;
+                    FaultPort = item.Port;
+                    ATPFaultIP = item.ATPIP;
+                    ATPFaultPort = item.ATPPort;
+                    trainID = item.trainID;
+                    sendID = item.sendID;
+                }
+
             }
         }
         private void SetupTimer()  //发包的方法
@@ -264,6 +311,14 @@ namespace SocketSearch
             timer.Elapsed += TimerElapsed;
             timer.AutoReset = false;
             timer.Start();
+        }
+
+        private void SetupTimer_ReceiveZC()  //发包的方法
+        {
+            timer_receZC = new Timer(3000);
+            timer_receZC.Elapsed += IsSendZC;
+            timer_receZC.AutoReset = false;
+            timer_receZC.Start();
         }
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
@@ -279,6 +334,7 @@ namespace SocketSearch
             SendDMI();
             SendZC();
             SendDC();
+            calATOATP();                            //计算舒适度
             timer.Start();
         }
 
@@ -294,10 +350,62 @@ namespace SocketSearch
             atpCurvePackage.limSpeedLength_3 = limSpeedLength_3;
             atpCurvePackage.limSpeedDistance_4 = limSpeedDistance_4;
             atpCurvePackage.limSpeedLength_4 = limSpeedLength_4;
+            if (isInFault == true && Socket_EB.isEB == false) //收到后并且不EB了说明不处于故障了
+            {
+                isInFault = false;
+            }
+            if (isInFault == true)
+            {
+                atpCurvePackage.faultPostion = "故障章节 ：" + Convert.ToString(zhangJieFault) + "\r\n" + "故障小节：" + Convert.ToString(xiaoJieFault) + "\r\n" + "故障原因：" + Convert.ToString(faultReason);
+            }
+            else
+            {
+                atpCurvePackage.faultPostion = "";                
+            }
+
+            if (faultRecover == true)
+            {
+                atpCurvePackage.faultReason = "";
+            }
+            else if (speedFault == true)
+            {
+                atpCurvePackage.faultReason = "速度传感器故障，请切入EUM模式回库";
+            }
+
+            else if (zhangJieFault == 0 && xiaoJieFault == 1)
+            {
+                atpCurvePackage.faultReason = "DMI故障，请切入EUM模式回库";
+            }
+
+            else if (zhangJieFault == 0 && xiaoJieFault == 2)
+            {
+                atpCurvePackage.faultReason = "ATP主机故障，请切入EUM模式回库";
+            }
+
+            else if (zhangJieFault == 0 && xiaoJieFault == 4)
+            {
+                atpCurvePackage.faultReason = "应答器主机故障，请切入RM模式回库";
+            }
+
+            else if (zhangJieFault == 0 && xiaoJieFault == 5)
+            {
+                atpCurvePackage.faultReason = "雷达传感器故障，请切入EUM模式回库";
+            }
+
+            else if (zhangJieFault == 0 && xiaoJieFault == 6)
+            {
+                atpCurvePackage.faultReason = "ATP主机故障，请切入EUM模式回库";
+            }
+
+            else if (zhangJieFault == 0 && xiaoJieFault == 7)
+            {
+                atpCurvePackage.faultReason = "ATP主机故障，请切入EUM模式回库";
+            }
             byte[] ATPCurveSendData = atpCurvePackage.ATPCurvePackStream();
             ATPToATPCurveClient.Send(ATPCurveSendData, 1024);
         }
-        public void SendDMI()
+
+        public void SendDMI()    //发送DMI消息
         {
             dmiPackage.TrainID = 65536;
             dmiPackage.TrainNum = "T0" + Convert.ToString(trainID);
@@ -306,17 +414,74 @@ namespace SocketSearch
             dmiPackage.ActulSpeed = (UInt16)Math.Abs(DCTrainSpeed);
             dmiPackage.BreakOut = 7;
             dmiPackage.Alarm = 1;
-            dmiPackage.HighSpeed = (ushort)ProtectSpeed();    //目前得不到速度信息
-            dmiPackage.PermitSpeed = (ushort)(ProtectSpeed()-5);
-            dmiPackage.FrontPermSpeed = (ushort)(ProtectSpeed() - 5);
-            dmiPackage.TargetLoca =(UInt16)MAEndDistance;
+            if (Socket_EB.isEB == false)
+            {
+                dmiPackage.HighSpeed = (ushort)ProtectSpeed(MAEndDistance,limSpeedNum,limSpeedDistance_1);    //目前得不到速度信息
+                dmiPackage.PermitSpeed = (ushort)(ProtectSpeed(MAEndDistance, limSpeedNum, limSpeedDistance_1) - 5);
+                dmiPackage.FrontPermSpeed = (ushort)(ProtectSpeed(MAEndDistance, limSpeedNum, limSpeedDistance_1) - 2);
+                dmiPackage.TargetLoca = (UInt16)MAEndDistance;
+            }
+            else
+            {
+                dmiPackage.HighSpeed = 0;    //目前得不到速度信息
+                dmiPackage.PermitSpeed = 0;
+                dmiPackage.FrontPermSpeed = 0;
+                dmiPackage.TargetLoca = 0;
+            }
+         
             if (Socket_EB.isEB == true)
             {
                 dmiPackage.BreakOut = 6;
                 dmiPackage.Alarm = 1;
             }
 
+            if (DMIShow == false) //DMI不显示的时候是发1
+            {
+                dmiPackage.Dmishow = 1;
+            }
+            else
+            {
+                dmiPackage.Dmishow = 2;
+            }
 
+            if (curBalise != "")
+            {
+                if (curBalise.Substring(0, 3) == "ZHG")
+                {
+                    dmiPackage.IsNoZHG = 0;
+                }
+                else
+                {
+                    dmiPackage.IsNoZHG = 1;
+                }
+            }
+            if (isRealeaseEB == false)  //等于1的时候不能缓解
+            {
+                dmiPackage.IsRealeaseEB = 1;
+            }
+            else
+            {
+                dmiPackage.IsRealeaseEB = 2;
+            }
+
+            if (isSendZCBool == true)
+            {
+                dmiPackage.IsCBTC = 0;
+            }
+            else
+            {
+                dmiPackage.IsCBTC = 1;
+            }
+
+            dmiPackage.FaultType = 1;
+            if (isInFault == true)
+            {
+                dmiPackage.FaultType = 2;
+            }
+            else if (isSendZCBool == false)
+            {
+                dmiPackage.FaultType = 3;
+            }
 
 
             byte[] DMISendData = dmiPackage.DMIPackStream();
@@ -470,7 +635,7 @@ namespace SocketSearch
                         limSpeedDistance_4 = value[8];
                         limSpeedLength_4 = value[9];
                         isCalMA = true;
-                    if (Math.Abs(DCTrainSpeed) >= ProtectSpeed()) //超速就EB Math.Abs(DCTrainSpeed) >= ProtectSpeed()
+                    if (Math.Abs(DCTrainSpeed) >= ProtectSpeed(MAEndDistance, limSpeedNum, limSpeedDistance_1)) //超速就EB Math.Abs(DCTrainSpeed) >= ProtectSpeed()
                     {
                         Socket_EB.Set_EB("超过防护速度");
                     }
@@ -603,10 +768,26 @@ namespace SocketSearch
             }
             ModelIsRecvZC(curModel); //判断是否接收消息
         }
+
+        public bool isSendZCBool=true;
+        private void IsSendZC(object sender, ElapsedEventArgs e)
+        {
+            if (ZC_Count == 0)
+            {
+                isSendZCBool = false;
+            }
+            else
+            {
+                isSendZCBool = true;
+            }
+            ZC_Count = 0;
+            timer_receZC.Start();
+        }
         public void Receive_ZC_Data(byte[] ZCData)
         {
             using (MemoryStream receStreamZC = new MemoryStream(ZCData))
             {
+                ZC_Count += 1;
                 BinaryReader reader = new BinaryReader(receStreamZC);
                 UInt16 ZCCycle = reader.ReadUInt16();
                 UInt16 ZCPackageType = reader.ReadUInt16();
@@ -708,7 +889,8 @@ namespace SocketSearch
                 }
             }
         }
-
+        public List<double> DCTrainSpeedList = new List<double>();  //存储列车的实时速度
+        public List<DateTime> DCTrainSpeedTimeList = new List<DateTime>();//存储列车得到速度的时间
         public void Receive_DC_Data(byte[] DCData) //司控器传来消息
         {
             using (MemoryStream receStreamDC = new MemoryStream(DCData))
@@ -723,16 +905,59 @@ namespace SocketSearch
                        Socket_EB.Set_EB("超过防护速度");
                 }            
                 DCCtrlMode = reader.ReadUInt16();
+                if (DCCtrlMode == 1) //计算舒适度
+                {
+                    DateTime dt = DateTime.Now;
+                    DCTrainSpeedList.Add(DCTrainSpeed);
+                    DCTrainSpeedTimeList.Add(dt);
+                }
                 DCHandlePos = reader.ReadUInt16();
                 UInt16 DCisKeyIn = reader.ReadUInt16();
             }
             
-
         }
 
-        public int ProtectSpeed() //先这样粗略计算
-        {
 
+
+        public void calATOATP()
+        {
+            if (DCTrainSpeedList.Count >= 6)   //计算手动的舒适度
+            {
+                double v = DCTrainSpeedList[DCTrainSpeedList.Count - 1];
+                double prev = DCTrainSpeedList[DCTrainSpeedList.Count - 3];
+                double v1 = DCTrainSpeedList[DCTrainSpeedList.Count - 4];
+                double v2 = DCTrainSpeedList[DCTrainSpeedList.Count - 6];
+                DateTime t = DCTrainSpeedTimeList[DCTrainSpeedTimeList.Count - 1];
+                DateTime pret = DCTrainSpeedTimeList[DCTrainSpeedTimeList.Count - 3];
+                DateTime t1 = DCTrainSpeedTimeList[DCTrainSpeedTimeList.Count - 4];
+                DateTime t2 = DCTrainSpeedTimeList[DCTrainSpeedTimeList.Count - 6];
+                double a = (v - prev) / (t - pret).TotalSeconds;
+                double prea = (v1 - v2) / (t1 - t2).TotalSeconds;
+                comfort.CalculateEDa(v, prev, a, prea);
+                atpCurvePackage.totalEnergy = (Int32)comfort.totalEnergy;
+                if (DCTrainSpeed != 0)
+                {
+                    atpCurvePackage.Comfort = (int)comfort.da; //不等于0的时候才计算舒适度
+                }
+                else
+                {
+                    atpCurvePackage.Comfort = 0;
+                }
+                DCTrainSpeedList.Clear();
+            }
+        }
+
+        int Distance70_40= (int)((70 / 3.6 * 70 / 3.6 - 40 / 3.6 * 40 / 3.6) / (2 * 1.2)); //106
+        int Distance70_0 = (int)(70 / 3.6 * 80 / 3.6 / (2 * 1.2)); //除以3.6的以m/s为单位,108
+
+        public bool isFirstCalSpeed = true;
+        public UInt16 ProtectSpeed(int MAEndDistance,int limSpeedNum,int limSpeedDistance_1) //先这样粗略计算
+        {
+            if (now_limSpeedNum > 0)
+            {
+
+            }
+            int now_limSpeedNum = limSpeedNum;
             if (curBalise == "")
             {
                 return 100;
@@ -745,42 +970,121 @@ namespace SocketSearch
                 }
                 else             
                 {
-                    if (curBalise.Substring(0, 1) == "W")
+                    switch (limSpeedNum)
                     {
-                        if (isCalMA == false)
-                        {
-                            return 40;
-                        }
-                        else if((UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance) > 40)
-                        {
-                            return 40;
-                        }
-                        else
-                        {
-                            return (UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance);
-                        }
+                        case 0:    //只能是一直在去段上
+                           
+                                if (isCalMA == false)
+                                {
+                                    return 40; //和转换轨的40一样
+                                }
+                                else if (MAEndDistance > Distance70_0)
+                                {
+                                    return 70;
+                                }
+                                else
+                                {
+                                    return (UInt16)(Math.Sqrt(2 * 1.2 * MAEndDistance) * 3.6);
+                                }                        
+                                
+                       default:
+                            if (curBalise.Substring(0, 1) == "W")
+                            {
+                                return 40;
+                            }
+                            else if (limSpeedDistance_1> Distance70_40)
+                            {
+                                return 70;
+                            }                          
+                             else
+                            {
+                                return (UInt16)(Math.Sqrt(2 * 1.2 * limSpeedDistance_1 + Math.Pow(40 / 3.6,2)) * 3.6);
+                            }
                     }
-                    else
-                    {
-                        if (isCalMA == false)
-                        {
-                            return 40;
-                        }
-                        else if ((UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance) > 70)
-                        {
-                            return 70;
-                        }
-                        else
-                        {
-                            return (UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance);
-                        }
-                    }
-
                 }
+
+                //if (curBalise.Substring(0, 1) == "W")
+                //    {
+                //        if (isCalMA == false)
+                //        {
+                //            return 40;
+                //        }
+                //        else if((UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance)*3.6 > 40)
+                //        {
+                //            return 40;
+                //        }
+                //        else
+                //        {
+                //            return (UInt16)(Math.Sqrt(2 * 1.2 * MAEndDistance) * 3.6);
+                //        }
+                //    }
+                //    else
+                //    {
+
+                //        if (isCalMA == false)
+                //        {
+                //            return 40;
+                //        }
+                //        else if ((UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance) * 3.6 > 70)
+                //        {
+                //            return 70;
+                //        }
+                //        else
+                //        {
+                //            return (UInt16)(Math.Sqrt(2 * 1.2 * MAEndDistance) * 3.6);
+                //        }
+                //    }
+
+                //}
             }
 
         }
+        public bool DCConvertTypeBool=false;//初始化
+        public bool speedFault=false;
+        public bool DMIShow=true;
+        public bool isRealeaseEB=true;
+        public bool faultRecover=true;
+        public bool isInFault = false;
 
+        public void Receive_Fault_Data(byte[] FaultData) //应答器传来消息
+        {
+            using (MemoryStream receFaultBalise = new MemoryStream(FaultData))
+            {
+                BinaryReader reader = new BinaryReader(receFaultBalise);
+                headFault = reader.ReadInt16();
+                zhangJieFault = reader.ReadByte();
+                xiaoJieFault = reader.ReadByte();
+                faultReason = reader.ReadString();
+                if (headFault == 23000)   //改变包头进行故障恢复
+                {
+                    DCConvertTypeBool = false;
+                    speedFault = false;
+                    DMIShow = true;
+                    isRealeaseEB = true;
+                    faultRecover = true;
+                }
+                else if (headFault == 23205)  //下发故障
+                {
+                    faultRecover = false;
+                    if (zhangJieFault == 0 && xiaoJieFault == 0) //速度传感器故障
+                    {
+                        speedFault = true;
+                    }
+                    if (zhangJieFault == 0 && xiaoJieFault == 1)
+                    {
+                        DMIShow = false;
+                    }
+                    if (zhangJieFault == 0 && xiaoJieFault == 7)  //EB后不能缓解
+                    {
+                        isRealeaseEB = false;
+                    }
+                    Socket_EB.Set_EB("下发故障");
+                    isInFault = true;
+                }
+
+            }
+
+        }
         public void Receive_Balise_Data(byte[] BaliseData) //应答器传来消息
         {
             using (MemoryStream receStreamBalise = new MemoryStream(BaliseData))

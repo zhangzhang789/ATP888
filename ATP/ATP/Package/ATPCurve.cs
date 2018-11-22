@@ -37,6 +37,17 @@ namespace Package
         int limSpeedLength_4_;
         public int limSpeedLength_4 { set { limSpeedLength_4_ = value; } }
 
+        string faultPostion_;  //故障位置
+        public string faultPostion { set { faultPostion_ = value; } }
+
+        string faultReason_;   //故障原因
+        public string faultReason { set { faultReason_ = value; } }
+
+        int totalEnergy_;   //总能耗
+        public int totalEnergy { set { totalEnergy_ = value; } }
+
+        int Comfort_;   //不适度
+        public int Comfort { set { Comfort_ = value; } }
 
 
 
@@ -55,6 +66,10 @@ namespace Package
             ATPCurvPackageStream.Write(limSpeedLength_3_);
             ATPCurvPackageStream.Write(limSpeedDistance_4_);
             ATPCurvPackageStream.Write(limSpeedLength_4_);
+            ATPCurvPackageStream.Write(faultPostion_);
+            ATPCurvPackageStream.Write(faultReason_);
+            ATPCurvPackageStream.Write(totalEnergy_);
+            ATPCurvPackageStream.Write(Comfort_);
             return ATPCurveSendData;
         }
     }

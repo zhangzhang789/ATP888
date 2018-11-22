@@ -302,7 +302,7 @@ namespace SocketSearch
                         }
                     }
 
-                    if (NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0, 1) != "W") //防止W0106
+                    if ((NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0, 1) != "W") || (NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0, 5) == MAEndLink)) //防止W0106
                     {
                         result_obstacle_distance[obstacle_index_private] = MAEndDistance; //到终点的距离
                         obstacle_count += 1; //只有这样障碍物的数量才加1
@@ -311,7 +311,8 @@ namespace SocketSearch
                     {
                         NowSearchBalise = NextSearchBalise;
                     }
-                    if (NowSearchBalise.Substring(0, 1) == "W")
+
+                    if (NowSearchBalise.Substring(0, 1) == "W" && NowSearchBalise.Substring(0, 5) != MAEndLink)
                     {
                         obstacle_length_private += 25;
                         isFirstNoSame = true;
