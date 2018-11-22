@@ -303,7 +303,7 @@ namespace SocketSearch
             dmiPackage.TrainNum = "T0" + Convert.ToString(trainID);
             dmiPackage.HighModel = 1;
             dmiPackage.CurModel = (byte)DCCtrlMode;
-            dmiPackage.ActulSpeed = (UInt16)DCTrainSpeed;
+            dmiPackage.ActulSpeed = (UInt16)Math.Abs(DCTrainSpeed);
             dmiPackage.BreakOut = 7;
             dmiPackage.Alarm = 1;
             dmiPackage.HighSpeed = (ushort)ProtectSpeed();    //目前得不到速度信息
