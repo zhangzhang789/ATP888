@@ -190,7 +190,7 @@ namespace SocketSearch
                         }
                     }
 
-                    if (NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0,1)!="W") //防止W0106
+                    if ((NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0,1)!="W")||(NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0, 5) == MAEndLink)) //防止W0106
                     {
                         result_obstacle_distance[obstacle_index_private] = MAEndDistance; //到终点的距离
                         obstacle_count += 1; //只有这样障碍物的数量才加1
@@ -198,8 +198,9 @@ namespace SocketSearch
                     if(NowSearchBalise!= MAEndLink)
                     {
                         NowSearchBalise = NextSearchBalise;
-                    }                   
-                    if (NowSearchBalise.Substring(0,1)=="W")
+                    }
+
+                    if (NowSearchBalise.Substring(0,1)=="W" && NowSearchBalise.Substring(0,5)!=MAEndLink)
                     {
                         obstacle_length_private += 25;
                         isFirstNoSame = true;
@@ -475,6 +476,11 @@ namespace SocketSearch
                         returnValue[2] = 0;
                         returnValue[3] = obstacle_length[0]+ (int)startDistance;
                     }
+                    else if (MAEndLink.Substring(0, 1) == "W")
+                    {
+                        returnValue[2] = obstacle_distance[0] + (int)startDistance;
+                        returnValue[3] = obstacle_length[0]+MAEndOff;
+                    }
                     else
                     {
                         returnValue[2] = obstacle_distance[0] + (int)startDistance;
@@ -494,8 +500,17 @@ namespace SocketSearch
                         returnValue[2] = obstacle_distance[0] + (int)startDistance;
                         returnValue[3] = obstacle_length[0];
                     }
-                    returnValue[4] = obstacle_distance[1] + (int)startDistance;
-                    returnValue[5] = obstacle_length[1];
+                    if (MAEndLink.Substring(0, 1) == "W")
+                    {
+                        returnValue[4] = obstacle_distance[1] + (int)startDistance;
+                        returnValue[5] = obstacle_length[1] + MAEndOff;
+                    }
+                    else
+                    {
+                        returnValue[4] = obstacle_distance[1] + (int)startDistance;
+                        returnValue[5] = obstacle_length[1];
+                    }
+                   
                     break;
                 case 3:
                     returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
@@ -512,8 +527,17 @@ namespace SocketSearch
                     }
                     returnValue[4] = obstacle_distance[1] + (int)startDistance;
                     returnValue[5] = obstacle_length[1];
-                    returnValue[6] = obstacle_distance[2] + (int)startDistance;
-                    returnValue[7] = obstacle_length[2];
+                    if (MAEndLink.Substring(0, 1) == "W")
+                    {
+                        returnValue[6] = obstacle_distance[2] + (int)startDistance;
+                        returnValue[7] = obstacle_length[2]+MAEndOff;
+                    }
+                    else
+                    {
+                        returnValue[6] = obstacle_distance[2] + (int)startDistance;
+                        returnValue[7] = obstacle_length[2];
+                    }
+                
                     break;
                 case 4:
                     returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
@@ -532,8 +556,17 @@ namespace SocketSearch
                     returnValue[5] = obstacle_length[1];
                     returnValue[6] = obstacle_distance[2] + (int)startDistance;
                     returnValue[7] = obstacle_length[2];
-                    returnValue[8] = obstacle_distance[3] + (int)startDistance;
-                    returnValue[9] = obstacle_length[3];
+                    if (MAEndLink.Substring(0, 1) == "W")
+                    {
+                        returnValue[8] = obstacle_distance[3] + (int)startDistance;
+                        returnValue[9] = obstacle_length[3]+MAEndOff;
+                    }
+                    else
+                    {
+                        returnValue[8] = obstacle_distance[3] + (int)startDistance;
+                        returnValue[9] = obstacle_length[3];
+                    }
+                  
                     break;
                 default:
                     break;

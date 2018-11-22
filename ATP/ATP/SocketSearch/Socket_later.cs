@@ -470,7 +470,7 @@ namespace SocketSearch
                         limSpeedDistance_4 = value[8];
                         limSpeedLength_4 = value[9];
                         isCalMA = true;
-                    if (Math.Abs(DCTrainSpeed) >= ProtectSpeed()) //超速就EB
+                    if (false) //超速就EB Math.Abs(DCTrainSpeed) >= ProtectSpeed()
                     {
                         Socket_EB.Set_EB("超过防护速度");
                     }
