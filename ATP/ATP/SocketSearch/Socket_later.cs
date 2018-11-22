@@ -42,7 +42,8 @@ namespace SocketSearch
     {
         
         public Socket ZCsocket;
-        public bool isRecvZC;
+        public bool isRecvZC=false;
+        public bool isCalMA = false;
         public bool isBaliseFirst=false;//是否最开始不起模的应答器
         public bool isLeftSearch = false;
         public byte curModel = 3; //目前的控车模式
@@ -305,10 +306,10 @@ namespace SocketSearch
             dmiPackage.ActulSpeed = (UInt16)DCTrainSpeed;
             dmiPackage.BreakOut = 7;
             dmiPackage.Alarm = 1;
-            dmiPackage.HighSpeed = 100;    //目前得不到速度信息
-            dmiPackage.PermitSpeed = 95;
-            dmiPackage.FrontPermSpeed = 95;
-            dmiPackage.TargetLoca = (UInt16)MAEndDistance;
+            dmiPackage.HighSpeed = (ushort)ProtectSpeed();    //目前得不到速度信息
+            dmiPackage.PermitSpeed = (ushort)(ProtectSpeed()-5);
+            dmiPackage.FrontPermSpeed = (ushort)(ProtectSpeed() - 5);
+            dmiPackage.TargetLoca =(UInt16)MAEndDistance;
             if (Socket_EB.isEB == true)
             {
                 dmiPackage.BreakOut = 6;
@@ -468,7 +469,12 @@ namespace SocketSearch
                         limSpeedLength_3 = value[7];
                         limSpeedDistance_4 = value[8];
                         limSpeedLength_4 = value[9];
-                        Console.WriteLine("MAEndDistance " + Convert.ToString(MAEndDistance) + " limSpeedNum " + Convert.ToString(limSpeedNum) + " limSpeedDistance_1 " + Convert.ToString(limSpeedDistance_1) +
+                        isCalMA = true;
+                    if (Math.Abs(DCTrainSpeed) >= ProtectSpeed()) //超速就EB
+                    {
+                        Socket_EB.Set_EB("超过防护速度");
+                    }
+                    Console.WriteLine("MAEndDistance " + Convert.ToString(MAEndDistance) + " limSpeedNum " + Convert.ToString(limSpeedNum) + " limSpeedDistance_1 " + Convert.ToString(limSpeedDistance_1) +
                                        " limSpeedLength_1 " + Convert.ToString(limSpeedLength_1) + " limSpeedDistance_2 " + Convert.ToString(limSpeedDistance_2) + " limSpeedLength_2 " + Convert.ToString(limSpeedLength_2) +
                                        " limSpeedDistance_3 " + Convert.ToString(limSpeedDistance_3) + " limSpeedLength_3 " + Convert.ToString(limSpeedLength_3) + " limSpeedDistance_4 " + Convert.ToString(limSpeedDistance_4) + " limSpeedLength_4 " +
                                         Convert.ToString(limSpeedLength_4));
@@ -711,11 +717,11 @@ namespace SocketSearch
                 UInt16 DCCycle = reader.ReadUInt16();
                 UInt16 DCPackageType = reader.ReadUInt16();
                 UInt16 DCLength = reader.ReadUInt16();
-                DCTrainSpeed = reader.ReadInt16(); //解析出列车的实时速度
-                if (Math.Abs(DCTrainSpeed) >= ProtectSpeed()) //超速就EB
+                DCTrainSpeed = reader.ReadInt16(); //解析出列车的实时速度               
+                if (isRecvZC==false && DCTrainSpeed>40) //超速就EB
                 {
-                    Socket_EB.Set_EB("超过防护速度");
-                }
+                       Socket_EB.Set_EB("超过防护速度");
+                }            
                 DCCtrlMode = reader.ReadUInt16();
                 DCHandlePos = reader.ReadUInt16();
                 UInt16 DCisKeyIn = reader.ReadUInt16();
@@ -727,22 +733,51 @@ namespace SocketSearch
         public int ProtectSpeed() //先这样粗略计算
         {
 
-            if (curBalise != "")
+            if (curBalise == "")
             {
-                if (curBalise.Substring(0, 1) == "W")
-                {
-                    return (UInt16)Speed.baliseSpeed;
-                }
-                else
-                {
-                    return (UInt16)Speed.quduanSpeed;
-                }
+                return 100;
             }
             else
             {
-                return (UInt16)Speed.quduanSpeed;
+                if (curBalise.Substring(0, 1) == "Z")
+                {
+                    return 40;
+                }
+                else             
+                {
+                    if (curBalise.Substring(0, 1) == "W")
+                    {
+                        if (isCalMA == false)
+                        {
+                            return 40;
+                        }
+                        else if((UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance) > 40)
+                        {
+                            return 40;
+                        }
+                        else
+                        {
+                            return (UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance);
+                        }
+                    }
+                    else
+                    {
+                        if (isCalMA == false)
+                        {
+                            return 40;
+                        }
+                        else if ((UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance) > 70)
+                        {
+                            return 70;
+                        }
+                        else
+                        {
+                            return (UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance);
+                        }
+                    }
+
+                }
             }
-          
 
         }
 
