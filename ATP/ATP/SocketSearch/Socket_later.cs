@@ -172,16 +172,16 @@ namespace SocketSearch
                 IPEndPoint sender = new IPEndPoint(0, 0);
                 while (true)
                 {
-                    //try
-                    //{
+                    try
+                    {
                         byte[] buf = ATPToDMIClient.Receive(ref sender);
                         Receive_DMI_Data(buf);
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    Debug.WriteLine(e.Message);
-                    //}
                 }
+                    catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            }
             });
            
             Task.Run(() =>
@@ -191,16 +191,16 @@ namespace SocketSearch
                 IPEndPoint sender1 = new IPEndPoint(0, 0);
                 while (true)
                 {
-                    //try
-                    //{
+                    try
+                    {
                         byte[] buf = ATPToZCClient.Receive(ref sender1);
                         Receive_ZC_Data(buf);
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    Debug.WriteLine(e.Message);
-                    //}
                 }
+                    catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            }
             });
 
 
@@ -212,8 +212,8 @@ namespace SocketSearch
                 IPEndPoint sender2 = new IPEndPoint(0, 0);
                 while (true)
                 {
-                    //try
-                    //{
+                    try
+                    {
                         byte[] buf = ATPToDCClient.Receive(ref sender2); //测完
                         if (buf[2] == 6)
                         {
@@ -223,13 +223,13 @@ namespace SocketSearch
                         {
                             Receive_Balise_Data(buf); //应答器也是由司控器的端口传来的
                         }
-                    //}
-
-                    //catch (Exception e)
-                    //{
-                    //    Debug.WriteLine(e.Message);
-                    //}
                 }
+
+                    catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            }
             });
 
             Task.Run(() =>
@@ -239,16 +239,16 @@ namespace SocketSearch
                 IPEndPoint sender3 = new IPEndPoint(0, 0);
                 while (true)
                 {
-                    //try
-                    //{
-                    byte[] buf = ATPToFaultClient.Receive(ref sender3);
+                    try
+                    {
+                        byte[] buf = ATPToFaultClient.Receive(ref sender3);
                     Receive_Fault_Data(buf);
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    Debug.WriteLine(e.Message);
-                    //}
                 }
+                    catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message);
+                }
+            }
             });
         }
       
@@ -329,7 +329,8 @@ namespace SocketSearch
             catch
             {
 
-            }
+            }   
+           
             SendATPCurve();                         //隔200ms发送数据
             SendDMI();
             SendZC();
@@ -948,32 +949,75 @@ namespace SocketSearch
         }
 
         int Distance70_40= (int)((70 / 3.6 * 70 / 3.6 - 40 / 3.6 * 40 / 3.6) / (2 * 1.2)); //106
-        int Distance70_0 = (int)(70 / 3.6 * 80 / 3.6 / (2 * 1.2)); //除以3.6的以m/s为单位,108
+        int Distance70_0 = (int)(70 / 3.6 * 80 / 3.6 / (2 * 1.2)); //除以3.6的以m/s为单位,180
 
         public bool isFirstCalSpeed = true;
+        public int nextLimNum = 65535;
+        public bool isConvertLimNum = false;
+        public int ConvertDistance = 0;
+        public bool isFirstR=true;
         public UInt16 ProtectSpeed(int MAEndDistance,int limSpeedNum,int limSpeedDistance_1) //先这样粗略计算
         {
-            if (now_limSpeedNum > 0)
+            if (curBalise != ""&& curBalise.Substring(0,1)=="T")
             {
-
+                if (nextLimNum != limSpeedNum && isRecvZC == true && trainMessage.LeftNextCurBaliseList(curBalise)[0].device.Name.Substring(0, 1) != "Z" && isFirstR==true)
+                {
+                    isConvertLimNum = true;
+                    ConvertDistance = MAEndDistance;
+                    isFirstR = false;
+                }
             }
-            int now_limSpeedNum = limSpeedNum;
-            if (curBalise == "")
+            else if(curBalise != "")
             {
-                return 100;
+                if (nextLimNum != limSpeedNum && isRecvZC == true && isFirstR == true)
+                {
+                    isConvertLimNum = true;
+                    ConvertDistance = MAEndDistance;
+                    isFirstR = false;
+                }
             }
-            else
+            
+            if (ConvertDistance-MAEndDistance<= Distance70_40 && isConvertLimNum==true)
             {
-                if (curBalise.Substring(0, 1) == "Z")
+                if (curBalise.Substring(0, 1) == "W")
                 {
                     return 40;
                 }
-                else             
+                else
                 {
-                    switch (limSpeedNum)
+                    if(ConvertDistance - MAEndDistance < 0)
                     {
-                        case 0:    //只能是一直在去段上
-                           
+                        ConvertDistance = MAEndDistance;
+                        return (UInt16)(Math.Sqrt(2 * 1.2 * (ConvertDistance - MAEndDistance) + Math.Pow(40 / 3.6, 2)) * 3.6);
+                    }
+                    if(MAEndDistance<= Distance70_0)
+                    {
+                        return (UInt16)(Math.Sqrt(2 * 1.2 *  MAEndDistance)*3.6);
+                    }
+                    return (UInt16)(Math.Sqrt(2 * 1.2 * (ConvertDistance - MAEndDistance) + Math.Pow(40 / 3.6, 2)) * 3.6);
+                }              
+            }
+            else
+            {
+                isConvertLimNum = false;
+                nextLimNum = limSpeedNum;
+                isFirstR = true;
+                if (curBalise == "")
+                {
+                    return 100;
+                }
+                else
+                {
+                    if (curBalise.Substring(0, 1) == "Z")
+                    {
+                        return 40;
+                    }
+                    else
+                    {
+                        switch (limSpeedNum)
+                        {
+                            case 0:    //只能是一直在去段上
+
                                 if (isCalMA == false)
                                 {
                                     return 40; //和转换轨的40一样
@@ -985,57 +1029,25 @@ namespace SocketSearch
                                 else
                                 {
                                     return (UInt16)(Math.Sqrt(2 * 1.2 * MAEndDistance) * 3.6);
-                                }                        
-                                
-                       default:
-                            if (curBalise.Substring(0, 1) == "W")
-                            {
-                                return 40;
-                            }
-                            else if (limSpeedDistance_1> Distance70_40)
-                            {
-                                return 70;
-                            }                          
-                             else
-                            {
-                                return (UInt16)(Math.Sqrt(2 * 1.2 * limSpeedDistance_1 + Math.Pow(40 / 3.6,2)) * 3.6);
-                            }
+                                }
+
+                            default:
+                                if (curBalise.Substring(0, 1) == "W")
+                                {
+                                    return 40;
+                                }
+                                else if (limSpeedDistance_1 > Distance70_40)
+                                {
+                                    return 70;
+                                }
+                                else
+                                {
+                                    return (UInt16)(Math.Sqrt(2 * 1.2 * limSpeedDistance_1 + Math.Pow(40 / 3.6, 2)) * 3.6);
+                                }
+                        }
                     }
                 }
 
-                //if (curBalise.Substring(0, 1) == "W")
-                //    {
-                //        if (isCalMA == false)
-                //        {
-                //            return 40;
-                //        }
-                //        else if((UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance)*3.6 > 40)
-                //        {
-                //            return 40;
-                //        }
-                //        else
-                //        {
-                //            return (UInt16)(Math.Sqrt(2 * 1.2 * MAEndDistance) * 3.6);
-                //        }
-                //    }
-                //    else
-                //    {
-
-                //        if (isCalMA == false)
-                //        {
-                //            return 40;
-                //        }
-                //        else if ((UInt16)Math.Sqrt(2 * 1.2 * MAEndDistance) * 3.6 > 70)
-                //        {
-                //            return 70;
-                //        }
-                //        else
-                //        {
-                //            return (UInt16)(Math.Sqrt(2 * 1.2 * MAEndDistance) * 3.6);
-                //        }
-                //    }
-
-                //}
             }
 
         }

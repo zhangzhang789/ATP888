@@ -190,7 +190,7 @@ namespace SocketSearch
                         }
                     }
 
-                    if ((NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0,1)!="W")||(NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0, 5) == MAEndLink)) //防止W0106
+                    if ((NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0,1)!="W")||(NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0, 5) == MAEndLink)|| (NowSearchBalise.Substring(0, 1) == "T" && NextSearchBalise.Substring(0, 5) == MAEndLink && MAEndLink.Substring(0,1)=="W")) //防止W0106
                     {
                         result_obstacle_distance[obstacle_index_private] = MAEndDistance; //到终点的距离
                         obstacle_count += 1; //只有这样障碍物的数量才加1
@@ -301,12 +301,14 @@ namespace SocketSearch
 
                         }
                     }
-
-                    if ((NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0, 1) != "W") || (NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0, 5) == MAEndLink)) //防止W0106
+                    if (NextSearchBalise.Substring(0, 1) != "Z")
                     {
-                        result_obstacle_distance[obstacle_index_private] = MAEndDistance; //到终点的距离
-                        obstacle_count += 1; //只有这样障碍物的数量才加1
-                    }
+                        if ((NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0, 1) != "W") || (NowSearchBalise.Substring(0, 1) == "W" && NextSearchBalise.Substring(0, 5) == MAEndLink) || (NowSearchBalise.Substring(0, 1) == "T" && NextSearchBalise.Substring(0, 5) == MAEndLink && MAEndLink.Substring(0, 1) == "W")) //防止W0106
+                        {
+                            result_obstacle_distance[obstacle_index_private] = MAEndDistance; //到终点的距离
+                            obstacle_count += 1; //只有这样障碍物的数量才加1
+                        }
+                    }                   
                     if (NowSearchBalise != MAEndLink)
                     {
                         NowSearchBalise = NextSearchBalise;
@@ -443,8 +445,10 @@ namespace SocketSearch
         }
         public int[] GetResultList(int MAEndDistance,int[] obstacle_distance,int limSpeedNum, int MAEndOff, UInt32 startDistance, int[] obstacle_length,string curbalise ,string MAENDlink)
         {
-           
-
+           if(hashTable_search.ht_2.Contains(MAEndLink.Substring(0, 5)))
+            {
+                MAEndOff = MAEndOff - 25;
+            }
             for (int i = 0; i < 4; i++)
             {
                 obstacle_distance[i] = obstacle_distance[i] - obstacle_length[i];//障碍物的距离到的是距离起点的距离，以前的距离包含了障碍物的长度，因此要减去
