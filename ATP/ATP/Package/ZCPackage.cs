@@ -50,10 +50,10 @@ namespace Package
         public UInt32 StopMAOfff { set { stopMAOff_ = value; } }
 
         Byte headSectionOrSwitch_;
-        public Byte HeadSectionOrSwitch { set { headSectionOrSwitch_ = value; } }
+        public Byte HeadSectionOrSwitch { get { return headSectionOrSwitch_; } set { headSectionOrSwitch_ = value; } }
 
         Byte headID_;
-        public Byte HeadID { set { headID_ = value; } }   //拆开的两个
+        public Byte HeadID { get { return headID_; }  set { headID_ = value; } }   //拆开的两个
 
         UInt32 headOff_;
         public UInt32 HeadOff { set { headOff_ = value; } }

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ConfigData
 {
@@ -33,6 +31,11 @@ namespace ConfigData
                 IP.trainID = Convert.ToInt16(ReadIniData(Device, "trainID", "", IPConfigPath));
                 IPList.Add(IP);
             }
+        }
+
+        public static IPList FindIpList(string deviceName)
+        {
+            return IPList.Find(item => { return item.DeviceName == deviceName; });
         }
 
         public static List<IPList> IPList = new List<IPList>();

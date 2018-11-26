@@ -14,31 +14,22 @@ namespace SocketSearch
     {
         public TrainMessage trainMessage = new TrainMessage();
         HashTable hashTable_search = new HashTable();
-        int limSpeedNum = 0;
-        int limSpeedDistance_1 = 0;
-        int limSpeedLength_1 = 0;
-        int limSpeedDistance_2 = 0;
-        int limSpeedLength_2 = 0;
-        int limSpeedDistance_3 = 0;
-        int limSpeedLength_3 = 0;
-        int limSpeedDistance_4 = 0;
-        int limSpeedLength_4 = 0;
         int MAEndDistance = 0;
         UInt32 startOff = 0;
         UInt32 startDistance = 0;
         public string MAEndLink = null;
         int[] result_obstacle_length = new int[4];
         int[] result_obstacle_distance = new int[4];
-        int result_index = 0;  //记录指针
         string NextSearchBalise = "";
         int index_obstacle = 0; //用于判断目前在哪个障碍物上
-        int privateIndexObstacle = 0;
         bool isFirstSearch = true;
+
         public void GetHash()
         {
             trainMessage.GetHash();
             hashTable_search.sikai();
         }
+
         public int[] SearchDistance(bool isLeftSearch, byte type, byte ID, int MAEndOff, int obstacleNum, string curBalise, string[] obstacleID, byte[] obstacleState) //type,id即MA终点的类型和ID
         {
             
@@ -52,9 +43,7 @@ namespace SocketSearch
             returnValue =GetMAAndObstacleDistance(curBalise, curbalise_id, MAEndLink, MAEndOff, obstacleID, obstacleState, obstacleNum, isLeftSearch);           
             return returnValue;
         }
-
-
-
+        
         public int BaliseToID(string curNowBalise) //由balise可以得到ID
         {
             int ID = 0;
@@ -344,22 +333,20 @@ namespace SocketSearch
 
         public void ToZero()
         {
-            limSpeedNum = 0;
-            limSpeedDistance_1 = 0;
-            limSpeedLength_1 = 0;
-            limSpeedDistance_2 = 0;
-            limSpeedLength_2 = 0;
-            limSpeedDistance_3 = 0;
-            limSpeedLength_3 = 0;
-            limSpeedDistance_4 = 0;
-            limSpeedLength_4 = 0;
+            //limSpeedNum = 0;
+            //limSpeedDistance_1 = 0;
+            //limSpeedLength_1 = 0;
+            //limSpeedDistance_2 = 0;
+            //limSpeedLength_2 = 0;
+            //limSpeedDistance_3 = 0;
+            //limSpeedLength_3 = 0;
+            //limSpeedDistance_4 = 0;
+            //limSpeedLength_4 = 0;
             MAEndDistance = 0;
             result_obstacle_distance = new int[4];
             result_obstacle_length = new int[4];
         }
-
-
-
+        
         public void GetObstacleLengthDis(List<TopolotyNode> NextNodesList, byte[] obstacleState, int[] obstacle_distance, string[] obstacle_name,string NowSearchBalise) //while循环用于寻路
         {
             if (!isFirstSearch) //第一次是所在区段，用偏移量算
@@ -406,9 +393,7 @@ namespace SocketSearch
             }
             isFirstSearch = false;
         }
-
-
-
+        
         public void GetCurbaliseOff(string curBalise,bool isLeftSearch,int ID)
         {
             bool isSwitch = trainMessage.IsRailswitchVoid(curBalise); //判断是否道岔
@@ -443,6 +428,7 @@ namespace SocketSearch
             }
             return false;
         }
+
         public int[] GetResultList(int MAEndDistance,int[] obstacle_distance,int limSpeedNum, int MAEndOff, UInt32 startDistance, int[] obstacle_length,string curbalise ,string MAENDlink)
         {
            if(hashTable_search.ht_2.Contains(MAEndLink.Substring(0, 5)))

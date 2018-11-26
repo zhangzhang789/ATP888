@@ -97,3 +97,14 @@ C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\obj\Debug\netcoreap
 C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
 C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
 C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
