@@ -21,7 +21,7 @@ namespace SocketSearch
         {
             curBalise = baliseHead;
             trainHead = baliseHead;
-            trainTail = baliseTail;  //目前都等于当前应答器传来的消息
+            trainTail = baliseHead;  //目前都等于当前应答器传来的消息
         }
 
         internal bool IsCurBaliseEmpty()

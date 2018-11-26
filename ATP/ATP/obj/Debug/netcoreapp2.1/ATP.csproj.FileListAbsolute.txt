@@ -108,3 +108,14 @@ C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\n
 C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
 C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
 C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache

@@ -1,4 +1,5 @@
 ﻿using ConfigData;
+using System;
 using System.Net;
 using System.Net.Sockets;
 
@@ -10,9 +11,12 @@ namespace ATP.SocketSearch
 
         public void CreateSocket(string systemName)
         {
-            var ipItem = IPConfigure.FindIpList(systemName);
-            client = new UdpClient(new IPEndPoint(ipItem.ATPIP, ipItem.ATPPort));
-            client.Connect(ipItem.IP, ipItem.Port);
+           
+                var ipItem = IPConfigure.FindIpList(systemName);
+                client = new UdpClient(new IPEndPoint(ipItem.ATPIP, ipItem.ATPPort));
+                client.Connect(ipItem.IP, ipItem.Port);
+         
+            
         }
 
         public virtual void Initialize()

@@ -124,8 +124,15 @@ namespace SocketSearch
             {
                 while (true)
                 {
-                    byte[] buf = client.Receive(ref sender);
-                    recvHandler(buf);
+                    try
+                    {
+                        byte[] buf = client.Receive(ref sender);
+                        recvHandler(buf);
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine("socket_later:" + ex);
+                    }                                     
                 }
             })
             { IsBackground = true };
@@ -162,19 +169,27 @@ namespace SocketSearch
             try
             {
                 ProcessData();
-                curve.SendATPCurve(speedLimit, isInFault, Socket_EB.isEB,
-                    zhangJieFault, xiaoJieFault, faultReason, faultRecover, speedFault);                         //隔200ms发送数据
-                dmi.SendDMI(trainID, dcInfo, Socket_EB.isEB,
-                    ProtectSpeed, speedLimit, DMIShow, isRealeaseEB, isZcAlive, isInFault);
-                zc.SendZC(dcInfo, sendID, trainID, curModel);
-                dc.SendDC(Socket_EB.isEB);
                 calATOATP();                            //计算舒适度
-                
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Socket_later.TimerElapsed: " + ex.Message);
             }
+            try
+            {
+                curve.SendATPCurve(speedLimit, isInFault, Socket_EB.isEB,
+                        zhangJieFault, xiaoJieFault, faultReason, faultRecover, speedFault);                         //隔200ms发送数据
+                dmi.SendDMI(trainID, dcInfo, Socket_EB.isEB,
+                            ProtectSpeed, speedLimit, DMIShow, isRealeaseEB, isZcAlive, isInFault);
+                zc.SendZC(dcInfo, sendID, trainID, curModel);
+                dc.SendDC(Socket_EB.isEB);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Socket_later.TimerElapsed_send: " + ex.Message);
+            }
+
             timer.Start();
         }
         
@@ -195,7 +210,7 @@ namespace SocketSearch
             GetFirstDir();  //初始化列车速度方向信息
             GetDir();       //实时判断列车方向，方向不对时则EB
             //if (dcInfo.IsCurBaliseEmpty()) //当目前的应答器不等于空的时候
-            if (dcInfo.IsCurBaliseEmpty())
+            if (!dcInfo.IsCurBaliseEmpty())
             {
                 CalSectionOrSwitchIDOFF(dcInfo.curBalise);
                 GetDistanceAndPrint(dcInfo.curBalise);
@@ -290,15 +305,15 @@ namespace SocketSearch
                     }
                     Console.WriteLine("speedLimit.MAEndDistance " + 
                         Convert.ToString(speedLimit.MAEndDistance) + 
-                        " limSpeedNum " + Convert.ToString(speedLimit.limSpeedNum) + 
-                        " limSpeedDistance_1 " + Convert.ToString(speedLimit.limSpeedDistance[0]) +
-                        " limSpeedLength_1 " + Convert.ToString(speedLimit.limSpeedLength[0]) + 
-                        " limSpeedDistance_2 " + Convert.ToString(speedLimit.limSpeedDistance[1]) + 
-                        " limSpeedLength_2 " + Convert.ToString(speedLimit.limSpeedLength[1]) +
-                        " limSpeedDistance_3 " + Convert.ToString(speedLimit.limSpeedDistance[2]) + 
-                        " limSpeedLength_3 " + Convert.ToString(speedLimit.limSpeedLength[2]) + 
-                        " limSpeedDistance_4 " + Convert.ToString(speedLimit.limSpeedDistance[3]) + 
-                        " limSpeedLength_4 " + Convert.ToString(speedLimit.limSpeedLength[3]));
+                        " num " + Convert.ToString(speedLimit.limSpeedNum) + 
+                        " Distance_1 " + Convert.ToString(speedLimit.limSpeedDistance[0]) +
+                        " Length_1 " + Convert.ToString(speedLimit.limSpeedLength[0]) + 
+                        " Distance_2 " + Convert.ToString(speedLimit.limSpeedDistance[1]) + 
+                        " Length_2 " + Convert.ToString(speedLimit.limSpeedLength[1]) +
+                        " Distance_3 " + Convert.ToString(speedLimit.limSpeedDistance[2]) + 
+                        " Length_3 " + Convert.ToString(speedLimit.limSpeedLength[2]) + 
+                        " Distance_4 " + Convert.ToString(speedLimit.limSpeedDistance[3]) + 
+                        " Length_4 " + Convert.ToString(speedLimit.limSpeedLength[3]));
 
 
                 }
@@ -310,7 +325,7 @@ namespace SocketSearch
         {
             int ID = searchLater.BaliseToID(curBalise);
 
-            if (dcInfo.IsCurStartWith("Z")) //车头部和车尾部的应答器都是一样的，都是当前应答器发送的，count等于0即进入正线
+            if (!dcInfo.IsCurStartWith("Z")) //车头部和车尾部的应答器都是一样的，都是当前应答器发送的，count等于0即进入正线
             {
                 UInt32[] value = SectionOrSwitchIDOFF(dcInfo.trainHead, ID);     //利用这个来发送偏移量
                 zc.zcPackage.HeadSectionOrSwitch = (byte)value[0];  //区段是1，道岔是2
@@ -318,7 +333,7 @@ namespace SocketSearch
                 zc.zcPackage.HeadOff = value[2];               //计算偏移量
             }
 
-            if (dcInfo.isTailStartWith("Z"))
+            if (!dcInfo.isTailStartWith("Z"))
             {
                 UInt32[] value1 = SectionOrSwitchIDOFF(dcInfo.trainTail, ID); //trainHead trainTail均指当前的应答器。车不分车头和车尾部
                 zc.zcPackage.HeadSectionOrSwitch = (byte)value1[0]; // 1是区段，2是道岔
