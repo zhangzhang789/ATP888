@@ -1,8 +1,3 @@
-
-ATP/.vs/ATP/DesignTimeBuild/*
-ATP/.vs/*
-ATP/ATP/bin/*
-*.ide
-*.pdb
-*.dll
-ATP/ATP/obj/*
+**/bin
+**/obj
+**/.vs
