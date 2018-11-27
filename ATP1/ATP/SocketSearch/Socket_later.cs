@@ -86,7 +86,6 @@ namespace SocketSearch
         EB Socket_EB = new EB();
  
         SocketSearchInfo socketSearchInfo = new SocketSearchInfo();
-        AtpLogic atpLogic = new AtpLogic();
         private System.Timers.Timer timer;
         private System.Timers.Timer timer_receZC;
 

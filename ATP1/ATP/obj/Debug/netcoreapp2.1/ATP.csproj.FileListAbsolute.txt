@@ -119,3 +119,14 @@ C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.
 C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
 C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
 C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
