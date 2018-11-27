@@ -122,49 +122,51 @@ namespace Package
         public UInt32 Reserved { set { reserved_ = value; } }
 
 
-        public byte[] ZCPackStream()
+        public int ZCPackStream(byte[] ZCSendData)
         {
-            byte[] ZCSendData = new byte[1024];
-            Stream sendStream = new MemoryStream(ZCSendData);
-            BinaryWriter ZCPackageStream = new BinaryWriter(sendStream);
-            ZCPackageStream.Write((UInt16)0); //包头
-            ZCPackageStream.Write(type_);
-            ZCPackageStream.Write(sendID_);
-            ZCPackageStream.Write(receiveID_);
-            ZCPackageStream.Write(length_);
-            ZCPackageStream.Write(mode_);
-            ZCPackageStream.Write(trainID_);
-            ZCPackageStream.Write(zcID_);
-            ZCPackageStream.Write(runInformation_);
-            ZCPackageStream.Write(stopFlag_);
-            ZCPackageStream.Write(stopMALink_);
-            ZCPackageStream.Write(stopMAOff_);
-            ZCPackageStream.Write(headSectionOrSwitch_);
-            ZCPackageStream.Write(headID_);
-            ZCPackageStream.Write(headOff_);
-            ZCPackageStream.Write(tailSectionOrSwitch_);
-            ZCPackageStream.Write(tailID_);
-            ZCPackageStream.Write(tailOff_);
-            ZCPackageStream.Write(headExpDirection_);
-            ZCPackageStream.Write(headActDirection_);
-            ZCPackageStream.Write(runModel_);
-            ZCPackageStream.Write(runLevel_);
-            ZCPackageStream.Write(actSpeed_);
-            ZCPackageStream.Write(doorState_);
-            ZCPackageStream.Write(stopInfo_);
-            ZCPackageStream.Write(error_);
-            ZCPackageStream.Write(back_);
-            ZCPackageStream.Write(limitSpeed_);
-            ZCPackageStream.Write(integrity_);
-            ZCPackageStream.Write(emergenvy_);
-            ZCPackageStream.Write(arlamp_);
-            ZCPackageStream.Write(arlampCmd_);
-            ZCPackageStream.Write(vobc_);
-            ZCPackageStream.Write(controlZC_);
-            ZCPackageStream.Write(sendTime_);
-            ZCPackageStream.Write(reserved_);
+            using (Stream sendStream = new MemoryStream(ZCSendData))
+            using (BinaryWriter ZCPackageStream = new BinaryWriter(sendStream))
+            {
+                ZCPackageStream.Write((UInt16)0); //包头
+                ZCPackageStream.Write(type_);
+                ZCPackageStream.Write(sendID_);
+                ZCPackageStream.Write(receiveID_);
+                ZCPackageStream.Write(length_);
+                ZCPackageStream.Write(mode_);
+                ZCPackageStream.Write(trainID_);
+                ZCPackageStream.Write(zcID_);
+                ZCPackageStream.Write(runInformation_);
+                ZCPackageStream.Write(stopFlag_);
+                ZCPackageStream.Write(stopMALink_);
+                ZCPackageStream.Write(stopMAOff_);
+                ZCPackageStream.Write(headSectionOrSwitch_);
+                ZCPackageStream.Write(headID_);
+                ZCPackageStream.Write(headOff_);
+                ZCPackageStream.Write(tailSectionOrSwitch_);
+                ZCPackageStream.Write(tailID_);
+                ZCPackageStream.Write(tailOff_);
+                ZCPackageStream.Write(headExpDirection_);
+                ZCPackageStream.Write(headActDirection_);
+                ZCPackageStream.Write(runModel_);
+                ZCPackageStream.Write(runLevel_);
+                ZCPackageStream.Write(actSpeed_);
+                ZCPackageStream.Write(doorState_);
+                ZCPackageStream.Write(stopInfo_);
+                ZCPackageStream.Write(error_);
+                ZCPackageStream.Write(back_);
+                ZCPackageStream.Write(limitSpeed_);
+                ZCPackageStream.Write(integrity_);
+                ZCPackageStream.Write(emergenvy_);
+                ZCPackageStream.Write(arlamp_);
+                ZCPackageStream.Write(arlampCmd_);
+                ZCPackageStream.Write(vobc_);
+                ZCPackageStream.Write(controlZC_);
+                ZCPackageStream.Write(sendTime_);
+                ZCPackageStream.Write(reserved_);
+                return (int)ZCPackageStream.BaseStream.Position;
+            }
 
-            return ZCSendData;
+
         }
     }
 }

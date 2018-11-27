@@ -9,20 +9,21 @@ namespace ATP.SocketSearch
     {
         public DCPackage dcPackage = new DCPackage() { PackageType = 5 };
 
+
         public override void Initialize()
         {
             CreateSocket("DC");
         }
 
-        public void SendDC(bool isEB)
+        public void SendDC(bool isEB,byte[] sendBuf)
         {
             if (isEB == true)
             {
                 dcPackage.IsEB = 6; //收到缓解后已经赋值7
             }
 
-            byte[] DCSendData = dcPackage.DCPackStream();
-            client.Send(DCSendData, 1024);
+            int DCSendDataLength = dcPackage.DCPackStream(sendBuf);
+            client.Send(sendBuf, DCSendDataLength);
         }
     }
 }

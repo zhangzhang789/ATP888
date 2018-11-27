@@ -14,7 +14,8 @@ namespace ATP.SocketSearch
         public delegate UInt16 ComputeProtectSpeed(int MAEndDistance, int limSpeedNum, int limSpeedDistance_1);
 
         public DMIPackage dmiPackage = new DMIPackage() { PackageType = 3, ActulSpeed = 25, TrainNum = "" };
-        
+
+
         public override void Initialize()
         {
             CreateSocket("DMI");
@@ -23,7 +24,7 @@ namespace ATP.SocketSearch
         public void SendDMI(int trainID, DcInfo dcInfo, bool isEB, 
             ComputeProtectSpeed ProtectSpeed, SpeedLimit speedLimit,
             bool DMIShow, bool isRealeaseEB, bool isSendZCBool,
-            bool isInFault)    //发送DMI消息
+            bool isInFault,byte[] sendBuf)    //发送DMI消息
         {
             dmiPackage.TrainID = 65536;
             dmiPackage.TrainNum = "T0" + trainID.ToString();
@@ -79,8 +80,8 @@ namespace ATP.SocketSearch
                 dmiPackage.FaultType = 1;
             }
             
-            byte[] DMISendData = dmiPackage.DMIPackStream();
-            client.Send(DMISendData, 1024);
+            int DMISendDataLength = dmiPackage.DMIPackStream(sendBuf);
+            client.Send(sendBuf, DMISendDataLength);
         }
     }
 }

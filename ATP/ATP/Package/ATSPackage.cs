@@ -12,12 +12,15 @@ namespace Package
         UInt16 trainID_;
         public UInt16 TrainID_ { set { trainID_ = value; } }
 
-        public byte[] ATSPackStream()
+        public int ATSPackStream(byte[] ATSSendData)
         {
-            byte[] ATSSendData = new byte[1024];
-            Stream sendStream = new MemoryStream(ATSSendData);
-            BinaryWriter ATSPackageStream = new BinaryWriter(sendStream);
-            return ATSSendData;
+      
+            using (Stream sendStream = new MemoryStream(ATSSendData))
+            using (BinaryWriter ATSPackageStream = new BinaryWriter(sendStream))
+            {
+                return (int)ATSPackageStream.BaseStream.Position;
+            }
+            
         }
     }
 }

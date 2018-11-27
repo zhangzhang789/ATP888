@@ -83,6 +83,12 @@ namespace SocketSearch
         public Atp2Fault fault = new Atp2Fault();
         public TrainMessage trainMessage = new TrainMessage();
         public SearchLater searchLater = new SearchLater();
+        public delegate void ReceiveData(byte[] DMIData);
+        private byte[] curveData=new byte[1024];
+        private byte[] dmiData = new byte[1024];
+        private byte[] zcData = new byte[1024];
+        private byte[] dcData = new byte[1024];
+        private byte[] faultData = new byte[1024];
         EB Socket_EB = new EB();
  
         SocketSearchInfo socketSearchInfo = new SocketSearchInfo();
@@ -121,7 +127,7 @@ namespace SocketSearch
             CreateRecvThread(fault.client, Receive_Fault_Data);
         }
 
-        private void CreateRecvThread(UdpClient client, Action<byte[]> recvHandler)
+        private void CreateRecvThread(UdpClient client, ReceiveData receiveData)
         {
             IPEndPoint sender = new IPEndPoint(0, 0);
             Thread recvThread = new Thread(() =>
@@ -131,7 +137,7 @@ namespace SocketSearch
                     try
                     {
                         byte[] buf = client.Receive(ref sender);
-                        recvHandler(buf);
+                        receiveData(buf);
                     }
                     catch(Exception ex)
                     {
@@ -175,7 +181,7 @@ namespace SocketSearch
                 ProcessData();
                 calATOATP();                            //计算舒适度
 
-            }
+        }
             catch (Exception ex)
             {
                Console.WriteLine("Socket_later.TimerElapsed: " + ex.Message);
@@ -183,18 +189,18 @@ namespace SocketSearch
             try
             {
                 curve.SendATPCurve(speedLimit, isInFault, Socket_EB.isEB,
-                        zhangJieFault, xiaoJieFault, faultReason, faultRecover, speedFault);                         //隔200ms发送数据
+                        zhangJieFault, xiaoJieFault, faultReason, faultRecover, speedFault,curveData);                         //隔200ms发送数据
                 dmi.SendDMI(trainID, dcInfo, Socket_EB.isEB,
-                            ProtectSpeed, speedLimit, DMIShow, isRealeaseEB, isZcAlive, isInFault);
-                zc.SendZC(dcInfo, sendID, trainID, curModel);
-                dc.SendDC(Socket_EB.isEB);
-            }
+                            ProtectSpeed, speedLimit, DMIShow, isRealeaseEB, isZcAlive, isInFault,dmiData);
+                zc.SendZC(dcInfo, sendID, trainID, curModel,zcData);
+                dc.SendDC(Socket_EB.isEB,dcData);
+        }
             catch (Exception ex)
             {
                 Console.WriteLine("Socket_later.TimerElapsed_send: " + ex.Message);
             }
 
-            timer.Start();
+    timer.Start();
         }
 
         private void ProcessData()  //每隔200ms调用一次这个方法，接受数据的一直等待接受，这里隔200ms计算一次MA
@@ -422,10 +428,11 @@ namespace SocketSearch
 
         private void Receive_ZC_Data(byte[] ZCData)
         {
+
             using (MemoryStream receStreamZC = new MemoryStream(ZCData))
+            using (BinaryReader reader = new BinaryReader(receStreamZC))
             {
-                ZC_Count += 1;
-                BinaryReader reader = new BinaryReader(receStreamZC);
+                ZC_Count += 1;              
                 UInt16 ZCCycle = reader.ReadUInt16();
                 UInt16 ZCPackageType = reader.ReadUInt16();
                 byte ZCSendID = reader.ReadByte();
@@ -480,6 +487,7 @@ namespace SocketSearch
                 UInt16 ZCEB_DEV_Name = reader.ReadUInt16();
 
                 ZCSendEB(tailSectionOrSwitch, tailID, MAEndOff, MAEndDir); //ZC发送EB消息
+                
             }
         }
 
@@ -499,8 +507,9 @@ namespace SocketSearch
         public void Receive_DMI_Data(byte[] DMIData) //DMI传来消息
         {
             using (MemoryStream receStreamDMI = new MemoryStream(DMIData))
+            using (BinaryReader reader = new BinaryReader(receStreamDMI))
             {
-                BinaryReader reader = new BinaryReader(receStreamDMI);
+                
                 UInt16 DMICycle = reader.ReadUInt16();
                 UInt16 DMIPackageType = reader.ReadUInt16();
                 UInt16 DMILength = reader.ReadUInt16();
@@ -527,13 +536,14 @@ namespace SocketSearch
         {
             if (DCData[2] == 5) //在有速度时才会发送
             {
-                Receive_Balise_Data(DCData); //应答器也是由司控器的端口传来的
+               Receive_Balise_Data(DCData); //应答器也是由司控器的端口传来的
             }
             else if (DCData[2] == 6)
             {
                 using (MemoryStream receStreamDC = new MemoryStream(DCData))
+                using (BinaryReader reader = new BinaryReader(receStreamDC))
                 {
-                    BinaryReader reader = new BinaryReader(receStreamDC);
+                   
                     UInt16 DCCycle = reader.ReadUInt16();
                     UInt16 DCPackageType = reader.ReadUInt16();
                     UInt16 DCLength = reader.ReadUInt16();
@@ -553,6 +563,7 @@ namespace SocketSearch
                     UInt16 DCisKeyIn = reader.ReadUInt16();
                 }
             }
+      
         }
 
         private void calATOATP()
@@ -702,8 +713,9 @@ namespace SocketSearch
         private void Receive_Fault_Data(byte[] FaultData) //应答器传来消息
         {
             using (MemoryStream receFaultBalise = new MemoryStream(FaultData))
+            using (BinaryReader reader = new BinaryReader(receFaultBalise))
             {
-                BinaryReader reader = new BinaryReader(receFaultBalise);
+                
                 headFault = reader.ReadInt16();
                 zhangJieFault = reader.ReadByte();
                 xiaoJieFault = reader.ReadByte();
@@ -734,7 +746,7 @@ namespace SocketSearch
                     Socket_EB.Set_EB("下发故障");
                     isInFault = true;
                 }
-
+            
             }
 
         }
@@ -742,11 +754,13 @@ namespace SocketSearch
         private void Receive_Balise_Data(byte[] BaliseData) //应答器传来消息
         {
             using (MemoryStream receStreamBalise = new MemoryStream(BaliseData))
+            using (BinaryReader reader = new BinaryReader(receStreamBalise))
             {
-                BinaryReader reader = new BinaryReader(receStreamBalise);
+               
                 UInt16 baliseCycle = reader.ReadUInt16();
                 UInt16 balisePackageType = reader.ReadUInt16();
                 dcInfo.baliseHead = reader.ReadString();
+
             }
 
         }

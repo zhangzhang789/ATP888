@@ -40,23 +40,27 @@ namespace Package
 
 
 
-        public byte[] DCPackStream()
+        public int DCPackStream(byte[] DCSendData)
         {
-            byte[] DCSendData = new byte[1024];
-            Stream sendStream = new MemoryStream(DCSendData);
-            BinaryWriter DCPackageStream = new BinaryWriter(sendStream);
-            DCPackageStream.Write((UInt16)0);
-            DCPackageStream.Write(type_);
-            DCPackageStream.Write(length_);
-            DCPackageStream.Write(highSpeed_);
-            DCPackageStream.Write(openSpeed_);
-            DCPackageStream.Write(permitSpeed_);
-            DCPackageStream.Write(interSpeed_);
-            DCPackageStream.Write(direction_);
-            DCPackageStream.Write(isEB_);
-            DCPackageStream.Write(nextSpeed_);
 
-            return DCSendData;
+            using (Stream sendStream = new MemoryStream(DCSendData))
+            using (BinaryWriter DCPackageStream = new BinaryWriter(sendStream))
+            {
+                DCPackageStream.Write((UInt16)0);
+                DCPackageStream.Write(type_);
+                DCPackageStream.Write(length_);
+                DCPackageStream.Write(highSpeed_);
+                DCPackageStream.Write(openSpeed_);
+                DCPackageStream.Write(permitSpeed_);
+                DCPackageStream.Write(interSpeed_);
+                DCPackageStream.Write(direction_);
+                DCPackageStream.Write(isEB_);
+                DCPackageStream.Write(nextSpeed_);
+                return (int)DCPackageStream.BaseStream.Position;
+            }
+
+
+        
         }
     }
 }

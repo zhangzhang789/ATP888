@@ -28,23 +28,26 @@ namespace Package
 
 
 
-        public byte[] ATPCurvePackStream()
+        public int ATPCurvePackStream(byte[] ATPCurveSendData)
         {
-            byte[] ATPCurveSendData= new byte[1024];
-            Stream sendStream = new MemoryStream(ATPCurveSendData);
-            BinaryWriter ATPCurvPackageStream = new BinaryWriter(sendStream);
-            ATPCurvPackageStream.Write(MAEndDistance_);
-            ATPCurvPackageStream.Write(limSpeedNum_);
-            for (int i = 0; i < 4; i++)
+            using (Stream sendStream = new MemoryStream(ATPCurveSendData))
+            using (BinaryWriter ATPCurvPackageStream = new BinaryWriter(sendStream))
             {
-                ATPCurvPackageStream.Write(limSpeedDistance[i]);
-                ATPCurvPackageStream.Write(limSpeedLength[i]);
+                ATPCurvPackageStream.Write(MAEndDistance_);
+                ATPCurvPackageStream.Write(limSpeedNum_);
+                for (int i = 0; i < 4; i++)
+                {
+                    ATPCurvPackageStream.Write(limSpeedDistance[i]);
+                    ATPCurvPackageStream.Write(limSpeedLength[i]);
+                }
+                ATPCurvPackageStream.Write(faultPostion_);
+                ATPCurvPackageStream.Write(faultReason_);
+                ATPCurvPackageStream.Write(totalEnergy_);
+                ATPCurvPackageStream.Write(Comfort_);
+                return (int)ATPCurvPackageStream.BaseStream.Position;
             }
-            ATPCurvPackageStream.Write(faultPostion_);
-            ATPCurvPackageStream.Write(faultReason_);
-            ATPCurvPackageStream.Write(totalEnergy_);
-            ATPCurvPackageStream.Write(Comfort_);
-            return ATPCurveSendData;
+
+            
         }
     }
 }

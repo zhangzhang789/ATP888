@@ -13,6 +13,7 @@ namespace ATP.SocketSearch
         //public UdpClient ATPToATPCurveClient;
         public ATPCurvePackage atpCurvePackage = new ATPCurvePackage();
 
+
         public override void Initialize()
         {
             CreateSocket("ATPCurve");
@@ -39,7 +40,7 @@ namespace ATP.SocketSearch
         }
 
         public void SendATPCurve(SpeedLimit speedLimit, bool isInFault, bool isEb, 
-            byte zhangJieFault, byte xiaoJieFault, string faultReason, bool faultRecover, bool speedFault)
+            byte zhangJieFault, byte xiaoJieFault, string faultReason, bool faultRecover, bool speedFault,byte[] sendBuf)
         {
             Atp2Curve curve = this;
 
@@ -78,8 +79,9 @@ namespace ATP.SocketSearch
             }
 
             curve.SetFaultReason(zhangJieFault, xiaoJieFault);
-            byte[] ATPCurveSendData = curve.atpCurvePackage.ATPCurvePackStream();
-            client.Send(ATPCurveSendData, 1024);
+            
+            int ATPCurveSendDataLength = curve.atpCurvePackage.ATPCurvePackStream(sendBuf);
+            client.Send(sendBuf, ATPCurveSendDataLength);
         }
     }
 }

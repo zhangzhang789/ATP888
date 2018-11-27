@@ -128,53 +128,56 @@ namespace Package
         public UInt16 IsRealeaseEB { set { isRealeaseEB_ = value; } }
 
 
-        public byte[] DMIPackStream()
+        public int DMIPackStream(byte[] DMISendData)
         {
-            byte[] DMISendData = new byte[1024];
-            Stream sendStream = new MemoryStream(DMISendData);
-            BinaryWriter DMIPackageStream = new BinaryWriter(sendStream);
-            DMIPackageStream.Write((UInt16)0);
-            DMIPackageStream.Write(type_);
-            DMIPackageStream.Write(length_);
-            DMIPackageStream.Write(trainNum_);
-            DMIPackageStream.Write(trainID_);
-            DMIPackageStream.Write(highModel_);
-            DMIPackageStream.Write(curModel_);
-            DMIPackageStream.Write(curRate_);
-            DMIPackageStream.Write(breakOut_);
-            DMIPackageStream.Write(trainStation_);
-            DMIPackageStream.Write(trainHeadLoca_);
-            DMIPackageStream.Write(targetLoca_);
-            DMIPackageStream.Write(startLoca_);
-            DMIPackageStream.Write(actulSpeed_);
-            DMIPackageStream.Write(highSpeed_);
-            DMIPackageStream.Write(openSpeed_);
-            DMIPackageStream.Write(permitSpeed_);
-            DMIPackageStream.Write(interSpeed_);
-            DMIPackageStream.Write(targetSpeed_);
-            DMIPackageStream.Write(alarm_);
-            DMIPackageStream.Write(tempLimitSpeedStart1_);
-            DMIPackageStream.Write(tempLimitSpeedEnd1_);
-            DMIPackageStream.Write(tempLimitSpeed1_);
-            DMIPackageStream.Write(tempLimitSpeedStart2_);
-            DMIPackageStream.Write(tempLimitSpeedEnd2_);
-            DMIPackageStream.Write(tempLimitSpeed2_);
-            DMIPackageStream.Write(tempLimitSpeedStart3_);
-            DMIPackageStream.Write(tempLimitSpeedEnd3_);
-            DMIPackageStream.Write(tempLimitSpeed3_);
-            DMIPackageStream.Write(runLocation_);
-            DMIPackageStream.Write(runDirection_);
-            DMIPackageStream.Write(hint_);
-            DMIPackageStream.Write(frontPermSpeed_);
-            DMIPackageStream.Write(isCBTC_);
-            DMIPackageStream.Write(faultType_);
-            DMIPackageStream.Write(isSendTrain_);
-            DMIPackageStream.Write(isNoZHG_);
-            DMIPackageStream.Write(isSendZC_);
-            DMIPackageStream.Write(dmishow_);
-            DMIPackageStream.Write(isRealeaseEB_);
 
-            return DMISendData;
+            using (Stream sendStream = new MemoryStream(DMISendData))
+            using (BinaryWriter DMIPackageStream = new BinaryWriter(sendStream))
+            {
+                DMIPackageStream.Write((UInt16)0);
+                DMIPackageStream.Write(type_);
+                DMIPackageStream.Write(length_);
+                DMIPackageStream.Write(trainNum_);
+                DMIPackageStream.Write(trainID_);
+                DMIPackageStream.Write(highModel_);
+                DMIPackageStream.Write(curModel_);
+                DMIPackageStream.Write(curRate_);
+                DMIPackageStream.Write(breakOut_);
+                DMIPackageStream.Write(trainStation_);
+                DMIPackageStream.Write(trainHeadLoca_);
+                DMIPackageStream.Write(targetLoca_);
+                DMIPackageStream.Write(startLoca_);
+                DMIPackageStream.Write(actulSpeed_);
+                DMIPackageStream.Write(highSpeed_);
+                DMIPackageStream.Write(openSpeed_);
+                DMIPackageStream.Write(permitSpeed_);
+                DMIPackageStream.Write(interSpeed_);
+                DMIPackageStream.Write(targetSpeed_);
+                DMIPackageStream.Write(alarm_);
+                DMIPackageStream.Write(tempLimitSpeedStart1_);
+                DMIPackageStream.Write(tempLimitSpeedEnd1_);
+                DMIPackageStream.Write(tempLimitSpeed1_);
+                DMIPackageStream.Write(tempLimitSpeedStart2_);
+                DMIPackageStream.Write(tempLimitSpeedEnd2_);
+                DMIPackageStream.Write(tempLimitSpeed2_);
+                DMIPackageStream.Write(tempLimitSpeedStart3_);
+                DMIPackageStream.Write(tempLimitSpeedEnd3_);
+                DMIPackageStream.Write(tempLimitSpeed3_);
+                DMIPackageStream.Write(runLocation_);
+                DMIPackageStream.Write(runDirection_);
+                DMIPackageStream.Write(hint_);
+                DMIPackageStream.Write(frontPermSpeed_);
+                DMIPackageStream.Write(isCBTC_);
+                DMIPackageStream.Write(faultType_);
+                DMIPackageStream.Write(isSendTrain_);
+                DMIPackageStream.Write(isNoZHG_);
+                DMIPackageStream.Write(isSendZC_);
+                DMIPackageStream.Write(dmishow_);
+                DMIPackageStream.Write(isRealeaseEB_);
+                return (int)DMIPackageStream.BaseStream.Position;
+            }
+        
+
         }
     }
 }
