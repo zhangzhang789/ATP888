@@ -4,6 +4,7 @@ using Package;
 using ConfigData;
 using SocketSearch;
 using TrainMessageEB;
+using ATP.SocketSearch;
 
 namespace ATP
 {
@@ -13,10 +14,10 @@ namespace ATP
         
         static void Main(string[] args)
         {
-            Socket_later socket_later = new Socket_later();     
-            IPConfigure LoadIPConfig = new IPConfigure();
-            socket_later.SocketStart();
-        
+            AtpLogic atpLogic = new AtpLogic();       
+            atpLogic.Initialize();
+            atpLogic.Start();
+            
             Console.ReadKey();
 
         }

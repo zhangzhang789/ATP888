@@ -1,4 +1,5 @@
-﻿using SocketSearch;
+﻿using ConfigData;
+using SocketSearch;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -11,26 +12,16 @@ namespace ATP.SocketSearch
 {
     class AtpLogic
     {
-        public Atp2Curve curve = new Atp2Curve();
-        public Atp2Dmi dmi = new Atp2Dmi();
-        public Atp2Zc zc = new Atp2Zc();
-        public Atp2Dc dc = new Atp2Dc();
-        public Atp2Fault fault = new Atp2Fault();
-        public TrainMessage trainMessage = new TrainMessage();
-        public SearchLater searchLater = new SearchLater();
-        public delegate void Receive_DMI_Data(byte[] DMIData);
-        public delegate void Receive_ZC_Data(byte[] ZCData);
-        public delegate void Receive_DC_Data(byte[] DCData);
-        public delegate void Receive_Fault_Data(byte[] FaultData);
+        Socket_later socket_later = new Socket_later();
+ 
         public void Initialize()
         {
-            curve.Initialize();
-            dmi.Initialize();
-            zc.Initialize();
-            dc.Initialize();
-            fault.Initialize();
-            searchLater.GetHash();
-            trainMessage.GetHash(); 
-        }     
+            IPConfigure LoadIPConfig = new IPConfigure();
+            socket_later.SocketInitialize();          
+        }
+        public void Start()
+        {
+            socket_later.SocketReceive();
+        }
     }
 }

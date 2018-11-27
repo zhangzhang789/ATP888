@@ -43,7 +43,7 @@ namespace SocketSearch
         HandleNone, Handle_1, Handle_2
     }
 
-    class Socket_later
+   class Socket_later
     {
         private bool isRecvZC = false;
         private bool isCalMA = false;
@@ -76,6 +76,13 @@ namespace SocketSearch
         private int ZC_Count = 0;
         Comfort comfort = new Comfort();
 
+        public Atp2Curve curve = new Atp2Curve();
+        public Atp2Dmi dmi = new Atp2Dmi();
+        public Atp2Zc zc = new Atp2Zc();
+        public Atp2Dc dc = new Atp2Dc();
+        public Atp2Fault fault = new Atp2Fault();
+        public TrainMessage trainMessage = new TrainMessage();
+        public SearchLater searchLater = new SearchLater();
         EB Socket_EB = new EB();
  
         SocketSearchInfo socketSearchInfo = new SocketSearchInfo();
@@ -86,21 +93,33 @@ namespace SocketSearch
         const int Distance70_40 = (int)((70 / 3.6 * 70 / 3.6 - 40 / 3.6 * 40 / 3.6) / (2 * 1.2)); //106
         const int Distance70_0 = (int)(70 / 3.6 * 80 / 3.6 / (2 * 1.2)); //除以3.6的以m/s为单位,180
 
-        public void SocketStart()
+        public void SocketInitialize()
         {
+
             GetATPIPAndPort(); //得到绑定ATP的IP和Port
-            atpLogic.Initialize();           
+            curve.Initialize();
+            dmi.Initialize();
+            zc.Initialize();
+            dc.Initialize();
+            fault.Initialize();
+            searchLater.GetHash();
+            trainMessage.GetHash();
+        }
+
+        public void SocketReceive()
+        {
             StartReceData();  //一直接受数据
             SetupTimer();  //隔200ms计算一次MA终点
             SetupTimer_ReceiveZC();
         }
+  
 
         private void StartReceData()
         {
-            CreateRecvThread(atpLogic.dmi.client, Receive_DMI_Data);
-            CreateRecvThread(atpLogic.zc.client, Receive_ZC_Data);
-            CreateRecvThread(atpLogic.dc.client, Receive_DC_Data);
-            CreateRecvThread(atpLogic.fault.client, Receive_Fault_Data);
+            CreateRecvThread(dmi.client, Receive_DMI_Data);
+            CreateRecvThread(zc.client, Receive_ZC_Data);
+            CreateRecvThread(dc.client, Receive_DC_Data);
+            CreateRecvThread(fault.client, Receive_Fault_Data);
         }
 
         private void CreateRecvThread(UdpClient client, Action<byte[]> recvHandler)
@@ -164,12 +183,12 @@ namespace SocketSearch
             }
             try
             {
-                atpLogic.curve.SendATPCurve(speedLimit, isInFault, Socket_EB.isEB,
+                curve.SendATPCurve(speedLimit, isInFault, Socket_EB.isEB,
                         zhangJieFault, xiaoJieFault, faultReason, faultRecover, speedFault);                         //隔200ms发送数据
-                atpLogic.dmi.SendDMI(trainID, dcInfo, Socket_EB.isEB,
+                dmi.SendDMI(trainID, dcInfo, Socket_EB.isEB,
                             ProtectSpeed, speedLimit, DMIShow, isRealeaseEB, isZcAlive, isInFault);
-                atpLogic.zc.SendZC(dcInfo, sendID, trainID, curModel);
-                atpLogic.dc.SendDC(Socket_EB.isEB);
+                zc.SendZC(dcInfo, sendID, trainID, curModel);
+                dc.SendDC(Socket_EB.isEB);
             }
             catch (Exception ex)
             {
@@ -221,12 +240,12 @@ namespace SocketSearch
                 if (socketSearchInfo.IsCurStartWith(p.device.Name, "T") || socketSearchInfo.IsCurStartWith(p.device.Name, "Z"))
                 {
                     curleftType = 1;
-                    curleftID = atpLogic.searchLater.BaliseToID(p.device.Name);
+                    curleftID = searchLater.BaliseToID(p.device.Name);
                 }
                 else
                 {
                     curleftType = 2;
-                    curleftID = atpLogic.searchLater.BaliseToID((p.device as RailSwitch).section.Name);
+                    curleftID = searchLater.BaliseToID((p.device as RailSwitch).section.Name);
                 }
 
                 if (curleftID == tailID && curleftType == tailSectionOrSwitch)
@@ -239,8 +258,8 @@ namespace SocketSearch
         }
         private void curBaliseEB(string curBalise, byte tailID, byte tailSectionOrSwitch)
         {
-            int curID = atpLogic.searchLater.BaliseToID(curBalise);
-            TopolotyNode curTopolotyNode = atpLogic.trainMessage.BaliseToIteam(curBalise, curID);
+            int curID = searchLater.BaliseToID(curBalise);
+            TopolotyNode curTopolotyNode = trainMessage.BaliseToIteam(curBalise, curID);
             LeftOrRightEB(curTopolotyNode);
 
         }
@@ -255,11 +274,11 @@ namespace SocketSearch
             if (isRecvZC && Socket_EB.isEB == false && curModel != ModelType.EUM) //当这四个条件满足时开始处理ATP曲线。当应答器的id和zc发来的id一致时，开始计算信息距离
             {
                 //isReleaseEB = false;
-                byte currentHeadID = (byte)atpLogic.searchLater.BaliseToID(curBalise);
+                byte currentHeadID = (byte)searchLater.BaliseToID(curBalise);
                 if (currentHeadID == headID) //目前应答器给我的ID和ZC发的ID一致
                 {
 
-                    int[] value = atpLogic.searchLater.SearchDistance(isLeftSearch, tailSectionOrSwitch, tailID, Convert.ToInt32(MAEndOff), obstacleNum, curBalise, obstacleID, obstacleState);
+                    int[] value = searchLater.SearchDistance(isLeftSearch, tailSectionOrSwitch, tailID, Convert.ToInt32(MAEndOff), obstacleNum, curBalise, obstacleID, obstacleState);
                     speedLimit.MAEndDistance = value[0];
                     speedLimit.limSpeedNum = value[1];
                     speedLimit.limSpeedDistance[0] = value[2];
@@ -295,22 +314,22 @@ namespace SocketSearch
 
         private void CalSectionOrSwitchIDOFF(string curBalise) //根据目前应答器判断是区段和道岔，还有ID，和偏移量。车的头部和尾部都是当前应答器
         {
-            int ID = atpLogic.searchLater.BaliseToID(curBalise);
+            int ID = searchLater.BaliseToID(curBalise);
 
             if (!dcInfo.IsCurStartWith("Z")) //车头部和车尾部的应答器都是一样的，都是当前应答器发送的，count等于0即进入正线
             {
                 UInt32[] value = SectionOrSwitchIDOFF(dcInfo.trainHead, ID);     //利用这个来发送偏移量
-                atpLogic.zc.zcPackage.HeadSectionOrSwitch = (byte)value[0];  //区段是1，道岔是2
-                atpLogic.zc.zcPackage.HeadID = (byte)value[1];            //根据应答器名字得到节点ID。找到目前的发送给ZC，ZC发送过来的是MA的
-                atpLogic.zc.zcPackage.HeadOff = value[2];               //计算偏移量
+                zc.zcPackage.HeadSectionOrSwitch = (byte)value[0];  //区段是1，道岔是2
+                zc.zcPackage.HeadID = (byte)value[1];            //根据应答器名字得到节点ID。找到目前的发送给ZC，ZC发送过来的是MA的
+                zc.zcPackage.HeadOff = value[2];               //计算偏移量
             }
 
             if (!dcInfo.isTailStartWith("Z"))
             {
                 UInt32[] value1 = SectionOrSwitchIDOFF(dcInfo.trainTail, ID); //trainHead trainTail均指当前的应答器。车不分车头和车尾部
-                atpLogic.zc.zcPackage.HeadSectionOrSwitch = (byte)value1[0]; // 1是区段，2是道岔
-                atpLogic.zc.zcPackage.TailID = (byte)value1[1];
-                atpLogic.zc.zcPackage.TailOff = value1[2];
+                zc.zcPackage.HeadSectionOrSwitch = (byte)value1[0]; // 1是区段，2是道岔
+                zc.zcPackage.TailID = (byte)value1[1];
+                zc.zcPackage.TailOff = value1[2];
             }
         }
 
@@ -318,20 +337,20 @@ namespace SocketSearch
         {
             UInt32[] returnValue = new UInt32[3];
 
-            bool isSwitch = atpLogic.trainMessage.IsRailswitchVoid(balise);
-            CurbaliseID = (byte)atpLogic.trainMessage.BaliseToIteam(balise, ID).device.Id;
+            bool isSwitch = trainMessage.IsRailswitchVoid(balise);
+            CurbaliseID = (byte)trainMessage.BaliseToIteam(balise, ID).device.Id;
             UInt32 Off = 0;  //当前应答器的偏移量
             UInt32 Distance_1 = 0;  //当前应答器的距离，120-偏移量
 
             if (isSwitch)
             {
                 SectionOrSwitch = 2;
-                atpLogic.trainMessage.SwitchGetOffDis(isLeftSearch, balise, ref Off, ref Distance_1, ID);
+                trainMessage.SwitchGetOffDis(isLeftSearch, balise, ref Off, ref Distance_1, ID);
             }
             else
             {
                 SectionOrSwitch = 1;
-                atpLogic.trainMessage.SectionGetOffDis(isLeftSearch, balise, ref Off, ref Distance_1, ID);
+                trainMessage.SectionGetOffDis(isLeftSearch, balise, ref Off, ref Distance_1, ID);
             }
 
             returnValue[0] = SectionOrSwitch;
@@ -347,12 +366,12 @@ namespace SocketSearch
             {
                 if (dcInfo.IsMovingLeft())
                 {
-                    atpLogic.zc.zcPackage.HeadActDirection = 0xAA; //记录下来发送给ZC
+                    zc.zcPackage.HeadActDirection = 0xAA; //记录下来发送给ZC
                     isLeftSearch = true; //左寻
                 }
                 else if (dcInfo.IsMovingRight())
                 {
-                    atpLogic.zc.zcPackage.HeadActDirection = 0x55;
+                    zc.zcPackage.HeadActDirection = 0x55;
                     isLeftSearch = false;
                 }
                 else if (dcInfo.DCTrainSpeed > 0) //在列车运行的时候判断
@@ -362,7 +381,7 @@ namespace SocketSearch
             }
             else //在EUM模式下
             {
-                atpLogic.zc.zcPackage.HeadActDirection = 0;
+                zc.zcPackage.HeadActDirection = 0;
             }
         }
 
@@ -494,8 +513,8 @@ namespace SocketSearch
 
                 if (DMIRelieveOrder == 2)
                 {
-                    atpLogic.dc.dcPackage.IsEB = 7; //收到缓解消息发送给DC
-                    atpLogic.dmi.dmiPackage.BreakOut = (byte)DMIBreakOut.NoEB; //收到缓解消息发送给dmi
+                    dc.dcPackage.IsEB = 7; //收到缓解消息发送给DC
+                    dmi.dmiPackage.BreakOut = (byte)DMIBreakOut.NoEB; //收到缓解消息发送给dmi
                     Socket_EB.isEB = false;
                 }
             }
@@ -553,15 +572,15 @@ namespace SocketSearch
                 double prea = (v1 - v2) / (t1 - t2).TotalSeconds;
                 comfort.CalculateEDa(v, prev, a, prea);
 
-                atpLogic.curve.atpCurvePackage.totalEnergy = (Int32)comfort.totalEnergy;
+                curve.atpCurvePackage.totalEnergy = (Int32)comfort.totalEnergy;
 
                 if (dcInfo.DCTrainSpeed != 0)
                 {
-                    atpLogic.curve.atpCurvePackage.Comfort = (int)comfort.da; //不等于0的时候才计算舒适度
+                    curve.atpCurvePackage.Comfort = (int)comfort.da; //不等于0的时候才计算舒适度
                 }
                 else
                 {
-                    atpLogic.curve.atpCurvePackage.Comfort = 0;
+                    curve.atpCurvePackage.Comfort = 0;
                 }
                 DCTrainSpeedList.Clear();
             }
@@ -579,7 +598,7 @@ namespace SocketSearch
             {
                 if (nextLimNum != limSpeedNum && 
                     isRecvZC == true && 
-                    !atpLogic.trainMessage.LeftNextCurBaliseList(dcInfo.curBalise)[0].device.Name.StartsWith('Z') && 
+                    !trainMessage.LeftNextCurBaliseList(dcInfo.curBalise)[0].device.Name.StartsWith('Z') && 
                     isFirstR == true)
                 {
                     isConvertLimNum = true;
