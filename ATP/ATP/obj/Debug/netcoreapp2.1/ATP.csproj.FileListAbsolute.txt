@@ -1,0 +1,132 @@
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATP .NET\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\ATPGit\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\zhang\Desktop\ATPGit\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\zhang\Desktop\ATPGit\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\zhang\Desktop\ATPGit\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATPGit\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\ATPGit\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\ATPGit\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\zhang\Desktop\ATPGit\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\zhang\Desktop\ATPGit\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\zhang\Desktop\ATPGit\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATPGit\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\zhang\Desktop\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\zhang\Desktop\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\zhang\Desktop\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\zhang\Desktop\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\zhang\Desktop\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\zhang\Desktop\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\DCS-1\Desktop\调试代码\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\DCS-1\Desktop\调试代码\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\DCS-1\Desktop\调试代码\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\DCS-1\Desktop\调试代码\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\DCS-1\Desktop\调试代码\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\DCS-1\Desktop\调试代码\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\DCS-1\Desktop\调试代码\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\DCS-1\Desktop\调试代码\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\DCS-1\Desktop\调试代码\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\DCS-1\Desktop\调试代码\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\DCS-1\Desktop\调试代码\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\zhang\Desktop\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\zhang\Desktop\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\zhang\Desktop\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\zhang\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\zhang\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\zhang\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\单机版本\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\zhang\Desktop\单机版本\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\zhang\Desktop\单机版本\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\zhang\Desktop\单机版本\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\单机版本\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\单机版本\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\单机版本\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\zhang\Desktop\单机版本\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\zhang\Desktop\单机版本\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\zhang\Desktop\单机版本\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\单机版本\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\DCS-1\Desktop\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\DCS-1\Desktop\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\DCS-1\Desktop\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\DCS-1\Desktop\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\DCS-1\Desktop\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\DCS-1\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\DCS-1\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\DCS-1\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\DCS-1\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\DCS-1\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\DCS-1\Desktop\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\20181118zc.ci\ATP部分最新\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\haipo\Documents\GitHub\联合大学 Web CBTC\ATP888\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\DCS-1\Desktop\ATP888-master\ATP\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\bin\Debug\netcoreapp2.1\ATP.deps.json
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.json
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\bin\Debug\netcoreapp2.1\ATP.runtimeconfig.dev.json
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\bin\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\bin\Debug\netcoreapp2.1\ATP.pdb
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.csprojAssemblyReference.cache
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.csproj.CoreCompileInputs.cache
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfoInputs.cache
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.AssemblyInfo.cs
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.dll
+C:\Users\zhang\Desktop\ATPGit\ATP1\ATP\obj\Debug\netcoreapp2.1\ATP.pdb
