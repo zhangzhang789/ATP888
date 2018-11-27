@@ -4,6 +4,11 @@ using System;
 
 namespace ATP.SocketSearch
 {
+    enum DMIBreakOut
+    {
+        EB=6,
+        NoEB=7
+    }
     class Atp2Dmi : Atp2OtherSystem
     {
         public delegate UInt16 ComputeProtectSpeed(int MAEndDistance, int limSpeedNum, int limSpeedDistance_1);
@@ -25,20 +30,16 @@ namespace ATP.SocketSearch
             dmiPackage.HighModel = 1;
             dmiPackage.CurModel = (byte)dcInfo.DCCtrlMode;
             dmiPackage.ActulSpeed = (UInt16)Math.Abs(dcInfo.DCTrainSpeed);
-            dmiPackage.BreakOut = 7;
+            dmiPackage.BreakOut = (byte)DMIBreakOut.NoEB;
             dmiPackage.Alarm = 1;
 
             if (isEB == false)
             {
-                dmiPackage.HighSpeed = (ushort)ProtectSpeed(
-                    speedLimit.MAEndDistance, speedLimit.limSpeedNum, speedLimit.limSpeedDistance[0]);    //目前得不到速度信息
-
-                dmiPackage.PermitSpeed = (ushort)(ProtectSpeed(speedLimit.MAEndDistance,
-                    speedLimit.limSpeedNum, speedLimit.limSpeedDistance[0]) - 5);
-
-                dmiPackage.FrontPermSpeed = (ushort)(ProtectSpeed(speedLimit.MAEndDistance,
-                    speedLimit.limSpeedNum, speedLimit.limSpeedDistance[0]) - 2);
-
+                UInt16 HighSpeed = (UInt16)ProtectSpeed(
+                    speedLimit.MAEndDistance, speedLimit.limSpeedNum, speedLimit.limSpeedDistance[0]);
+                dmiPackage.HighSpeed =HighSpeed;    //目前得不到速度信息
+                dmiPackage.PermitSpeed = (UInt16)(HighSpeed -5);
+                dmiPackage.FrontPermSpeed = (UInt16)(HighSpeed - 2);
                 dmiPackage.TargetLoca = (UInt16)speedLimit.MAEndDistance;
             }
             else
@@ -51,13 +52,13 @@ namespace ATP.SocketSearch
 
             if (isEB == true)
             {
-                dmiPackage.BreakOut = 6;
+                dmiPackage.BreakOut = (byte)DMIBreakOut.EB;
                 dmiPackage.Alarm = 1;
             }
 
             dmiPackage.Dmishow = (UInt16)(DMIShow ? 2 : 1);
             
-            if (dcInfo.IsCurBaliseEmpty())
+            if (!dcInfo.IsCurBaliseEmpty())
             {
                 dmiPackage.IsNoZHG = (UInt16)(dcInfo.IsCurStartWith("ZHG")? 0 : 1);
             }

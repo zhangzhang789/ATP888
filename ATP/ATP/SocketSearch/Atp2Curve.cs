@@ -11,7 +11,6 @@ namespace ATP.SocketSearch
     class Atp2Curve : Atp2OtherSystem
     {
         //public UdpClient ATPToATPCurveClient;
-
         public ATPCurvePackage atpCurvePackage = new ATPCurvePackage();
 
         public override void Initialize()

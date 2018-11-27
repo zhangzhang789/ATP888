@@ -15,8 +15,7 @@ namespace ATP.SocketSearch
                 var ipItem = IPConfigure.FindIpList(systemName);
                 client = new UdpClient(new IPEndPoint(ipItem.ATPIP, ipItem.ATPPort));
                 client.Connect(ipItem.IP, ipItem.Port);
-         
-            
+                   
         }
 
         public virtual void Initialize()

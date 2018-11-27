@@ -21,8 +21,7 @@ namespace ATP.SocketSearch
                 zcPackage.TrainID = (UInt16)trainID;
                 zcPackage.RunInformation = 0x01;
                 zcPackage.TailSectionOrSwitch = zcPackage.HeadSectionOrSwitch;
-                zcPackage.TailID = zcPackage.HeadID;
-                //zcPackage.TailOff = zcPackage.HeadOff; //大写的是自己找的                                            
+                zcPackage.TailID = zcPackage.HeadID;                                      
                 zcPackage.ACtSpeed = (UInt16)Math.Abs(dcInfo.DCTrainSpeed);
                 zcPackage.Mode = (byte)curModel;
 

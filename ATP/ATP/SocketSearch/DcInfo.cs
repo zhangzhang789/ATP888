@@ -11,7 +11,6 @@ namespace SocketSearch
         public ModelType DCCtrlMode = 0; //司控器的模式
         public string baliseHead = "";
         public string curBalise = "";
-        public string baliseTail = "";
         public string trainHead = "";
         public string trainTail = "";    //都等于目前应答器
         public Int16 DCTrainSpeed = 0;  //实时列车速度，司控器发送，区分大于0和小于0
