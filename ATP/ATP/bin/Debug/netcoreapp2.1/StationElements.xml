@@ -26,70 +26,70 @@
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="4" NamePoint="-5.81666666666667,21" StationID="0" Name="S3" TopLeft="335.355339059327,235.355339059327" RotatePoint="0,0" Angle="45">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="4" NamePoint="-5.81666666666667,21" StationID="0" Name="S3" TopLeft="335.355339059327,235.355339059327" RotatePoint="0,0" Angle="45">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="5" NamePoint="-5.81666666666667,21" StationID="0" Name="S4" TopLeft="335.355339059327,515.355339059327" RotatePoint="0,0" Angle="-45">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="5" NamePoint="-5.81666666666667,21" StationID="0" Name="S4" TopLeft="335.355339059327,515.355339059327" RotatePoint="0,0" Angle="-45">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="6" NamePoint="-5.81666666666667,21" StationID="0" Name="S5" TopLeft="475.355339059327,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="6" NamePoint="-5.81666666666667,21" StationID="0" Name="S5" TopLeft="475.355339059327,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="7" NamePoint="-5.81666666666667,21" StationID="0" Name="S6" TopLeft="475.355339059327,445.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="7" NamePoint="-5.81666666666667,21" StationID="0" Name="S6" TopLeft="475.355339059327,445.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="8" NamePoint="-5.81666666666667,-34.1966666666667" StationID="0" Name="S7" TopLeft="755.355339059327,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="8" NamePoint="-5.81666666666667,-34.1966666666667" StationID="0" Name="S7" TopLeft="755.355339059327,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
       <Graphic Type="Circle" Center="-22,-12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="9" NamePoint="-5.81666666666667,-34.1966666666667" StationID="0" Name="S8" TopLeft="755.355339059327,445.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="9" NamePoint="-5.81666666666667,-34.1966666666667" StationID="0" Name="S8" TopLeft="755.355339059327,445.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
       <Graphic Type="Circle" Center="-22,-12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="10" NamePoint="-5.81666666666667,21" StationID="0" Name="S9" TopLeft="855.355339059327,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="10" NamePoint="-5.81666666666667,21" StationID="0" Name="S9" TopLeft="855.355339059327,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="11" NamePoint="-8.74833333333333,21" StationID="0" Name="S10" TopLeft="855.355339059327,445.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="11" NamePoint="-8.74833333333333,21" StationID="0" Name="S10" TopLeft="855.355339059327,445.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="12" NamePoint="-8.74833333333333,-34.1966666666667" StationID="0" Name="S11" TopLeft="1235.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="12" NamePoint="-8.74833333333333,-34.1966666666667" StationID="0" Name="S11" TopLeft="1235.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
       <Graphic Type="Circle" Center="-22,-12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="13" NamePoint="-8.74833333333333,-34.1966666666667" StationID="0" Name="S12" TopLeft="1235.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="13" NamePoint="-8.74833333333333,-34.1966666666667" StationID="0" Name="S12" TopLeft="1235.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
@@ -108,7 +108,7 @@
       <Graphic Type="Circle" Center="8,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="16" NamePoint="-9.16166666666667,21" StationID="0" Name="SC1" TopLeft="200,200" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="16" NamePoint="-9.16166666666667,21" StationID="0" Name="SC1" TopLeft="200,200" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="15,12" Radius="7" />
@@ -116,7 +116,7 @@
       <Graphic Type="Circle" Center="29,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="17" NamePoint="-9.16166666666667,21" StationID="0" Name="SC2" TopLeft="200,550.710678118655" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="17" NamePoint="-9.16166666666667,21" StationID="0" Name="SC2" TopLeft="200,550.710678118655" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="15,12" Radius="7" />
@@ -124,7 +124,7 @@
       <Graphic Type="Circle" Center="29,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="18" NamePoint="-7.79666666666667,-34.1966666666667" StationID="0" Name="SJ1" TopLeft="200,200" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="18" NamePoint="-7.79666666666667,-34.1966666666667" StationID="0" Name="SJ1" TopLeft="200,200" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-15,-12" Radius="7" />
@@ -132,7 +132,7 @@
       <Graphic Type="Circle" Center="-29,-12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="19" NamePoint="-7.79666666666667,-34.1966666666667" StationID="0" Name="SJ2" TopLeft="200,550.710678118655" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="19" NamePoint="-7.79666666666667,-34.1966666666667" StationID="0" Name="SJ2" TopLeft="200,550.710678118655" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-15,-12" Radius="7" />
@@ -333,35 +333,35 @@
       <Graphic Type="Circle" Center="8,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="22" NamePoint="-5.81666666666667,21" StationID="1" Name="S3" TopLeft="1755.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="22" NamePoint="-5.81666666666667,21" StationID="1" Name="S3" TopLeft="1755.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="23" NamePoint="-5.81666666666667,21" StationID="1" Name="S4" TopLeft="1735.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="23" NamePoint="-5.81666666666667,21" StationID="1" Name="S4" TopLeft="1735.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="24" NamePoint="-5.81666666666667,-34.1966666666667" StationID="1" Name="S5" TopLeft="1925.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="24" NamePoint="-5.81666666666667,-34.1966666666667" StationID="1" Name="S5" TopLeft="1925.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
       <Graphic Type="Circle" Center="-22,-12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="25" NamePoint="-5.81666666666667,-34.1966666666667" StationID="1" Name="S6" TopLeft="1875.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="25" NamePoint="-5.81666666666667,-34.1966666666667" StationID="1" Name="S6" TopLeft="1875.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
       <Graphic Type="Circle" Center="-22,-12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="26" NamePoint="-5.81666666666667,-34.1966666666667" StationID="1" Name="S7" TopLeft="1995.35533905933,375.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="26" NamePoint="-5.81666666666667,-34.1966666666667" StationID="1" Name="S7" TopLeft="1995.35533905933,375.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
@@ -374,21 +374,21 @@
       <Graphic Type="Circle" Center="8,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="28" NamePoint="-5.81666666666667,21" StationID="1" Name="S9" TopLeft="2095.35533905933,375.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="28" NamePoint="-5.81666666666667,21" StationID="1" Name="S9" TopLeft="2095.35533905933,375.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="29" NamePoint="-8.74833333333333,21" StationID="1" Name="S11" TopLeft="2115.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="29" NamePoint="-8.74833333333333,21" StationID="1" Name="S11" TopLeft="2115.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="30" NamePoint="-8.74833333333333,-34.1966666666667" StationID="1" Name="S13" TopLeft="2235.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="30" NamePoint="-8.74833333333333,-34.1966666666667" StationID="1" Name="S13" TopLeft="2235.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
@@ -568,28 +568,28 @@
       <Graphic Type="Circle" Center="8,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="36" NamePoint="-5.81666666666667,21" StationID="2" Name="S5" TopLeft="3075.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="36" NamePoint="-5.81666666666667,21" StationID="2" Name="S5" TopLeft="3075.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="37" NamePoint="-5.81666666666667,21" StationID="2" Name="S6" TopLeft="2935.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="37" NamePoint="-5.81666666666667,21" StationID="2" Name="S6" TopLeft="2935.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="38" NamePoint="-5.81666666666667,-34.1966666666667" StationID="2" Name="S7" TopLeft="3215.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="38" NamePoint="-5.81666666666667,-34.1966666666667" StationID="2" Name="S7" TopLeft="3215.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
       <Graphic Type="Circle" Center="-22,-12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="39" NamePoint="-5.81666666666667,-34.1966666666667" StationID="2" Name="S8" TopLeft="3215.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="39" NamePoint="-5.81666666666667,-34.1966666666667" StationID="2" Name="S8" TopLeft="3215.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
@@ -777,42 +777,42 @@
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="45" NamePoint="-5.81666666666667,21" StationID="3" Name="S5" TopLeft="3665.35533905933,340.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="45" NamePoint="-5.81666666666667,21" StationID="3" Name="S5" TopLeft="3665.35533905933,340.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="46" NamePoint="-5.81666666666667,21" StationID="3" Name="S6" TopLeft="3665.35533905933,410.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="46" NamePoint="-5.81666666666667,21" StationID="3" Name="S6" TopLeft="3665.35533905933,410.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="47" NamePoint="-5.81666666666667,21" StationID="3" Name="S7" TopLeft="3805.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="47" NamePoint="-5.81666666666667,21" StationID="3" Name="S7" TopLeft="3805.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="48" NamePoint="-5.81666666666667,21" StationID="3" Name="S8" TopLeft="3805.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="48" NamePoint="-5.81666666666667,21" StationID="3" Name="S8" TopLeft="3805.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
       <Graphic Type="Circle" Center="22,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="49" NamePoint="-5.81666666666667,-34.1966666666667" StationID="3" Name="S9" TopLeft="3975.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="49" NamePoint="-5.81666666666667,-34.1966666666667" StationID="3" Name="S9" TopLeft="3975.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
       <Graphic Type="Circle" Center="-22,-12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="50" NamePoint="-8.74833333333333,-34.1966666666667" StationID="3" Name="S10" TopLeft="3975.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="50" NamePoint="-8.74833333333333,-34.1966666666667" StationID="3" Name="S10" TopLeft="3975.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
@@ -831,14 +831,14 @@
       <Graphic Type="Circle" Center="8,12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4引" DefaultColor="Red" ID="53" NamePoint="-8.74833333333333,-34.1966666666667" StationID="3" Name="S13" TopLeft="4555.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="True" IsLeft="True" IOType="L4_引" DefaultColor="Red" ID="53" NamePoint="-8.74833333333333,-34.1966666666667" StationID="3" Name="S13" TopLeft="4555.35533905933,305.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,-5" Point1="0,-19" />
       <Graphic Type="Circle" Center="-8,-12" Radius="7" />
       <Graphic Type="Circle" Center="-22,-12" Radius="7" />
     </Graphics>
   </Signal>
-  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4引" DefaultColor="Red" ID="54" NamePoint="-8.74833333333333,21" StationID="3" Name="S14" TopLeft="4275.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
+  <Signal IsSingleMode="False" IsUp="False" IsLeft="False" IOType="L4_引" DefaultColor="Red" ID="54" NamePoint="-8.74833333333333,21" StationID="3" Name="S14" TopLeft="4275.35533905933,445.355339059327" RotatePoint="0,0" Angle="0">
     <Graphics>
       <Graphic Type="Line" Point0="0,5" Point1="0,19" />
       <Graphic Type="Circle" Center="8,12" Radius="7" />
