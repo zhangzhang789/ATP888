@@ -97,6 +97,8 @@ namespace SocketSearch
 
         const int Distance70_40 = (int)((70 / 3.6 * 70 / 3.6 - 40 / 3.6 * 40 / 3.6) / (2 * 1.2)); //106
         const int Distance70_0 = (int)(70 / 3.6 * 80 / 3.6 / (2 * 1.2)); //除以3.6的以m/s为单位,180
+        public int sendTotalEnergy;
+        public int sendComfort;
 
         public void SocketInitialize()
         {
@@ -189,7 +191,7 @@ namespace SocketSearch
             try
             {
                 curve.SendATPCurve(speedLimit, isInFault, Socket_EB.isEB,
-                        zhangJieFault, xiaoJieFault, faultReason, faultRecover, speedFault,curveData);                         //隔200ms发送数据
+                        zhangJieFault, xiaoJieFault, faultReason, faultRecover, speedFault,curveData,sendTotalEnergy,sendComfort);                         //隔200ms发送数据
                 dmi.SendDMI(trainID, dcInfo, Socket_EB.isEB,
                             ProtectSpeed, speedLimit, DMIShow, isRealeaseEB, isZcAlive, isInFault,dmiData);
                 zc.SendZC(dcInfo, sendID, trainID, curModel,zcData);
@@ -582,15 +584,15 @@ namespace SocketSearch
                 double prea = (v1 - v2) / (t1 - t2).TotalSeconds;
                 comfort.CalculateEDa(v, prev, a, prea);
 
-                curve.atpCurvePackage.totalEnergy = (Int32)comfort.totalEnergy;
+                sendTotalEnergy = (Int32)comfort.totalEnergy;
 
                 if (dcInfo.DCTrainSpeed != 0)
                 {
-                    curve.atpCurvePackage.Comfort = (int)comfort.da; //不等于0的时候才计算舒适度
+                    sendComfort = (int)comfort.da; //不等于0的时候才计算舒适度
                 }
                 else
                 {
-                    curve.atpCurvePackage.Comfort = 0;
+                    sendComfort = 0;
                 }
                 DCTrainSpeedList.Clear();
             }

@@ -40,7 +40,7 @@ namespace ATP.SocketSearch
         }
 
         public void SendATPCurve(SpeedLimit speedLimit, bool isInFault, bool isEb, 
-            byte zhangJieFault, byte xiaoJieFault, string faultReason, bool faultRecover, bool speedFault,byte[] sendBuf)
+            byte zhangJieFault, byte xiaoJieFault, string faultReason, bool faultRecover, bool speedFault,byte[] sendBuf,int totalEnergy,int comfort)
         {
             Atp2Curve curve = this;
 
@@ -77,7 +77,8 @@ namespace ATP.SocketSearch
             {
                 curve.atpCurvePackage.faultReason = "速度传感器故障，请切入EUM模式回库";
             }
-
+            curve.atpCurvePackage.totalEnergy = totalEnergy;
+            curve.atpCurvePackage.Comfort = comfort;
             curve.SetFaultReason(zhangJieFault, xiaoJieFault);
             
             int ATPCurveSendDataLength = curve.atpCurvePackage.ATPCurvePackStream(sendBuf);
