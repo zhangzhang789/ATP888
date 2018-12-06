@@ -13,13 +13,13 @@ namespace SocketSearch
 {
     enum SwitchState
     {
-        Normal=1,
-        Reverse=2
+        Normal = 1,
+        Reverse = 2
     }
     enum Length
     {
-        switchLength=25,
-        railLength=120
+        switchLength = 25,
+        railLength = 120
     }
     class SearchLater
     {
@@ -44,24 +44,24 @@ namespace SocketSearch
 
         public int[] SearchDistance(bool isLeftSearch, byte type, byte ID, int MAEndOff, int obstacleNum, string curBalise, string[] obstacleID, byte[] obstacleState) //type,id即MA终点的类型和ID
         {
-            
+
             int curbalise_id = 0;
             int[] returnValue = new int[9];
             MAEndLink = trainMessage.IDTypeConvertName(type, ID); //由type和ID得到区段或道岔名字。如W0103
             string[] obstacleIDName = new string[obstacleNum];  //存放转换成全名的障碍物的名字
             obstacleIDName = ConvertObstacaleIDTOName(obstacleNum, obstacleID);
             curbalise_id = BaliseToID(curBalise);
-        
-            returnValue =GetMAAndObstacleDistance(curBalise, curbalise_id, MAEndLink, MAEndOff, obstacleID, obstacleState, obstacleNum, isLeftSearch);           
+
+            returnValue = GetMAAndObstacleDistance(curBalise, curbalise_id, MAEndLink, MAEndOff, obstacleID, obstacleState, obstacleNum, isLeftSearch);
             return returnValue;
         }
-        
+
         public int BaliseToID(string curNowBalise) //由balise可以得到ID
         {
-            int ID = 0;           
+            int ID = 0;
             if (SearchInfo.IsCurStartWith(curNowBalise, "Z") && !SearchInfo.IsCurBaliseEmpty(curNowBalise))
             {
-                ID= Convert.ToInt32(hashTable_search.ht_2[curNowBalise.Substring(0, 4)]);
+                ID = Convert.ToInt32(hashTable_search.ht_2[curNowBalise.Substring(0, 4)]);
             }
             else if (!trainMessage.IsRailswitchVoid(curNowBalise)) //如果是直轨
             {
@@ -69,11 +69,11 @@ namespace SocketSearch
             }
             else
             {
-                if(hashTable_search.ht_2.Contains(curNowBalise.Substring(0, 5)))
+                if (hashTable_search.ht_2.Contains(curNowBalise.Substring(0, 5)))
                 {
-                    if(curNowBalise.Substring(curNowBalise.IndexOf("_")+1,1)=="0" || curNowBalise.Substring(curNowBalise.IndexOf("_")+1, 1) == "2")
+                    if (curNowBalise.Substring(curNowBalise.IndexOf("_") + 1, 1) == "0" || curNowBalise.Substring(curNowBalise.IndexOf("_") + 1, 1) == "2")
                     {
-                        ID =Convert.ToInt32(hashTable_search.ht_2[curNowBalise.Substring(0, 5)].ToString().Substring(0,2));
+                        ID = Convert.ToInt32(hashTable_search.ht_2[curNowBalise.Substring(0, 5)].ToString().Substring(0, 2));
                     }
                     else
                     {
@@ -84,8 +84,8 @@ namespace SocketSearch
                 {
                     ID = (trainMessage.CurBaliseToIteam(curNowBalise).device as RailSwitch).Id;
                 }
-              
-            }          
+
+            }
             return ID;
         }
 
@@ -94,15 +94,15 @@ namespace SocketSearch
             string[] obstacleIDName = new string[obstacleNum];
             if (obstacleNum > 0)
             {
-                for(int i = 0; i < obstacleNum; i++)
+                for (int i = 0; i < obstacleNum; i++)
                 {
-                    obstacleIDName[i] = trainMessage.IDTypeConvertName(2,Convert.ToByte(obstacleID[i]));
+                    obstacleIDName[i] = trainMessage.IDTypeConvertName(2, Convert.ToByte(obstacleID[i]));
                 }
             }
-            return obstacleIDName;          
+            return obstacleIDName;
         }
 
-        private int[] allSearch(bool isLeftSearch,string curBalise, byte[] obstacleState, string[] obstacleID, int obstacleNum, int curBalise_id, int MAEndOff)
+        private int[] allSearch(bool isLeftSearch, string curBalise, byte[] obstacleState, string[] obstacleID, int obstacleNum, int curBalise_id, int MAEndOff)
         {
             int[] obstacle_distance = new int[obstacleNum]; //存放每一个障碍物的位置
             string[] obstacle_name = new string[obstacleNum]; //存放每一个障碍物的名字，用于判断每一个障碍物
@@ -126,7 +126,7 @@ namespace SocketSearch
                     else
                     {
                         NextNodesList = trainMessage.RightNextCurBaliseList(NowSearchBalise);  //在区段时肯定只能有一个右节点，道岔可能有两个节点
-                    }                  
+                    }
                     NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[0]); //取出唯一的一个右节点
                     if (index_obstacle < obstacleState.Count())
                     {
@@ -148,7 +148,7 @@ namespace SocketSearch
                     {
                         NextNodesList = trainMessage.RightNextCurBaliseList(NowSearchBalise, Convert.ToInt32(obstacleID[index_obstacle]));  //在道岔上就需要ID了                     
                     }
-                    
+
                     if (NextNodesList.Count == 2)
                     {
                         if (obstacleState[index_obstacle] == (UInt16)SwitchState.Normal) //处于定位
@@ -202,12 +202,12 @@ namespace SocketSearch
                 }
             }
             MAEndDistance = MAEndDistance + (UInt16)Length.railLength * last_obstacle_ma_count;
-            int[] Value = GetResultList(MAEndDistance, result_obstacle_distance, obstacle_count, MAEndOff, startDistance, result_obstacle_length, curBalise, MAEndLink);
+            int[] Value = GetResultList(MAEndDistance, result_obstacle_distance, obstacle_count, MAEndOff, startDistance, result_obstacle_length, curBalise, MAEndLink, obstacleState, obstacleNum);
             ToZero();
             return Value;
         }
 
-        private void searchNextNode2(List<TopolotyNode> NextNodesList,string NowSearchBalise, byte[] obstacleState, string[] obstacleID, int[] obstacle_distance, string[] obstacle_name,int index)
+        private void searchNextNode2(List<TopolotyNode> NextNodesList, string NowSearchBalise, byte[] obstacleState, string[] obstacleID, int[] obstacle_distance, string[] obstacle_name, int index)
         {
             NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[index]); //除了下一个应答器==1，做同样的处理
             if (NextSearchBalise == NowSearchBalise)
@@ -224,7 +224,7 @@ namespace SocketSearch
                 }
             }
         }
-        private int[] GetMAAndObstacleDistance(string curBalise,int curBalise_id, string MAEndLink, int MAEndOff, string[] obstacleID, byte[] obstacleState, int obstacleNum, bool isLeftSearch) //寻找障碍物的长度，距离
+        private int[] GetMAAndObstacleDistance(string curBalise, int curBalise_id, string MAEndLink, int MAEndOff, string[] obstacleID, byte[] obstacleState, int obstacleNum, bool isLeftSearch) //寻找障碍物的长度，距离
         {
 
             int[] endResult = allSearch(isLeftSearch, curBalise, obstacleState, obstacleID, obstacleNum, curBalise_id, MAEndOff);
@@ -239,7 +239,7 @@ namespace SocketSearch
             result_obstacle_length = new int[4];
         }
 
-        private void GetObstacleLengthDis(List<TopolotyNode> NextNodesList, byte[] obstacleState, int[] obstacle_distance, string[] obstacle_name,string NowSearchBalise) //while循环用于寻路
+        private void GetObstacleLengthDis(List<TopolotyNode> NextNodesList, byte[] obstacleState, int[] obstacle_distance, string[] obstacle_name, string NowSearchBalise) //while循环用于寻路
         {
             if (!isFirstSearch) //第一次是所在区段，用偏移量算
             {
@@ -269,14 +269,14 @@ namespace SocketSearch
                     }
                     else
                     {
-                        NextNodesList2(NextNodesList, NowSearchBalise, obstacle_distance, obstacle_name, 1);                    
+                        NextNodesList2(NextNodesList, NowSearchBalise, obstacle_distance, obstacle_name, 1);
                     }
                 }
             }
             isFirstSearch = false;
         }
 
-        private void NextNodesList2(List<TopolotyNode> NextNodesList, string NowSearchBalise, int[] obstacle_distance, string[] obstacle_name,int index)
+        private void NextNodesList2(List<TopolotyNode> NextNodesList, string NowSearchBalise, int[] obstacle_distance, string[] obstacle_name, int index)
         {
             NextSearchBalise = trainMessage.NextCurBaliseList(NextNodesList[index]); //反位是在第二个位置
             MAEndDistance += (UInt16)Length.switchLength;
@@ -285,23 +285,23 @@ namespace SocketSearch
         }
 
 
-        private void GetCurbaliseOff(string curBalise,bool isLeftSearch,int ID)
+        private void GetCurbaliseOff(string curBalise, bool isLeftSearch, int ID)
         {
             bool isSwitch = trainMessage.IsRailswitchVoid(curBalise); //判断是否道岔
             if (isSwitch)
             {
-                trainMessage.SwitchGetOffDis(isLeftSearch, curBalise,ref startOff,ref startDistance,ID);
+                trainMessage.SwitchGetOffDis(isLeftSearch, curBalise, ref startOff, ref startDistance, ID);
             }
             else
             {
-                trainMessage.SectionGetOffDis(isLeftSearch, curBalise, ref startOff, ref startDistance,ID);
+                trainMessage.SectionGetOffDis(isLeftSearch, curBalise, ref startOff, ref startDistance, ID);
             }
         }
 
-        
-        private bool RightISMA(string curbalise,string MAendbalise)
+
+        private bool RightISMA(string curbalise, string MAendbalise)
         {
-            
+
             foreach (var one_right in trainMessage.RightNextCurBaliseList(curbalise)) //如果右节点
             {
                 if (SearchInfo.IsCurStartWith(one_right.device.Name, "W"))
@@ -322,13 +322,13 @@ namespace SocketSearch
             return false;
         }
 
-        private int[] GetResultList(int MAEndDistance,int[] obstacle_distance,int limSpeedNum, int MAEndOff, UInt32 startDistance, int[] obstacle_length,string curbalise ,string MAENDlink)
+        private int[] GetResultList(int MAEndDistance, int[] obstacle_distance, int limSpeedNum, int MAEndOff, UInt32 startDistance, int[] obstacle_length, string curbalise, string MAENDlink, byte[] obstacleState, int obstacleNum)
         {
-            if(hashTable_search.ht_2.Contains(MAEndLink.Substring(0, 5)))
+            if (hashTable_search.ht_2.Contains(MAEndLink.Substring(0, 5)) && obstacleState[obstacleNum - 1] == 2)
             {
-                MAEndOff = MAEndOff - (UInt16)Length.switchLength;
+                MAEndDistance = MAEndDistance - 25;
             }
-            for (int i = 0; i < 4 ; i++)
+            for (int i = 0; i < 4; i++)
             {
                 obstacle_distance[i] = obstacle_distance[i] - obstacle_length[i];//障碍物的距离到的是距离起点的距离，以前的距离包含了障碍物的长度，因此要减去
             }
@@ -336,7 +336,7 @@ namespace SocketSearch
             switch (limSpeedNum)
             {
                 case 0:
-                    if (MAENDlink == curbalise.Substring(0,5))
+                    if (MAENDlink == curbalise.Substring(0, 5))
                     {
                         returnValue[0] = (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
                         returnValue[1] = limSpeedNum;
@@ -348,66 +348,93 @@ namespace SocketSearch
                     }
                     else
                     {
-                        returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance- (UInt16)Length.railLength; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
+                        returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance - (UInt16)Length.railLength; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
                         returnValue[1] = limSpeedNum;
-                    }   
+                    }
                     break;
-                    
+
                 case 1:
-                    GetstartSwitch(returnValue, MAEndDistance, MAEndOff, startDistance, limSpeedNum);
-                    if (SearchInfo.IsCurStartWith(curbalise, "W") && !SearchInfo.IsCurBaliseEmpty(curbalise))
+                    returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
+                    returnValue[1] = limSpeedNum;
+                    if (SearchInfo.IsCurStartWith(curbalise, "W") && !SearchInfo.IsCurBaliseEmpty(curbalise) && hashTable_search.ht_2.Contains(MAEndLink.Substring(0, 5)))
+                    {
+                        if (curbalise.Substring(0, 5) == MAEndLink || (obstacleState[obstacleNum - 1] == 2 && hashTable_search.ht_2.Contains(curbalise.Substring(0, 5))))
+                        {
+                            returnValue[2] = 0;
+                            if ((curbalise.Substring(curbalise.Length - 1, 1) == "1" && startDistance == 5) || (curbalise.Substring(curbalise.Length - 1, 1) == "1" && startDistance == 5) || (curbalise.Substring(curbalise.Length - 1, 1) == "3" && startDistance == 20))
+                            {
+                                returnValue[3] = (int)startDistance;
+                                returnValue[0] = (int)startDistance;
+                            }
+                            else
+                            {
+                                returnValue[3] = MAEndOff - (25 - (int)startDistance);
+                                returnValue[0] = MAEndOff - (25 - (int)startDistance);
+                            }
+                        }
+                        else
+                        {
+                            returnValue[2] = 0;
+                            returnValue[3] = MAEndOff + (int)startDistance;
+                        }
+                    }
+                    else if (SearchInfo.IsCurStartWith(curbalise, "W") && !SearchInfo.IsCurBaliseEmpty(curbalise))
                     {
                         returnValue[2] = 0;
-                        returnValue[3] = obstacle_length[0]+ (int)startDistance;
+                        returnValue[3] = obstacle_length[0] + (int)startDistance;
                     }
-                    
+
                     else if (SearchInfo.IsCurStartWith(MAEndLink, "W"))
                     {
                         returnValue[2] = obstacle_distance[0] + (int)startDistance;
-                        returnValue[3] = obstacle_length[0]+MAEndOff;
+                        if (hashTable_search.ht_2.Contains(MAEndLink.Substring(0, 5)) && obstacleState[obstacleNum - 1] == 2)
+                        {
+                            obstacle_length[0] = obstacle_length[0] - 25;
+                        }
+                        returnValue[3] = obstacle_length[0] + MAEndOff;
                     }
                     else
                     {
                         returnValue[2] = obstacle_distance[0] + (int)startDistance;
                         returnValue[3] = obstacle_length[0];
-                    }               
+                    }
+
                     break;
                 case 2:
-
                     GetstartSwitch(returnValue, MAEndDistance, MAEndOff, startDistance, limSpeedNum);
-                    GetFirstSwitch(curbalise, returnValue, obstacle_distance, obstacle_length,limSpeedNum);
+                    GetFirstSwitch(curbalise, returnValue, obstacle_distance, obstacle_length, limSpeedNum);
                     GetLastSwitch(curbalise, returnValue, obstacle_distance, obstacle_length,
                          MAEndOff, limSpeedNum);
-                   
+
                     break;
                 case 3:
                     GetstartSwitch(returnValue, MAEndDistance, MAEndOff, startDistance, limSpeedNum);
-                    GetFirstSwitch(curbalise, returnValue, obstacle_distance, obstacle_length,limSpeedNum);
+                    GetFirstSwitch(curbalise, returnValue, obstacle_distance, obstacle_length, limSpeedNum);
                     GetindexSwitch(returnValue, 4, 1, obstacle_distance, obstacle_length);
                     GetLastSwitch(curbalise, returnValue, obstacle_distance, obstacle_length,
                         MAEndOff, limSpeedNum);
-           
-                
+
+
                     break;
                 case 4:
                     GetstartSwitch(returnValue, MAEndDistance, MAEndOff, startDistance, limSpeedNum);
-                    GetFirstSwitch(curbalise, returnValue, obstacle_distance, obstacle_length,limSpeedNum);
+                    GetFirstSwitch(curbalise, returnValue, obstacle_distance, obstacle_length, limSpeedNum);
                     GetindexSwitch(returnValue, 4, 1, obstacle_distance, obstacle_length);
-                    GetindexSwitch(returnValue, 5, 2, obstacle_distance, obstacle_length);             
+                    GetindexSwitch(returnValue, 6, 2, obstacle_distance, obstacle_length);
                     GetLastSwitch(curbalise, returnValue, obstacle_distance, obstacle_length,
-                                 MAEndOff, limSpeedNum);                                    
+                                 MAEndOff, limSpeedNum);
                     break;
                 default:
                     break;
-            } 
+            }
             return returnValue;
         }
 
-        private void GetFirstSwitch(string curbalise, int[] returnValue, int[] obstacle_distance, int[] obstacle_length,int limSpeedNum)
+        private void GetFirstSwitch(string curbalise, int[] returnValue, int[] obstacle_distance, int[] obstacle_length, int limSpeedNum)
         {
             if (SearchInfo.IsCurStartWith(curbalise, "W") && !SearchInfo.IsCurBaliseEmpty(curbalise))
             {
-                if (obstacle_distance[limSpeedNum-1] == 0)
+                if (obstacle_distance[limSpeedNum - 1] == 0)
                 {
                     returnValue[2] = 0;
                     returnValue[3] = (int)startDistance;
@@ -416,7 +443,7 @@ namespace SocketSearch
                 {
                     returnValue[2] = 0;
                     returnValue[3] = obstacle_length[0] + (int)startDistance;
-                }            
+                }
             }
             else
             {
@@ -425,12 +452,12 @@ namespace SocketSearch
             }
         }
 
-        private void GetLastSwitch(string curbalise, int[] returnValue, int[] obstacle_distance, int[] obstacle_length, int MAEndOff,int limSpeedNum)
+        private void GetLastSwitch(string curbalise, int[] returnValue, int[] obstacle_distance, int[] obstacle_length, int MAEndOff, int limSpeedNum)
         {
             if (SearchInfo.IsCurStartWith(MAEndLink, "W"))
             {
-                returnValue[2*limSpeedNum] = obstacle_distance[limSpeedNum-1] + (int)startDistance;
-                returnValue[2 * limSpeedNum+1] = obstacle_length[limSpeedNum - 1] + MAEndOff;
+                returnValue[2 * limSpeedNum] = obstacle_distance[limSpeedNum - 1] + (int)startDistance;
+                returnValue[2 * limSpeedNum + 1] = obstacle_length[limSpeedNum - 1] + MAEndOff;
             }
             else
             {
@@ -447,14 +474,15 @@ namespace SocketSearch
             }
         }
 
-        private void GetindexSwitch(int[] returnValue,int listindex,int obstacleindex, int[] obstacle_distance, int[] obstacle_length)
+        private void GetindexSwitch(int[] returnValue, int listindex, int obstacleindex, int[] obstacle_distance, int[] obstacle_length)
         {
             returnValue[listindex] = obstacle_distance[obstacleindex] + (int)startDistance;
-            returnValue[listindex+1] = obstacle_length[obstacleindex];
+            returnValue[listindex + 1] = obstacle_length[obstacleindex];
         }
 
-        private void GetstartSwitch(int[] returnValue,int MAEndDistance, int MAEndOff, UInt32 startDistance,int limSpeedNum)
+        private void GetstartSwitch(int[] returnValue, int MAEndDistance, int MAEndOff, UInt32 startDistance, int limSpeedNum)
         {
+
             returnValue[0] = MAEndDistance + MAEndOff + (int)startDistance; //距离左边是offset，右边是distance，以前的madistance只是中间的长度
             returnValue[1] = limSpeedNum;                                  //障碍物的数量也是传入得到
         }
