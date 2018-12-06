@@ -13,6 +13,10 @@ namespace ATP.SocketSearch
 
         internal bool Is0_5Maendlink(string curBalise, string Maendlink)
         {
+            if (IsCurStartWith(curBalise, "Z"))
+            {
+                return curBalise.Substring(0, 4) == Maendlink;
+            }
             return curBalise.Substring(0,5)== Maendlink;
         }
 
