@@ -10,7 +10,7 @@ using TrainMessageEB;
 
 namespace ATP.SocketSearch
 {
-    class AtpLogic
+    public class AtpLogic
     {
         Socket_later socket_later = new Socket_later();
  
