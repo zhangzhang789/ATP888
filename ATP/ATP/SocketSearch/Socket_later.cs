@@ -302,17 +302,19 @@ namespace SocketSearch
                     {
                         Socket_EB.Set_EB("超过防护速度");
                     }
-                    Console.WriteLine("speedLimit.MAEndDistance " + 
-                        Convert.ToString(speedLimit.MAEndDistance) + 
-                        " num " + Convert.ToString(speedLimit.limSpeedNum) + 
-                        " Distance_1 " + Convert.ToString(speedLimit.limSpeedDistance[0]) +
-                        " Length_1 " + Convert.ToString(speedLimit.limSpeedLength[0]) + 
-                        " Distance_2 " + Convert.ToString(speedLimit.limSpeedDistance[1]) + 
-                        " Length_2 " + Convert.ToString(speedLimit.limSpeedLength[1]) +
-                        " Distance_3 " + Convert.ToString(speedLimit.limSpeedDistance[2]) + 
-                        " Length_3 " + Convert.ToString(speedLimit.limSpeedLength[2]) + 
-                        " Distance_4 " + Convert.ToString(speedLimit.limSpeedDistance[3]) + 
-                        " Length_4 " + Convert.ToString(speedLimit.limSpeedLength[3]));
+                    Console.WriteLine("speedLimit.MAEndDistance " +
+                            Convert.ToString(speedLimit.MAEndDistance) +
+                            " num " + Convert.ToString(speedLimit.limSpeedNum) +
+                            " Distance_1 " + Convert.ToString(speedLimit.limSpeedDistance[0]) +
+                            " Length_1 " + Convert.ToString(speedLimit.limSpeedLength[0]) +
+                            " Distance_2 " + Convert.ToString(speedLimit.limSpeedDistance[1]) +
+                            " Length_2 " + Convert.ToString(speedLimit.limSpeedLength[1]) +
+                            " Distance_3 " + Convert.ToString(speedLimit.limSpeedDistance[2]) +
+                            " Length_3 " + Convert.ToString(speedLimit.limSpeedLength[2]) +
+                            " Distance_4 " + Convert.ToString(speedLimit.limSpeedDistance[3]) +
+                            " Length_4 " + Convert.ToString(speedLimit.limSpeedLength[3]) +
+                            " totalEnergy " + Convert.ToString(sendTotalEnergy) +
+                            " comfort " + Convert.ToString(sendComfort));
 
                 }
             }
