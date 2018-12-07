@@ -660,7 +660,7 @@ namespace SocketSearch
                 
                 if (dcInfo.IsCurBaliseEmpty())
                 {
-                    return 100;
+                    return 15;
                 }
                 else
                 {
